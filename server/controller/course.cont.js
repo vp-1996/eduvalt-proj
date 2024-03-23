@@ -116,7 +116,7 @@ export const editCourse = (req, res) => {
                     message: err.message
                 })
             }
-           // console.log("file",req.body.file);
+            // console.log("file",req.body.file);
 
             let courseID = req.params.course_id
             let { Category, Description, Lessons, Duration } = req.body
@@ -130,7 +130,7 @@ export const editCourse = (req, res) => {
                 }
             }
 
-            let updateCourse = await courseSchema.updateOne({ _id: courseID }, { $set: {Category: Category, Description: Description, Lessons:Lessons, Duration:Duration, Image: pic } })
+            let updateCourse = await courseSchema.updateOne({ _id: courseID }, { $set: { Category: Category, Description: Description, Lessons: Lessons, Duration: Duration, Image: pic } })
 
             if (updateCourse.acknowledged) {
                 res.status(200).json({
@@ -155,4 +155,79 @@ export const editCourse = (req, res) => {
     }
 
 }
+
+///////////////Get Single Course///////////////////
+
+export const getSingleCourse = async (req, res) => {
+
+    try {
+        let courseID = req.params.course_id
+
+        let data = await courseSchema.findOne({ _id: courseID }).populate('Category')
+
+        if (data) {
+            res.status(200).json({
+                success: true,
+                data: data,
+                message: "Single Prod Data",
+                path: 'http://localhost:5000/uploads/Images/'
+            })
+        }
+    }
+    catch (error) {
+        res.status(400).json({
+            message: error.message
+        })
+    }
+}
+
+///////////////DELETE COURSE//////////////////////
+
+export const deleteCourse = async (req, res) => {
+
+    try {
+        let courseID = req.params.course_id
+        let courseData = await courseSchema.findOne({ _id: courseID })
+        let deleteData = await courseSchema.deleteOne({ _id: courseID })
+
+        if (deleteData.acknowledged) {
+            if (fs.existsSync('./uploads/Images/' + courseData.Image)) {
+                fs.unlinkSync('./uploads/Images/' + courseData.Image)
+            }
+
+            res.status(200).json({
+                message: "Course Deleted Sucessfully"
+            })
+        }
+    }
+
+    catch (error) {
+        res.status(400).json({
+            message: error.message
+        })
+    }
+}
+
+//////////GET ALL COURSE/////////////////
+
+export const getAllCourses = async (req, res) => {
+
+    try {
+        let Data = await courseSchema.find({}).populate('Category')
+        res.status(200).json({
+            Data: Data,
+            message: "Fetched All Products Sucessfully",
+            path: 'http://localhost:5000/uploads/Images'
+        })
+
+    }
+    catch (error) {
+        console.log(error);
+        res.status(400).json({
+            message: error.message
+        })
+    }
+
+}
+
 

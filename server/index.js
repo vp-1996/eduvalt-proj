@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import dotenv from "dotenv";
 import CategoryRouter from './routes/category.route';
 import courseRouter from './routes/course.route'
+import tutorRouter from './routes/tutor.route';
 
 dotenv.config();
 let app = express()
@@ -38,3 +39,4 @@ mongoose.connect('mongodb://127.0.0.1:27017/eduvalt-db')
 
 app.use('/category', CategoryRouter)
 app.use('/course',courseRouter)
+app.use('/tutor',tutorRouter)
