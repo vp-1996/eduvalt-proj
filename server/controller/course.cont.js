@@ -110,7 +110,7 @@ export const editCourse = (req, res) => {
         //  const {category, description, lessons, duration } = req.body
 
         let imageStore = multer({ storage: storage }).single('Image')
-        imageStore(req, res, async (err) => {
+        imageStore(req, res, async (err) => {       
             if (err) {
                 return res.status(400).json({
                     message: err.message
