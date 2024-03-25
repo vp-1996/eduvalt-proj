@@ -3,32 +3,29 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
+// import RegisterAdmin from './pages/Admin/RegisterAdmin';
+import RegisterAdmin from './pages/Admin/registerAdmin';
+import AdminLogin from './pages/Admin/adminLogin';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import GetAllCategories from './pages/Admin/getAllCategories';
+import CreateCategory from './pages/Admin/CreateCategory';
+import EditCategory from './pages/Admin/EditCategory';
 
 function App() {
-  const [count, setCount] = useState(0)
+
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/RegisterAdmin' element={<RegisterAdmin />} />
+          <Route path='/AdminLogin' element={<AdminLogin />} />
+          <Route path='/getAllCategories' element={<GetAllCategories />} />
+          <Route path='/CreateCategory' element={<CreateCategory />} />
+          <Route path='/EditCategory/:id' element={<EditCategory />} />
+        </Routes>
+      </BrowserRouter>
+
     </>
   )
 }
