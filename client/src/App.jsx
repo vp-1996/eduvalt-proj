@@ -10,6 +10,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import GetAllCategories from './pages/Admin/getAllCategories';
 import CreateCategory from './pages/Admin/CreateCategory';
 import EditCategory from './pages/Admin/EditCategory';
+import GetTutors from './pages/Admin/getTutors';
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
           <Route path='/getAllCategories' element={<GetAllCategories />} />
           <Route path='/CreateCategory' element={<CreateCategory />} />
           <Route path='/EditCategory/:id' element={<EditCategory />} />
+          <Route path='/GetTutors' element={<GetTutors/>} />
         </Routes>
       </BrowserRouter>
 

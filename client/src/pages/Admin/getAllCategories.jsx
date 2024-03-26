@@ -101,7 +101,7 @@ const GetAllCategories = () => {
 
             <br />
 
-            <Table style={{ width: "60%", marginLeft: "22%", height: "200px" }} bordered hover variant="">
+            <Table style={{ width: "100%", marginLeft: "5%", height: "200px" }} bordered hover variant="">
                 <thead>
                     {/* <tr> */}
                     <tbody>

@@ -56,7 +56,7 @@ const CreateCategory = () => {
             <br />
 
             <div
-                style={{ fontSize: "20px", width: "50%", height: "40px", textAlign: "center", marginLeft: "40%", backgroundColor: "#9AD0C2", color: "whitesmoke", fontWeight: "700", letterSpacing: "2px" }}
+                style={{ fontSize: "20px", width: "50%", height: "40px", textAlign: "center", marginLeft: "30%", backgroundColor: "#9AD0C2", color: "whitesmoke", fontWeight: "700", letterSpacing: "2px" }}
             >
                 <p>
                     ADD CATEGORY
@@ -78,7 +78,7 @@ const CreateCategory = () => {
                 />
                 <br />
                 <button type='submit'
-                    style={{ marginTop: "2%", marginLeft: "5%", background: "#1976D2", width: "100px", height: "35px", color: "white", border: "none", borderRadius: "5px" }}
+                    style={{ marginTop: "2%", marginLeft: "0%", background: "#1976D2", width: "100px", height: "35px", color: "white", border: "none", borderRadius: "5px" }}
                 >
                     Submit
                 </button>
