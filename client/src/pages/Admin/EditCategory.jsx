@@ -87,7 +87,7 @@ const EditCategory = () => {
             <form
                 style={{ marginLeft: "15%", marginTop: "5%" }}
                 onSubmit={handleSubmit}
-            >
+            > 
 
                 <input
                     value={name}
