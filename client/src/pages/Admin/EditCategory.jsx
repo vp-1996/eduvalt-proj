@@ -62,12 +62,14 @@ const EditCategory = () => {
 
     return (
         <>
-            <Navbar bg="primary" data-bs-theme="dark">
+             <Navbar bg="primary" data-bs-theme="dark">
                 <Container>
                     {/* <Navbar.Brand href="#home">Admin Dashboard</Navbar.Brand> */}
                     <Nav className="me-auto">
                         <Nav.Link href="/getAllCategories">All Categories</Nav.Link>
                         <Nav.Link href="/CreateCategory"> Create New Category</Nav.Link>
+                        <Nav.Link href="/AddTutor"> Create New Tutor</Nav.Link>
+                        <Nav.Link href="/getTutors">All Tutors</Nav.Link>
                         <Nav.Link href="AllUsers">All Users</Nav.Link>
                     </Nav>
                 </Container>

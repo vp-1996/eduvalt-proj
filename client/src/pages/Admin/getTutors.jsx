@@ -69,7 +69,7 @@ const GetTutors = () => {
     }
 
     let editButton = (id) => {
-        navigate('/EditCategory/' + id)
+        navigate('/EditTutor/' + id)
     }
 
 
@@ -79,12 +79,14 @@ const GetTutors = () => {
 
     return (
         <>
-            <Navbar bg="primary" data-bs-theme="dark">
+             <Navbar bg="primary" data-bs-theme="dark">
                 <Container>
                     {/* <Navbar.Brand href="#home">Admin Dashboard</Navbar.Brand> */}
                     <Nav className="me-auto">
                         <Nav.Link href="/getAllCategories">All Categories</Nav.Link>
                         <Nav.Link href="/CreateCategory"> Create New Category</Nav.Link>
+                        <Nav.Link href="/AddTutor"> Create New Tutor</Nav.Link>
+                        <Nav.Link href="/getTutors">All Tutors</Nav.Link>
                         <Nav.Link href="AllUsers">All Users</Nav.Link>
                     </Nav>
                 </Container>
@@ -95,7 +97,7 @@ const GetTutors = () => {
                 style={{ fontSize: "20px", width: "65%", height: "40px", textAlign: "center", marginLeft: "20%", backgroundColor: "#9AD0C2", color: "whitesmoke", fontWeight: "700", letterSpacing: "2px" }}
             >
                 <p>
-                    ALL CATEGORIES
+                    ALL TUTORS 
                 </p>
             </div>
 
