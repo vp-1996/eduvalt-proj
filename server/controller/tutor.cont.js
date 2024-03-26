@@ -104,6 +104,7 @@ export const getAllTutors = async (req, res) => {
         res.status(200).json({
             success: true,
             data: data,
+            path:'http://localhost:5000/uploads/Images',
             message: 'All fetched sucessfully'
         })
 

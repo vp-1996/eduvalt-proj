@@ -11,6 +11,7 @@ import GetAllCategories from './pages/Admin/getAllCategories';
 import CreateCategory from './pages/Admin/CreateCategory';
 import EditCategory from './pages/Admin/EditCategory';
 import GetTutors from './pages/Admin/getTutors';
+import EditTutor from './pages/Admin/EditTutor';
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
           <Route path='/CreateCategory' element={<CreateCategory />} />
           <Route path='/EditCategory/:id' element={<EditCategory />} />
           <Route path='/GetTutors' element={<GetTutors/>} />
+          <Route path='/EditTutor/:id' element={<EditTutor/>} />
         </Routes>
       </BrowserRouter>
 
