@@ -11,7 +11,7 @@ const EditTutor = () => {
   const [img, setImg] = useState('');
   const imgRef = useRef()
   const { id } = useParams()
-  const { name, profession } = product
+  const { name, profession, Image } = tutor
   let redirect = useNavigate()
 
   let singleTutor = async () => {
@@ -23,48 +23,76 @@ const EditTutor = () => {
       .catch((err) => {
         console.log(err);
       })
-     }
+  }
 
-     let updateTutor = () => {
+  let updateTutor = () => {
 
-      let formData = new FormData()
-      formData.append('name', name)
-      formData.append('profession', profession)
-      formData.append('Image', imgRef.current.files[0])
+    let formData = new FormData()
+    formData.append('name', name)
+    formData.append('profession', profession)
+    formData.append('Image', imgRef.current.files[0])
 
-      axios.put('http://localhost:5000/tutor/updateTutor/'+id, formData)
-          .then((res) => {
-              // setLoading(false)
-              console.log(res.data.Data);
-              redirect('/getTutors')
-              alert('Updated Succesfullly')
+    axios.put('http://localhost:5000/tutor/updateTutor/' + id, formData)
+      .then((res) => {
+        // setLoading(false)
+        console.log(res.data.Data);
+        redirect('/getTutors')
+        alert('Updated Succesfullly')
 
-          })
-          .catch((err) => {
-              console.log(err);
-          })
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
+  let handleChange = (e) => {
+    const { name, value } = e.target
+    setTutor({ ...tutor, [name]: value })
 
   }
+
+  const handleImg = (m) => {
+    setImg(m.target.files[0])
+  }
+
+  //    console.log(handleChange());
+
+  let handleSubmit = (e) => {
+    e.preventDefault()
+    updateTutor()
+  }
+
+  useEffect(() => {
+    singleTutor()
+  }, [])
 
 
   return (
     <>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" />
-          <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
-          </Form.Text>
+          <Form.Label>Name</Form.Label>
+          <Form.Control name='name' onChange={handleChange} value={name} type="text" />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" />
+          <Form.Label>Profession</Form.Label>
+          <Form.Control name='profession' onChange={handleChange} value={profession} type="text" placeholder="Profession" />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
         </Form.Group>
+
+        <input maxsize={1000} ref={imgRef} type='file' name='Image' onChange={handleImg} />
+
+        <img src={"http://localhost:5000/uploads/Images/" + Image} alt='' style={{ borderStyle: '', height: '130px', width: '170px', position: "absolute", left: "610px", top: "320px" }}
+          className={img ? 'none' : 'block'}
+        /> <br />
+
+        <img alt=''
+          src={img && window.URL.createObjectURL(img)}
+          style={{ height: '130px', width: '170px', marginLeft: "20px" }}
+        /> <br />
+
         <Button variant="primary" type="submit">
           Submit
         </Button>

@@ -13,6 +13,7 @@ import EditCategory from './pages/Admin/EditCategory';
 import GetTutors from './pages/Admin/getTutors';
 import EditTutor from './pages/Admin/EditTutor';
 import AddTutor from './pages/Admin/AddTutor';
+import GetCourses from './pages/Admin/GetCourses';
 
 function App() {
 
@@ -26,9 +27,12 @@ function App() {
           <Route path='/getAllCategories' element={<GetAllCategories />} />
           <Route path='/CreateCategory' element={<CreateCategory />} />
           <Route path='/EditCategory/:id' element={<EditCategory />} />
+
           <Route path='/GetTutors' element={<GetTutors/>} />
           <Route path='/EditTutor/:id' element={<EditTutor/>} />
           <Route path='/AddTutor' element={<AddTutor/>} />
+          
+          <Route path='/GetCourses' element={<GetCourses/>} />
         </Routes>
       </BrowserRouter>
 
