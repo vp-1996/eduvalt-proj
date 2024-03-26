@@ -6,4 +6,4 @@ const EditTutor = () => {
   )
 }
 
-export default EditTutor
+export default EditTutor 
