@@ -2,7 +2,7 @@ import React from 'react'
 
 const EditTutor = () => {
   return (
-    <div>EditTutor</div>
+    <div>EditTuto</div>
   )
 }
 
