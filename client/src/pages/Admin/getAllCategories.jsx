@@ -85,6 +85,10 @@ const GetAllCategories = () => {
                     <Nav className="me-auto">
                         <Nav.Link href="/getAllCategories">All Categories</Nav.Link>
                         <Nav.Link href="/CreateCategory"> Create New Category</Nav.Link>
+                        <Nav.Link href="/AddTutor"> Create New Tutor</Nav.Link>
+                        <Nav.Link href="/getTutors">All Tutors</Nav.Link>
+                        <Nav.Link href="/GetCourses">All Courses</Nav.Link>
+                        <Nav.Link href="/AddCourse">Add Course</Nav.Link>
                         <Nav.Link href="AllUsers">All Users</Nav.Link>
                     </Nav>
                 </Container>
@@ -101,7 +105,7 @@ const GetAllCategories = () => {
 
             <br />
 
-            <Table style={{ width: "100%", marginLeft: "5%", height: "200px" }} bordered hover variant="">
+            <Table style={{ width: "100%", marginLeft: "25%", height: "200px" }} bordered hover variant="">
                 <thead>
                     {/* <tr> */}
                     <tbody>
@@ -180,11 +184,6 @@ const GetAllCategories = () => {
                 </Pagination>
                 <br />
             </div>
-
-
-
-
-
 
         </>
     )

@@ -15,6 +15,7 @@ import EditTutor from './pages/Admin/EditTutor';
 import AddTutor from './pages/Admin/AddTutor';
 import GetCourses from './pages/Admin/GetCourses';
 import AddCourse from './pages/Admin/AddCourse';
+import EditCourse from './pages/Admin/EditCourse'; 
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
         <Routes>
           <Route path='/RegisterAdmin' element={<RegisterAdmin />} />
           <Route path='/AdminLogin' element={<AdminLogin />} />
+          
           <Route path='/getAllCategories' element={<GetAllCategories />} />
           <Route path='/CreateCategory' element={<CreateCategory />} />
           <Route path='/EditCategory/:id' element={<EditCategory />} />
@@ -35,6 +37,7 @@ function App() {
 
           <Route path='/GetCourses' element={<GetCourses/>} />
           <Route path='/AddCourse' element={<AddCourse/>} />
+          <Route path='/EditCourse/:id' element={<EditCourse/>} />
         </Routes>
       </BrowserRouter>
 

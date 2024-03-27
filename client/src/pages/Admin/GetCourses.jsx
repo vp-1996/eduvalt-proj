@@ -69,7 +69,7 @@ const GetCourses = () => {
     }
 
     let editButton = (id) => {
-        navigate('/EditTutor/' + id)
+        navigate('/EditCourse/' + id)
     }
 
 
@@ -87,6 +87,8 @@ const GetCourses = () => {
                         <Nav.Link href="/CreateCategory"> Create New Category</Nav.Link>
                         <Nav.Link href="/AddTutor"> Create New Tutor</Nav.Link>
                         <Nav.Link href="/getTutors">All Tutors</Nav.Link>
+                        <Nav.Link href="/GetCourses">All Courses</Nav.Link>
+                        <Nav.Link href="/AddCourse">Add Course</Nav.Link>
                         <Nav.Link href="AllUsers">All Users</Nav.Link>
                     </Nav>
                 </Container>
@@ -116,6 +118,9 @@ const GetCourses = () => {
                         <th style={{ borderBottom: "1px solid black" }}>
                             Lessons
                         </th>
+                        <th style={{ borderBottom: "1px solid black" }}>
+                            Duration
+                        </th>
                         <th style={{ borderBottom: "1px solid black", width: "150px", textAlign: "center" }}>
                             Image
                         </th>
@@ -139,7 +144,7 @@ const GetCourses = () => {
                                             fontSize: "12px"
                                         }}
                                         >
-                                            {i.Category.name}
+                                            {i.Category?.name}
                                         </td>
                                         <td style={{
                                             height: "55px",
@@ -158,6 +163,15 @@ const GetCourses = () => {
                                         }}
                                         >
                                             {i.Lessons}
+                                        </td>
+                                        <td style={{
+                                            height: "55px",
+                                            borderBottom: "1px solid black",
+                                            fontFamily: "'Tilt Neon', sans-serif",
+                                            fontSize: "14px"
+                                        }}
+                                        >
+                                            {i.Duration}
                                         </td>
                                         <td style={{
                                             height: "55px",

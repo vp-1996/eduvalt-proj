@@ -68,6 +68,8 @@ const AddTutor = () => {
                         <Nav.Link href="/CreateCategory"> Create New Category</Nav.Link>
                         <Nav.Link href="/AddTutor"> Create New Tutor</Nav.Link>
                         <Nav.Link href="/getTutors">All Tutors</Nav.Link>
+                        <Nav.Link href="/GetCourses">All Courses</Nav.Link>
+                        <Nav.Link href="/AddCourse">Add Course</Nav.Link>
                         <Nav.Link href="AllUsers">All Users</Nav.Link>
                     </Nav>
                 </Container>

@@ -79,7 +79,7 @@ const GetTutors = () => {
 
     return (
         <>
-             <Navbar bg="primary" data-bs-theme="dark">
+            <Navbar bg="primary" data-bs-theme="dark">
                 <Container>
                     {/* <Navbar.Brand href="#home">Admin Dashboard</Navbar.Brand> */}
                     <Nav className="me-auto">
@@ -87,6 +87,8 @@ const GetTutors = () => {
                         <Nav.Link href="/CreateCategory"> Create New Category</Nav.Link>
                         <Nav.Link href="/AddTutor"> Create New Tutor</Nav.Link>
                         <Nav.Link href="/getTutors">All Tutors</Nav.Link>
+                        <Nav.Link href="/GetCourses">All Courses</Nav.Link>
+                        <Nav.Link href="/AddCourse">Add Course</Nav.Link>
                         <Nav.Link href="AllUsers">All Users</Nav.Link>
                     </Nav>
                 </Container>
@@ -97,18 +99,18 @@ const GetTutors = () => {
                 style={{ fontSize: "20px", width: "65%", height: "40px", textAlign: "center", marginLeft: "20%", backgroundColor: "#9AD0C2", color: "whitesmoke", fontWeight: "700", letterSpacing: "2px" }}
             >
                 <p>
-                    ALL TUTORS 
+                    ALL TUTORS
                 </p>
             </div>
 
             <br />
 
-            <Table style={{ width: "100%", marginLeft: "5%", height: "200px" }} bordered hover variant="">
+            <Table style={{ width: "100%", marginLeft: "17%", height: "200px" }} bordered hover variant="">
                 <thead>
                     {/* <tr> */}
                     <tbody>
-                        <th style={{ borderBottom: "1px solid black" }}>
-                            Category
+                        <th style={{ borderBottom: "1px solid black",width:"100px"}}>
+                            Name
                         </th>
                         <th style={{ borderBottom: "1px solid black" }}>
                             Profession

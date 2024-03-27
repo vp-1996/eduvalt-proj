@@ -15,20 +15,34 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
 const AddCourse = () => {
-    const initialState = { description: "", lessons: "", duration: "", category: "" }
+    const initialState = { Description: "", Lessons: "", Duration: "", Category: "" }
     const [course, setCourse] = useState(initialState);
     const [img, setImg] = useState(null);
+    let [cat, setCategory] = useState([])
     const imgRef = useRef();
-    const { description, lessons, duration, category } = course
+    const { Description, Lessons, Duration, Category } = course
     let redirect = useNavigate();
+
+    let getCategories = async () => {
+
+        await axios.get('http://localhost:5000/category/getAllCategories')
+            .then((res) => {
+                console.log(res.data);
+                setCategory(res.data.data)
+            })
+
+            .catch((err) => {
+                console.log(err);
+            })
+    }
 
     let createCourse = () => {
 
         let formData = new FormData()
-        formData.append('Description', description)
-        formData.append('Profession', lessons)
-        formData.append('Duration', duration)
-        formData.append('Category', category)
+        formData.append('Description', Description)
+        formData.append('Profession', Lessons)
+        formData.append('Duration', Duration)
+        formData.append('Category', Category)
         formData.append('Image', imgRef.current.files[0])
 
 
@@ -36,8 +50,8 @@ const AddCourse = () => {
             .then((res) => {
                 // setLoading(false)
                 console.log(res.data.Data);
-                redirect('/getTutors')
-                alert('Add Succesfullly')
+                redirect('/GetCourses')
+                alert('Added Succesfullly')
 
             })
             .catch((err) => {
@@ -49,6 +63,7 @@ const AddCourse = () => {
     let handleChange = (e) => {
         const { name, value } = e.target
         setCourse({ ...course, [name]: value })
+        // console.log(setCourse({ ...course, [name]: value }));
     }
 
     const handleImg = (m) => {
@@ -61,6 +76,10 @@ const AddCourse = () => {
         createCourse()
     }
 
+    useEffect(() => {
+        getCategories()
+    }, [])
+
     return (
         <>
             <Navbar bg="primary" data-bs-theme="dark">
@@ -71,6 +90,8 @@ const AddCourse = () => {
                         <Nav.Link href="/CreateCategory"> Create New Category</Nav.Link>
                         <Nav.Link href="/AddTutor"> Create New Tutor</Nav.Link>
                         <Nav.Link href="/getTutors">All Tutors</Nav.Link>
+                        <Nav.Link href="/GetCourses">All Courses</Nav.Link>
+                        <Nav.Link href="/AddCourse">Add Course</Nav.Link>
                         <Nav.Link href="AllUsers">All Users</Nav.Link>
                     </Nav>
                 </Container>
@@ -79,21 +100,39 @@ const AddCourse = () => {
 
 
             <Form encType='multipart/form-data' onSubmit={handleSubmit}>
+
+                <select
+                    required
+                    style={{ background: "#42A5F5", color: "white", border: "none", height: "40px", width: "260px", fontWeight: "500", marginLeft: "15%", borderRadius: "7px" }}
+                    value={Category}
+                    name='Category'
+                    onChange={handleChange}>
+                    <option value='' disabled>Select Category</option>
+                    {
+                        cat.map((i, k) => (
+                            <option value={i._id}>{i.name}</option>
+                        ))
+                    }
+                </select>  <br /><br />
+
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Control
-                        name='name'
-                        value={description}
+                        maxLength={50}
+                        name='Description'
+                        value={Description}
                         onChange={handleChange}
                         type="text"
-                        placeholder="Enter Description"
+                        placeholder="Enter Description(max 50 char allowed)"
                     />
 
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Control
+                        required
+                        min={1}
                         name='Lessons'
-                        value={lessons}
+                        value={Lessons}
                         onChange={handleChange}
                         type="number"
                         placeholder="Enter Number Of Lessons"
@@ -102,8 +141,9 @@ const AddCourse = () => {
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Control
-                        name='profession'
-                        value={duration}
+                        required
+                        name='Duration'
+                        value={Duration}
                         onChange={handleChange}
                         type="text"
                         placeholder="Enter Duration"
