@@ -16,6 +16,7 @@ import AddTutor from './pages/Admin/AddTutor';
 import GetCourses from './pages/Admin/GetCourses';
 import AddCourse from './pages/Admin/AddCourse';
 import EditCourse from './pages/Admin/EditCourse'; 
+import Home from './pages/Home';
 
 function App() {
 
@@ -38,6 +39,8 @@ function App() {
           <Route path='/GetCourses' element={<GetCourses/>} />
           <Route path='/AddCourse' element={<AddCourse/>} />
           <Route path='/EditCourse/:id' element={<EditCourse/>} />
+
+          <Route path='/' element={<Home/>} />
         </Routes>
       </BrowserRouter>
 
