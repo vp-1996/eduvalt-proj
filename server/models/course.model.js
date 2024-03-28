@@ -6,17 +6,17 @@ const courseSchema = new mongoose.Schema({
     Category: {
         type: Schema.Types.ObjectId,
         ref: Category,
-        require: true
+       // require: true
     },
 
     Description: {
         type: String,
-        require: true
+       // require: true
     },
 
     Duration: {
         type: String,
-        require: true
+       // require: true
     },
 
     Lessons: {

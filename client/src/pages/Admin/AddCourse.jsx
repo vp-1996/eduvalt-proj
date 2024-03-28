@@ -40,7 +40,7 @@ const AddCourse = () => {
 
         let formData = new FormData()
         formData.append('Description', Description)
-        formData.append('Profession', Lessons)
+        formData.append('Lessons', Lessons)
         formData.append('Duration', Duration)
         formData.append('Category', Category)
         formData.append('Image', imgRef.current.files[0])
@@ -49,7 +49,7 @@ const AddCourse = () => {
         axios.post('http://localhost:5000/course/addCourse', formData)
             .then((res) => {
                 // setLoading(false)
-                console.log(res.data.Data);
+                 
                 redirect('/GetCourses')
                 alert('Added Succesfullly')
 
@@ -59,6 +59,7 @@ const AddCourse = () => {
             })
 
     }
+    
 
     let handleChange = (e) => {
         const { name, value } = e.target

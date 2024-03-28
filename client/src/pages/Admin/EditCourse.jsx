@@ -6,20 +6,22 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 const EditCourse = () => {
-    const initialState = { Description: "", Lessons: "", Duration: "" }
+    const initialState = { Description: "", Lessons: "", Duration: "", Category: "" }
     const [course, setCourse] = useState(initialState);
     const [img, setImg] = useState(null);
-    let [category, setCategory] = useState("")
-    let [categories,setCategories] = useState([])
+    // let [cat, setCategory] = useState("")
+    let [categories, setCategories] = useState([])
     const imgRef = useRef();
-    const { Description, Lessons, Duration, Image } = course
+    const { Description, Lessons, Duration, Image
+        , Category
+    } = course
     let redirect = useNavigate();
     const { id } = useParams()
+    console.log(id);
 
+    let getCategories = () => {
 
-    let getCategories = async () => {
-
-        await axios.get('http://localhost:5000/category/getAllCategories')
+        axios.get('http://localhost:5000/category/getAllCategories')
             .then((res) => {
                 console.log(res.data);
                 setCategories(res.data.data)
@@ -35,7 +37,7 @@ const EditCourse = () => {
             .then((resp) => {
                 console.log(resp.data);
                 setCourse(resp.data.data)
-                setCategory(resp.data.Category)
+                // setCategory(resp.data.Category)
             })
             .catch((err) => {
                 console.log(err);
@@ -44,30 +46,46 @@ const EditCourse = () => {
 
     let updateCourse = () => {
         let formData = new FormData()
+
         formData.append('Description', Description)
         formData.append('Lessons', Lessons)
         formData.append('Duration', Duration)
-        formData.append('Category', category)
+        formData.append('Category', Category._id)
         formData.append('Image', imgRef.current.files[0])
 
-        axios.put('http://localhost:5000/course/updateCourse/' + id, formData)
-            .then((res) => {
-                // setLoading(false)
-                console.log(res.data.Data);
-                redirect('/GetCourses')
-                alert('Updated Succesfullly')
+        // Display the key/value pairs
+        for (var pair of formData.entries()) {
+            console.log(pair[0] + ', ' + pair[1]);
+        }
 
+        // axios.put('http://localhost:5000/course/updateCourse/' + id, formData)
+        //     .then((res) => {
+        //         // setLoading(false)
+        //         console.log(res.data.Data);
+        //         redirect('/GetCourses')
+        //         alert('Updated Succesfullly')
+
+        //     })
+        //     .catch((err) => {
+        //         console.log(err);
+        //     })
+
+        axios.put('http://localhost:5000/course/updateCourse/' + id, formData)
+            .then(() => {
+                console.log('yes');
             })
-            .catch((err) => {
-                console.log(err);
-            })
+
     }
 
     let handleChange = (e) => {
         const { name, value } = e.target
         setCourse({ ...course, [name]: value })
-
+        // Category._id = e.target.value
+        // setCategory(e.target.value)
     }
+    console.log(Category);
+
+    // console.log(Category);
 
     const handleImg = (m) => {
         setImg(m.target.files[0])
@@ -88,20 +106,21 @@ const EditCourse = () => {
 
     return (
         <>
-            <Form onSubmit={handleSubmit}>
+            <Form encType='multipart/form-data' onSubmit={handleSubmit}>
 
                 <select
-                    required
-                    style={{ background: "#42A5F5", color: "white", border: "none", height: "40px", width: "260px", fontWeight: "500", marginLeft: "15%", borderRadius: "7px" }}
-                    value={category}
+                    style={{ background: "#42A5F5", color: "white", border: "none", height: "40px", width: "260px", fontWeight: "500", marginLeft: "0%", borderRadius: "7px" }}
+                    // value={Category?.name}
+                    // defaultValue={Category.name}
                     name='Category'
-                   // onChange={handleChange}
-                   onChange={(e)=>setCategory(e.target.value)}
-                    >
-                    <option value={category}>Select Category</option>
+                    onChange={handleChange}
+                >
+
                     {
                         categories.map((i, k) => (
-                            <option value={i._id}>{i.name}</option>
+                            <option selected={Category.name === i.name ? true : false} key={k} value={i.name}>
+                                {i.name}
+                            </option>
                         ))
                     }
                 </select>  <br /><br />
@@ -117,13 +136,13 @@ const EditCourse = () => {
                 </Form.Group>
 
                 <Form.Group className="mb-3">
-                    <Form.Label>Lessons</Form.Label>
+                    <Form.Label>Duration</Form.Label>
                     <Form.Control name='Duration' onChange={handleChange} value={Duration} type="text" placeholder="Duration" />
                 </Form.Group>
 
                 <input maxsize={1000} ref={imgRef} type='file' name='Image' onChange={handleImg} />
 
-                <img src={"http://localhost:5000/uploads/Images/" + Image} alt='' style={{ borderStyle: '', height: '130px', width: '170px', position: "absolute", left: "600px", top: "320px" }}
+                <img src={"http://localhost:5000/uploads/Images/" + Image} alt='' style={{ borderStyle: '', height: '130px', width: '170px', position: "absolute", left: "610px", top: "395px" }}
                     className={img ? 'none' : 'block'}
                 />
                 <br />
