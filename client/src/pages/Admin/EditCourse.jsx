@@ -50,29 +50,24 @@ const EditCourse = () => {
         formData.append('Description', Description)
         formData.append('Lessons', Lessons)
         formData.append('Duration', Duration)
-        formData.append('Category', Category._id)
-        formData.append('Image', imgRef.current.files[0])
+        formData.append('Category', Category._id ? Category._id : course.Category)
+        formData.append('Image', imgRef.current.files[0] ? imgRef.current.files[0] : course.Image)
 
         // Display the key/value pairs
-        for (var pair of formData.entries()) {
-            console.log(pair[0] + ', ' + pair[1]);
-        }
+        // for (var pair of formData.entries()) {
+        //     console.log(pair[0] + ', ' + pair[1]);
+        // }
 
-        // axios.put('http://localhost:5000/course/updateCourse/' + id, formData)
-        //     .then((res) => {
-        //         // setLoading(false)
-        //         console.log(res.data.Data);
-        //         redirect('/GetCourses')
-        //         alert('Updated Succesfullly')
-
-        //     })
-        //     .catch((err) => {
-        //         console.log(err);
-        //     })
 
         axios.put('http://localhost:5000/course/updateCourse/' + id, formData)
-            .then(() => {
-                console.log('yes');
+            .then((res) => {
+                console.log(res.data.Data);
+                redirect('/GetCourses')
+                alert('Updated Succesfullly')
+            })
+
+            .catch((err) => {
+                console.log(err);
             })
 
     }
@@ -83,7 +78,7 @@ const EditCourse = () => {
         // Category._id = e.target.value
         // setCategory(e.target.value)
     }
-    console.log(Category);
+    console.log(course);
 
     // console.log(Category);
 
@@ -118,7 +113,7 @@ const EditCourse = () => {
 
                     {
                         categories.map((i, k) => (
-                            <option selected={Category.name === i.name ? true : false} key={k} value={i.name}>
+                            <option selected={Category.name === i.name ? true : false} key={k} value={i._id}>
                                 {i.name}
                             </option>
                         ))
@@ -142,7 +137,7 @@ const EditCourse = () => {
 
                 <input maxsize={1000} ref={imgRef} type='file' name='Image' onChange={handleImg} />
 
-                <img src={"http://localhost:5000/uploads/Images/" + Image} alt='' style={{ borderStyle: '', height: '130px', width: '170px', position: "absolute", left: "610px", top: "395px" }}
+                <img src={"http://localhost:5000/uploads/Images/" + Image} alt='' style={{ borderStyle: '', height: '130px', width: '170px', position: "absolute", left: "600px", top: "385px" }}
                     className={img ? 'none' : 'block'}
                 />
                 <br />
@@ -152,7 +147,7 @@ const EditCourse = () => {
                     style={{ height: '130px', width: '170px', marginLeft: "20px" }}
                 /> <br />
 
-                <Button variant="primary" type="submit">
+                <Button style={{ marginTop: "40px" }} variant="primary" type="submit">
                     Submit
                 </Button>
             </Form>
