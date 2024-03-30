@@ -15,8 +15,9 @@ import EditTutor from './pages/Admin/EditTutor';
 import AddTutor from './pages/Admin/AddTutor';
 import GetCourses from './pages/Admin/GetCourses';
 import AddCourse from './pages/Admin/AddCourse';
-import EditCourse from './pages/Admin/EditCourse'; 
+import EditCourse from './pages/Admin/EditCourse';
 import Home from './pages/Home';
+import AllCourses from './pages/AllCourses';
 
 function App() {
 
@@ -27,20 +28,22 @@ function App() {
         <Routes>
           <Route path='/RegisterAdmin' element={<RegisterAdmin />} />
           <Route path='/AdminLogin' element={<AdminLogin />} />
-          
+
           <Route path='/getAllCategories' element={<GetAllCategories />} />
           <Route path='/CreateCategory' element={<CreateCategory />} />
           <Route path='/EditCategory/:id' element={<EditCategory />} />
 
-          <Route path='/GetTutors' element={<GetTutors/>} />
-          <Route path='/EditTutor/:id' element={<EditTutor/>} />
-          <Route path='/AddTutor' element={<AddTutor/>} />
+          <Route path='/GetTutors' element={<GetTutors />} />
+          <Route path='/EditTutor/:id' element={<EditTutor />} />
+          <Route path='/AddTutor' element={<AddTutor />} />
 
-          <Route path='/GetCourses' element={<GetCourses/>} />
-          <Route path='/AddCourse' element={<AddCourse/>} />
-          <Route path='/EditCourse/:id' element={<EditCourse/>} />
+          <Route path='/GetCourses' element={<GetCourses />} />
+          <Route path='/AddCourse' element={<AddCourse />} />
+          <Route path='/EditCourse/:id' element={<EditCourse />} />
 
-          <Route path='/' element={<Home/>} />
+          <Route path='/' element={<Home />} />
+          <Route path='/AllCourses' element={<AllCourses />} />
+
         </Routes>
       </BrowserRouter>
 
