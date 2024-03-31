@@ -3,6 +3,7 @@ import BasicExample from '../components/NavBar'
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import Footer from '../components/Footer';
 
 const AllCourses = () => {
     const [categories, setCategories] = useState([])
@@ -105,6 +106,8 @@ const AllCourses = () => {
             </div>
 
             <br /><br />
+
+            <Footer />
 
 
         </>
