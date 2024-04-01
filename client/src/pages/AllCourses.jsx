@@ -8,6 +8,7 @@ import Footer from '../components/Footer';
 const AllCourses = () => {
     const [categories, setCategories] = useState([])
     const [course, setCourse] = useState([])
+    const [temp, setTemp] = useState([])
 
     let getAllCategoies = () => {
 
@@ -15,18 +16,22 @@ const AllCourses = () => {
             .then((resp) => {
                 console.log(resp.data);
                 setCategories(resp.data.data)
+                
             })
     }
 
     let getAllCourses = () => {
         axios.get('http://localhost:5000/course/GetAllCourses')
             .then((resp) => {
-                console.log(resp.data);
+               // console.log(resp.data);
                 setCourse(resp.data.Data)
+                setTemp(resp.data.Data)
             })
     }
+    console.log(temp);
 
      const [arr,setArr] = useState([])
+     console.log(arr);
      
       const handleChange=(e)=>{
          const {value,checked} = e.target;
@@ -46,19 +51,21 @@ const AllCourses = () => {
         //  )
          
       }
-console.log(course);
-console.log(arr);
+// console.log(course);
+// console.log(arr);
 
     useEffect(() => {
         if (arr.length === 0) {
             // If no categories selected, show all courses
             
             getAllCourses()
-        } else {
+        } 
+        else {
+           // getAllCourses()
             // Filter courses based on selected categories
-            const filteredCourses = course.filter(item => arr.includes(item.Category.name));
+            const filteredCourses = temp.filter(item => arr.includes(item.Category.name));
             setCourse(filteredCourses);
-            console.log(filteredCourses);
+          //  console.log(filteredCourses);
 
             // const filteredCourses = [];
             // course.forEach(item => {

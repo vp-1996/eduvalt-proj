@@ -2,6 +2,8 @@ import React from 'react'
 import BasicExample from '../components/NavBar'
 import Table from 'react-bootstrap/Table';
 import CourseByCat from '../components/CourseByCat';
+// import Carousel from '../components/Carousel';
+import ControlledCarousel from '../components/Carousel';
 
 const Home = () => {
   return (
@@ -234,7 +236,7 @@ const Home = () => {
       <br /><br /><br />
       {/* ///////////////////////////////// */}
 
-      
+      <ControlledCarousel/>
 
     </>
   )

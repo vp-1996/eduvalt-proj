@@ -9,6 +9,10 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 const CourseByCat = () => {
     const [cat, setCat] = useState([])
     const [course, setCourse] = useState([])
+    const [temp, setTemp] = useState([])
+    console.log(temp);
+
+    console.log(cat);
 
     const getCategories = () => {
 
@@ -22,29 +26,45 @@ const CourseByCat = () => {
             })
     }
 
-    const getCourseByCat = () => {
-
-        axios.get('http://localhost:5000/course/getCourseByCategory' )
+    let getAllCourses = () => {
+        axios.get('http://localhost:5000/course/GetAllCourses')
             .then((resp) => {
-                console.log(resp.data);
-                setCourse(resp.data.course)
-                // setCourse(resp.data.category)
-                setCat(resp.data.category)
+                // console.log(resp.data);
+                setCourse(resp.data.Data)
+                setTemp(resp.data.Data)
             })
+    }
 
-            .catch((err) => {
-                console.log(err);
-            })
+    const getCourseByCat = (id) => {
+        // console.log(id); 
+
+        // axios.get('http://localhost:5000/course/getCourseByCategory/'+id )
+        //     .then((resp) => {
+        //         console.log(resp.data);
+        //         setCourse(resp.data.course)
+        //         // setCourse(resp.data.category)
+        //         setCat(resp.data.category)
+        //     })
+
+        //     .catch((err) => {
+        //         console.log(err);
+        //     })
 
     }
 
     let handleClick = (catID) => {
-        getCourseByCat(catID)
+        // getCourseByCat(catID)
+        setCourse(temp.filter(item => item.Category.name === catID))
     }
 
     useEffect(() => {
+        setCourse(temp.filter(item => item.Category.name === 'Marketing'))
+    }, [])
+
+    useEffect(() => {
         getCategories()
-         getCourseByCat() 
+        getAllCourses()
+        //  getCourseByCat() 
     }, [])
 
 
@@ -68,7 +88,7 @@ const CourseByCat = () => {
                             cat.map((i) => (
                                 <>
                                     <Nav.Link
-                                        onClick={() => handleClick(i.id)}
+                                        onClick={() => handleClick(i.name)}
                                         style={{ color: "#39557E", fontFamily: "Hind,sans-serif", fontSize: "17px", fontWeight: "500", marginLeft: "0%" }}
                                     >
                                         {i.name}
