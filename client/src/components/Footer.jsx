@@ -6,14 +6,10 @@ const Footer = () => {
 
             <div className='footerDiv d-flex'>
 
-                {/* <img
-                    style={{ marginLeft: "5%", marginTop: "4%" }}
-                    src='/src/assets/Screenshot 2024-03-30 235231.jpg'
-                /> */}
                 <p
                     style={{ color: "#B2BDCD", fontFamily: "Hind,sans-serif", fontSize: "16px", marginTop: "2%", marginLeft: "5%" }}
                 >
-                    {/* when an unknown printer took galley<br /> of type and scrambled it to make<br /> pspecimen bookt has. */}
+                   
                     <br /><br />
 
                     <span style={{ color: "white", fontWeight: "600" }}>
@@ -26,7 +22,7 @@ const Footer = () => {
 
                 <div className='innerDiv d-flex '>
                     <div className='resourceDiv'>
-                        <h3 style={{ color: "white", marginTop: "30px", marginLeft: "21%" }}>Resources</h3>
+                        <h3 style={{ color: "white", marginTop: "70px", marginLeft: "21%" }}>Resources</h3>
                         <ul style={{ listStyleType: "none" }}>
                             <li style={{ color: "#B2BDC4", marginTop: "20px" }}>About</li>
                             <li style={{ color: "#B2BDC4", marginTop: "20px" }}>Privacy Policy</li>
@@ -36,7 +32,7 @@ const Footer = () => {
                     </div>
 
                     <div className='courseDiv'>
-                        <h3 style={{ color: "white", marginTop: "30px", marginLeft: "21%" }}>Courses</h3>
+                        <h3 style={{ color: "white", marginTop: "70px", marginLeft: "21%" }}>Courses</h3>
                         <ul style={{ listStyleType: "none" }}>
                             <li style={{ color: "#B2BDC4", marginTop: "20px" }}>Development</li>
                             <li style={{ color: "#B2BDC4", marginTop: "20px" }}>Business</li>
@@ -46,12 +42,12 @@ const Footer = () => {
                         </ul>
                     </div>
 
-                </div>
+                    <img style={{ height: "180px", width: "200px", marginLeft: "30%", marginTop: "70px" }} src='/src/assets/footerImg.jpg' />
 
+                </div>
+                <hr></hr>
 
             </div>
-
-
 
         </>
     )

@@ -26,6 +26,50 @@ const AllCourses = () => {
             })
     }
 
+     const [arr,setArr] = useState([])
+     
+      const handleChange=(e)=>{
+         const {value,checked} = e.target;
+         if (checked) {
+            setArr([...arr,value])
+            
+         }
+         else{
+            setArr(arr.filter(i=>i!==value))
+         }
+
+      
+
+        //  setCourse(
+        //     arr.length==0?course : 
+        //     course.filter((item)=>arr.some(element=>element===item.Category.name))
+        //  )
+         
+      }
+console.log(course);
+console.log(arr);
+
+    useEffect(() => {
+        if (arr.length === 0) {
+            // If no categories selected, show all courses
+            
+            getAllCourses()
+        } else {
+            // Filter courses based on selected categories
+            const filteredCourses = course.filter(item => arr.includes(item.Category.name));
+            setCourse(filteredCourses);
+            console.log(filteredCourses);
+
+            // const filteredCourses = [];
+            // course.forEach(item => {
+            //     if (arr.includes(item.Category.name)) {
+            //         filteredCourses.push(item);
+            //     }
+            // });
+            // setCourse(filteredCourses);
+        }
+    }, [arr]);
+
 
     useEffect(() => {
         getAllCategoies()
@@ -64,8 +108,8 @@ const AllCourses = () => {
                         categories.map((i, k) => (
                             <>
 
-                                <input style={{ marginLeft: "17%", marginTop: "7%" }} type='checkbox' />
-                                <label style={{ fontFamily: "Hind, sans-serif", marginLeft: "2%" }}>{i.name}</label> <br />
+                        <input checked={arr.includes(i.name)} onChange={handleChange} value={i.name} style={{ marginLeft: "17%", marginTop: "7%" }} type='checkbox' />
+                        <label style={{ fontFamily: "Hind, sans-serif", marginLeft: "2%" }}>{i.name}</label> <br />
                             </>
                         ))
                     }
@@ -76,16 +120,20 @@ const AllCourses = () => {
                         course.map((item, k) => (
                             <>
                                 <Card style={{ width: '18rem', marginTop: "4%", marginLeft: "3%", height: "24rem" }}>
+
                                     <Card.Img style={{ width: "245px", height: "181px", paddingLeft: "8%", borderRadius: "5px", marginTop: "2%" }} variant="top" src={'http://localhost:5000/uploads/Images/' + item.Image} />
                                     <Card.Body>
+
                                         <Card.Title
                                             style={{ fontFamily: "Hind, sans-serif", fontWeight: "600", fontSize: "13px", lineHeight: "15px", borderRadius: "20px", border: "0.1px solid gray", textAlign: "center", width: "120px", height: "25px", background: "#F5F0FF", borderStyle: "none", color: "#7A0EF0", paddingTop: "2%" }}
-                                        >
+                                           >
                                             {item.Category.name}
                                         </Card.Title>
+
                                         <Card.Text style={{ color: "#082A5E", fontWeight: "600", fontFamily: "Lexend Deca,sans-serif", fontStyle: "normal", fontStretch: "100%" }}>
                                             {item.Description}
                                         </Card.Text>
+
                                         <Button variant='light' style={{ width: "200px" }}>
                                             <img src='/src/assets/time.png' />
                                             {item.Duration}
@@ -105,7 +153,7 @@ const AllCourses = () => {
 
             </div>
 
-            <br /><br />
+            <br /><br /><br /><br />
 
             <Footer />
 

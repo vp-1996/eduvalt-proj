@@ -26,6 +26,113 @@
   color: #008BCF;
 }
 
+/* ////////HOME//////////////// */
+
+.mainDiv {
+  margin-top: -1600px;
+  margin-left: 10%;
+  /* background-color: #F2F5FA; */
+}
+
+.part2 {
+  background-image: url(./assets/banner_img.png);
+  height: 520px;
+  width: 540px;
+  position: relative;
+}
+
+.bnrImg {
+  position: absolute;
+  height: 70px;
+  left: 500px;
+  top: 70px;
+  animation: bounce-top 3s cubic-bezier(.25, .46, .45, .94) infinite alternate-reverse forwards
+}
+
+@keyframes bounce-top {
+  0% {
+    transform: translateY(-45px);
+    animation-timing-function: ease-in;
+    opacity: 1
+  }
+
+  24% {
+    opacity: 1
+  }
+
+  40% {
+    transform: translateY(-24px);
+    animation-timing-function: ease-in
+  }
+
+  65% {
+    transform: translateY(-12px);
+    animation-timing-function: ease-in
+  }
+
+  82% {
+    transform: translateY(-6px);
+    animation-timing-function: ease-in
+  }
+
+  93% {
+    transform: translateY(-4px);
+    animation-timing-function: ease-in
+  }
+
+  25%,
+  55%,
+  75%,
+  87% {
+    transform: translateY(0);
+    animation-timing-function: ease-out
+  }
+
+  100% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+    opacity: 1
+  }
+}
+
+.bannerButton {
+  background-color: #1363DF;
+  color: white;
+  border: none;
+  height: 50px;
+  width: 200px;
+  font-weight: 500;
+  border-radius: 6px;
+}
+
+.slideImg {
+  margin-left: 10%;
+}
+@keyframes heartbeat{from{transform:scale(1);transform-origin:center center;animation-timing-function:ease-out}10%{transform:scale(.91);animation-timing-function:ease-in}17%{transform:scale(.98);animation-timing-function:ease-out}33%{transform:scale(.87);animation-timing-function:ease-in}45%{transform:scale(1);animation-timing-function:ease-out}}
+
+.slideImg:hover {
+  animation:heartbeat 1s ease-in-out
+}
+
+.slideImgOverlay:after {
+  content: "";
+  /* Required for pseudo-elements */
+  position: absolute;
+  /* Position the overlay */
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* Cover the entire container */
+  height: 100%;
+  background-color: rgba(179, 175, 192, 0.199);
+  /* Semi-transparent overlay color */
+  z-index: 1;
+}
+
+.part3{
+  position: relative;
+}
+
 /* ////////All Course css //////////// */
 
 .bgBanner {
@@ -75,7 +182,7 @@
 }
 
 .courseDiv {
-  margin-left: 55%;
+  margin-left: 35%;
   /* width: 200px */
 }
 
@@ -83,6 +190,6 @@
   margin-left: 30%;
 }
 
-.resourceDiv ul li:hover{
+.resourceDiv ul li:hover {
   color: #061E43;
 }
