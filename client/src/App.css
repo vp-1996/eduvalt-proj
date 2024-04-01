@@ -108,10 +108,37 @@
 .slideImg {
   margin-left: 10%;
 }
-@keyframes heartbeat{from{transform:scale(1);transform-origin:center center;animation-timing-function:ease-out}10%{transform:scale(.91);animation-timing-function:ease-in}17%{transform:scale(.98);animation-timing-function:ease-out}33%{transform:scale(.87);animation-timing-function:ease-in}45%{transform:scale(1);animation-timing-function:ease-out}}
+
+@keyframes heartbeat {
+  from {
+    transform: scale(1);
+    transform-origin: center center;
+    animation-timing-function: ease-out
+  }
+
+  10% {
+    transform: scale(.91);
+    animation-timing-function: ease-in
+  }
+
+  17% {
+    transform: scale(.98);
+    animation-timing-function: ease-out
+  }
+
+  33% {
+    transform: scale(.87);
+    animation-timing-function: ease-in
+  }
+
+  45% {
+    transform: scale(1);
+    animation-timing-function: ease-out
+  }
+}
 
 .slideImg:hover {
-  animation:heartbeat 1s ease-in-out
+  animation: heartbeat 1s ease-in-out
 }
 
 .slideImgOverlay:after {
@@ -129,8 +156,22 @@
   z-index: 1;
 }
 
-.part3{
+.part3 {
   position: relative;
+}
+
+.circle {
+  border-style: none;
+  height: 100px;
+  width: 100px;
+  border-radius: 100%;
+  background-color: white;
+  margin-left: 10%;
+}
+
+.circle:hover {
+  background-color: #c9daf8;
+  transition: 700ms;
 }
 
 /* ////////All Course css //////////// */

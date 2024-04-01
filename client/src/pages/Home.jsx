@@ -1,6 +1,7 @@
 import React from 'react'
 import BasicExample from '../components/NavBar'
 import Table from 'react-bootstrap/Table';
+import CourseByCat from '../components/CourseByCat';
 
 const Home = () => {
   return (
@@ -58,6 +59,8 @@ const Home = () => {
       </ul>
       <br /><br />
       <hr></hr>
+
+      {/* ///////////////////////////////// */}
 
       <div className=' mainDiv2'>
 
@@ -132,7 +135,106 @@ const Home = () => {
           </button>
         </div>
       </div>  <br /><br /><br /><br /><br />
-      <hr></hr>
+      <hr></hr> <br /><br /><br />
+
+      {/* ///////////////////////////////// */}
+
+      <CourseByCat /> <br /><br />
+      <hr></hr><br /><br />
+      {/* ///////////////////////////////// */}
+
+      <div className='mainDiv3 d-flex'>
+
+        <div className='div1'>
+
+          <button style={{ marginLeft: "5%", border: "none", background: "#E7EFFC", color: "#2763DF", fontWeight: "500" }}>Get To Know About Us</button>
+
+          <p style={{ fontSize: "36px", fontWeight: "600", fontFamily: "Lexend Deca,sans-serif", marginLeft: "5%", lineHeight: "80px" }}>
+            Browse By<span style={{ fontSize: "36px", fontWeight: "600", fontFamily: "Lexend Deca,sans-serif", color: "#1363DF" }} > Categories</span>
+          </p>
+
+          <p style={{
+            color: "#39557E", fontSize: "16px", fontFamily: "Hind,sans-serif", fontWeight: "400", textDecoration: "none solid rgb(57, 85, 126)", marginLeft: "5%"
+          }}>
+            Borem ipsum dolor sit , consectetur adipiscing elit. Ut elit<br />tellus, luctus nec ullamcorper mattisBorem ipsum dolor sit amet<br />consectetur adipiscing area we followelit.
+          </p>
+
+          <button
+            style={{ background: "#1363DF", border: "none", color: "white", marginLeft: "5%", height: "40px", width: "150px", fontWeight: "500", borderRadius: "5px", marginTop: "10%" }}
+          >
+            Discover More
+          </button>
+
+        </div>
+
+        <div className='div2'>
+
+          <Table style={{ width: "30%", marginLeft: "65%" }}>
+            <thead>
+              <tr>
+                {/* <th>#</th> */}
+                {/* <th>First Name</th> */}
+                {/* <th>Last Name</th> */}
+                {/* <th>Username</th> */}
+              </tr>
+            </thead>
+            <tbody>
+              <tr >
+                <td></td>
+                <td style={{ border: "none" }} >
+                  <div style={{ border: "none", height: "190px", background: "#F4F7FB", paddingLeft: "30px", borderRadius: "10px", width: "200px" }}>
+                    <div className='circle'>
+                      <img style={{ paddingLeft: "32px", paddingTop: "29%" }} src='/src/assets/animation.png' />
+                    </div>
+                    <h4 style={{ paddingTop: "20px", fontSize: "20px" }}>3D Animation</h4>
+                    <p style={{ paddingLeft: "20px" }}>06 Courses</p>
+                  </div>
+                </td>
+
+                <td style={{ border: "none" }}>
+                  <div style={{ border: "none", height: "190px", background: "#F4F7FB", paddingLeft: "20px", borderRadius: "10px", width: "200px" }}>
+                    <div className='circle'>
+                      <img style={{ paddingLeft: "32px", paddingTop: "29%" }} src='/src/assets/seo.png' />
+                    </div>
+                    <h4 style={{ paddingTop: "20px", fontSize: "20px", paddingLeft: "25px" }}>Marketing</h4>
+                    <p style={{ paddingLeft: "30px" }}>09 Courses</p>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td></td>
+                <td style={{ border: "none" }}>
+                  <div style={{ border: "none", height: "190px", background: "#F4F7FB", paddingLeft: "20px", borderRadius: "10px" }}>
+                    <div className='circle'>
+                      <img style={{ paddingLeft: "32px", paddingTop: "29%" }} src='/src/assets/hand.png' />
+                    </div>
+                    <h4 style={{ paddingTop: "20px", fontSize: "20px", paddingLeft: "35px" }}>Finance</h4>
+                    <p style={{ paddingLeft: "30px" }}>04 Courses</p>
+                  </div>
+                </td>
+
+                <td style={{ border: "none" }}>
+                  <div style={{ border: "none", height: "190px", background: "#F4F7FB", paddingLeft: "20px", borderRadius: "10px" }}>
+                    <div className='circle'>
+                      <img style={{ paddingLeft: "32px", paddingTop: "29%" }} src='/src/assets/cooperation.png' />
+                    </div>
+                    <h4 style={{ paddingTop: "20px", fontSize: "20px", paddingLeft: "30px" }}>Business</h4>
+                    <p style={{ paddingLeft: "30px" }}>11 Courses</p>
+                  </div>
+                </td>
+              </tr>
+
+            </tbody>
+          </Table>
+
+        </div>
+
+      </div>
+      <br /><br /><br />
+      {/* ///////////////////////////////// */}
+
+      
 
     </>
   )
