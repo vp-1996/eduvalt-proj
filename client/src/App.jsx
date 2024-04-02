@@ -18,6 +18,7 @@ import AddCourse from './pages/Admin/AddCourse';
 import EditCourse from './pages/Admin/EditCourse';
 import Home from './pages/Home';
 import AllCourses from './pages/AllCourses';
+import About from './pages/About';
 
 function App() {
 
@@ -43,6 +44,7 @@ function App() {
 
           <Route path='/' element={<Home />} />
           <Route path='/AllCourses' element={<AllCourses />} />
+          <Route path='/About' element={<About />} />
 
         </Routes>
       </BrowserRouter>

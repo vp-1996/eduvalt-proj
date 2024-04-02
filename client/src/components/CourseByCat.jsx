@@ -11,10 +11,10 @@ const CourseByCat = () => {
     const [cat, setCat] = useState([])
     const [course, setCourse] = useState([])
     const [temp, setTemp] = useState([])
-    
-    console.log(temp);
 
-    console.log(cat);
+    // console.log(temp);
+
+    // console.log(cat);
 
     const getCategories = () => {
 
@@ -54,10 +54,10 @@ const CourseByCat = () => {
 
     }
 
-    let handleAll=()=>[
-       // setCourse(resp.data.Data)
-       getAllCourses()
-    ] 
+    let handleAll = () => [
+        // setCourse(resp.data.Data)
+        getAllCourses()
+    ]
 
     let handleClick = (catID) => {
         // getCourseByCat(catID)
@@ -93,7 +93,7 @@ const CourseByCat = () => {
                         <Nav className="me-auto">
 
                             <Nav.Link style={{ color: "#1363DF", fontFamily: "Hind,sans-serif", fontSize: "17px", fontWeight: "500", marginLeft: "0%", textDecoration: "none solid rgb(57, 85, 126)" }}
-                            onClick={handleAll}
+                                onClick={handleAll}
                             >
                                 All Courses
                             </Nav.Link>

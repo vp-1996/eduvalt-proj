@@ -16,64 +16,57 @@ const AllCourses = () => {
             .then((resp) => {
                 console.log(resp.data);
                 setCategories(resp.data.data)
-                
+
             })
     }
 
     let getAllCourses = () => {
         axios.get('http://localhost:5000/course/GetAllCourses')
             .then((resp) => {
-               // console.log(resp.data);
+                // console.log(resp.data);
                 setCourse(resp.data.Data)
                 setTemp(resp.data.Data)
             })
     }
     console.log(temp);
 
-     const [arr,setArr] = useState([])
-     console.log(arr);
-     
-      const handleChange=(e)=>{
-         const {value,checked} = e.target;
-         if (checked) {
-            setArr([...arr,value])
-            
-         }
-         else{
-            setArr(arr.filter(i=>i!==value))
-         }
+    const [arr, setArr] = useState([])
+    console.log(arr);
 
-      
+    const handleChange = (e) => {
+        const { value, checked } = e.target;
+        if (checked) {
+            setArr([...arr, value])
+
+        }
+        else {
+            setArr(arr.filter(i => i !== value))
+        }
+
+
 
         //  setCourse(
         //     arr.length==0?course : 
         //     course.filter((item)=>arr.some(element=>element===item.Category.name))
         //  )
-         
-      }
-// console.log(course);
-// console.log(arr);
+
+    }
+    // console.log(course);
+    // console.log(arr);
 
     useEffect(() => {
         if (arr.length === 0) {
             // If no categories selected, show all courses
-            
+
             getAllCourses()
-        } 
+        }
         else {
-           // getAllCourses()
+            // getAllCourses()
             // Filter courses based on selected categories
+
             const filteredCourses = temp.filter(item => arr.includes(item.Category.name));
             setCourse(filteredCourses);
-          //  console.log(filteredCourses);
-
-            // const filteredCourses = [];
-            // course.forEach(item => {
-            //     if (arr.includes(item.Category.name)) {
-            //         filteredCourses.push(item);
-            //     }
-            // });
-            // setCourse(filteredCourses);
+            //  console.log(filteredCourses);
         }
     }, [arr]);
 
@@ -99,7 +92,7 @@ const AllCourses = () => {
 
             <div className='main d-flex'>
 
-                <div className='filterSection'>
+                <div className='filterSection mt-5'>
 
                     <p style={{ fontFamily: "Lexend Deca, sans-serif", fontWeight: "500", fontSize: "19px", color: "rgb(8, 42, 94", lineHeight: "23px", marginLeft: "16%" }}>
                         Categories
@@ -115,8 +108,8 @@ const AllCourses = () => {
                         categories.map((i, k) => (
                             <>
 
-                        <input checked={arr.includes(i.name)} onChange={handleChange} value={i.name} style={{ marginLeft: "17%", marginTop: "7%" }} type='checkbox' />
-                        <label style={{ fontFamily: "Hind, sans-serif", marginLeft: "2%" }}>{i.name}</label> <br />
+                                <input checked={arr.includes(i.name)} onChange={handleChange} value={i.name} style={{ marginLeft: "17%", marginTop: "7%" }} type='checkbox' />
+                                <label style={{ fontFamily: "Hind, sans-serif", marginLeft: "2%" }}>{i.name}</label> <br />
                             </>
                         ))
                     }
@@ -133,7 +126,7 @@ const AllCourses = () => {
 
                                         <Card.Title
                                             style={{ fontFamily: "Hind, sans-serif", fontWeight: "600", fontSize: "13px", lineHeight: "15px", borderRadius: "20px", border: "0.1px solid gray", textAlign: "center", width: "120px", height: "25px", background: "#F5F0FF", borderStyle: "none", color: "#7A0EF0", paddingTop: "2%" }}
-                                           >
+                                        >
                                             {item.Category.name}
                                         </Card.Title>
 

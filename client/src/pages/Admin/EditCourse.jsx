@@ -137,7 +137,7 @@ const EditCourse = () => {
 
                 <input maxsize={1000} ref={imgRef} type='file' name='Image' onChange={handleImg} />
 
-                <img src={"http://localhost:5000/uploads/Images/" + Image} alt='' style={{ borderStyle: '', height: '130px', width: '170px', position: "absolute", left: "600px", top: "385px" }}
+                <img src={"http://localhost:5000/uploads/Images/" + Image} alt='' style={{ borderStyle: '', height: '130px', width: '170px', position: "absolute", left: "20px", top: "354px" }}
                     className={img ? 'none' : 'block'}
                 />
                 <br />
