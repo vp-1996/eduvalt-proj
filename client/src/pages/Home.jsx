@@ -1,11 +1,32 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import BasicExample from '../components/NavBar'
 import Table from 'react-bootstrap/Table';
 import CourseByCat from '../components/CourseByCat';
 // import Carousel from '../components/Carousel';
 import ControlledCarousel from '../components/Carousel';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import axios from 'axios';
 
 const Home = () => {
+  const [tutor, setTutor] = useState([])
+
+  const getAllTutors = () => {
+    axios.get('http://localhost:5000/tutor/getAllTutors')
+      .then((res) => {
+        console.log(res.data);
+        setTutor(res.data.data)
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
+
+  useEffect(() => {
+    getAllTutors()
+  }, [])
+
   return (
 
     <>
@@ -141,7 +162,8 @@ const Home = () => {
 
       {/* ///////////////////////////////// */}
 
-      <CourseByCat /> <br /><br />
+      {/* <CourseByCat /> */}
+      <br /><br />
       <hr></hr><br /><br />
       {/* ///////////////////////////////// */}
 
@@ -236,7 +258,36 @@ const Home = () => {
       <br /><br /><br />
       {/* ///////////////////////////////// */}
 
-      <ControlledCarousel/>
+      {/* <ControlledCarousel/> */}<br />
+      <hr></hr> <br />
+      {/* ////////////////////////// */}
+
+      <div className='row ms-5'>
+        {
+          tutor.map((i) => (
+            <>
+              <Card style={{ width: '18rem', marginLeft: "2%", border: "none", boxShadow: "0px 0px 35px 1px #E7E7E7" }}>
+                <Card.Img variant="top" src={"http://localhost:5000/uploads/Images/" + i.Image} />
+                <Card.Body>
+                  <Card.Title
+                    style={{ color: "#5A7093", fontSize: "15px", fontFamily: "Lexend Deca,sans-serif", fontWeight: "400" }}
+                  >
+                    {i.profession}
+                  </Card.Title>
+
+                  <Card.Title
+                    style={{ color: "#082A5E", fontSize: "22px", fontFamily: "Lexend Deca,sans-serif", fontWeight: "500" }}
+                  >
+                    {i.name}
+                  </Card.Title>
+
+                  <Button variant="primary">Go somewhere</Button>
+                </Card.Body>
+              </Card >
+            </>
+          ))
+        }
+      </div >
 
     </>
   )
