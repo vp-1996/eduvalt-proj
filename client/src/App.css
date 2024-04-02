@@ -238,3 +238,29 @@
 
 
 /* /////About Page/////// */
+
+.studentDiv {
+  background-image: url(./assets/cta_bg.jpg);
+  width: 100%;
+  height: 800px;
+  opacity: 50%;
+}
+
+.studentDivOverlay {
+  position: relative;
+}
+
+.studentDivOverlay::after {
+  content: "";
+  /* Required for pseudo-elements */
+  position: absolute;
+  /* Position the overlay */
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* Cover the entire container */
+  height: 100%;
+  background-color: rgba(57, 56, 85, 0.588);
+  /* Semi-transparent overlay color */
+  z-index: 1;
+}
