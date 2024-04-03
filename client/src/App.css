@@ -206,6 +206,7 @@
 }
 
 .filterSection {
+  border: 1px solid #E8E8E8;
   /* border-style: ridge; */
   width: 20%;
   height: 400px;

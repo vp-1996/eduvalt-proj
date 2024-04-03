@@ -20,6 +20,8 @@ import Home from './pages/Home';
 import AllCourses from './pages/AllCourses';
 import About from './pages/About';
 import Contact from './pages/Contact';
+// import adminNav from './components/adminNav';
+import GetUsers from './pages/Admin/GetUsers';
 
 function App() {
 
@@ -30,6 +32,7 @@ function App() {
         <Routes>
           <Route path='/RegisterAdmin' element={<RegisterAdmin />} />
           <Route path='/AdminLogin' element={<AdminLogin />} />
+          <Route path='/GetUsers' element={<GetUsers />} />
 
           <Route path='/getAllCategories' element={<GetAllCategories />} />
           <Route path='/CreateCategory' element={<CreateCategory />} />
@@ -47,6 +50,8 @@ function App() {
           <Route path='/AllCourses' element={<AllCourses />} />
           <Route path='/About' element={<About />} />
           <Route path='/Contact' element={<Contact />} />
+
+          {/* <Route path='/adminNav' element={<adminNav/>} /> */}
 
         </Routes>
       </BrowserRouter>

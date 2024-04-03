@@ -4,34 +4,46 @@ import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Footer from '../components/Footer';
+import ScaleLoader from "react-spinners/ScaleLoader";
 
 const AllCourses = () => {
     const [categories, setCategories] = useState([])
     const [course, setCourse] = useState([])
     const [temp, setTemp] = useState([])
+    let [loading, setLoading] = useState(false);
+    // let [color, setColor] = useState("#1363DF");
 
-    let getAllCategoies = () => {
+    let getAllCategories = () => {
 
         axios.get('http://localhost:5000/category/getAllCategories')
             .then((resp) => {
-                console.log(resp.data);
+
+                // console.log(resp.data);
                 setCategories(resp.data.data)
 
             })
     }
 
-    let getAllCourses = () => {
+    //  setTimeout(()=>{
+    const getAllCourses = () => {
         axios.get('http://localhost:5000/course/GetAllCourses')
             .then((resp) => {
-                // console.log(resp.data);
+                // setLoading(true)
+                console.log(resp.data);
                 setCourse(resp.data.Data)
                 setTemp(resp.data.Data)
             })
+
+
+
     }
-    console.log(temp);
+    //  },2300)
+
+
+    // console.log(temp);
 
     const [arr, setArr] = useState([])
-    console.log(arr);
+    // console.log(arr);
 
     const handleChange = (e) => {
         const { value, checked } = e.target;
@@ -44,12 +56,6 @@ const AllCourses = () => {
         }
 
 
-
-        //  setCourse(
-        //     arr.length==0?course : 
-        //     course.filter((item)=>arr.some(element=>element===item.Category.name))
-        //  )
-
     }
     // console.log(course);
     // console.log(arr);
@@ -58,12 +64,10 @@ const AllCourses = () => {
         if (arr.length === 0) {
             // If no categories selected, show all courses
 
-            getAllCourses()
+            // getAllCourses()
         }
         else {
-            // getAllCourses()
             // Filter courses based on selected categories
-
             const filteredCourses = temp.filter(item => arr.includes(item.Category.name));
             setCourse(filteredCourses);
             //  console.log(filteredCourses);
@@ -72,7 +76,7 @@ const AllCourses = () => {
 
 
     useEffect(() => {
-        getAllCategoies()
+        getAllCategories()
         getAllCourses()
     }, [])
 
@@ -99,11 +103,6 @@ const AllCourses = () => {
                     </p>
 
 
-                    {/* <input type='checkbox' />
-                <label>BHKB</label><br />
-                <input type='checkbox' />
-                <label>BHKB</label> */}
-
                     {
                         categories.map((i, k) => (
                             <>
@@ -125,12 +124,12 @@ const AllCourses = () => {
                                     <Card.Body>
 
                                         <Card.Title
-                                            style={{ fontFamily: "Hind, sans-serif", fontWeight: "600", fontSize: "13px", lineHeight: "15px", borderRadius: "20px", border: "0.1px solid gray", textAlign: "center", width: "120px", height: "25px", background: "#F5F0FF", borderStyle: "none", color: "#7A0EF0", paddingTop: "2%" }}
+                                            style={{ fontFamily: "Hind, sans-serif", fontWeight: "600", fontSize: "13px", lineHeight: "15px", borderRadius: "20px", border: "0.1px solid gray", width: "120px", height: "25px", background: "#F5F0FF", borderStyle: "none", color: "#7A0EF0", paddingTop: "2%", paddingLeft: "8%", marginLeft: "22%" }}
                                         >
                                             {item.Category.name}
                                         </Card.Title>
 
-                                        <Card.Text style={{ color: "#082A5E", fontWeight: "600", fontFamily: "Lexend Deca,sans-serif", fontStyle: "normal", fontStretch: "100%" }}>
+                                        <Card.Text style={{ color: "#082A5E", fontWeight: "600", fontFamily: "Lexend Deca,sans-serif", fontStyle: "normal", fontStretch: "100%", textAlign: "center" }}>
                                             {item.Description}
                                         </Card.Text>
 

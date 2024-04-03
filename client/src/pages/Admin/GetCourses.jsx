@@ -7,6 +7,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Table from 'react-bootstrap/Table';
 import { Link, useNavigate } from 'react-router-dom';
 import Pagination from 'react-bootstrap/Pagination';
+import AdminNav from '../../components/adminNav';
 
 const GetCourses = () => {
     const [course, setCourse] = useState([])
@@ -22,6 +23,11 @@ const GetCourses = () => {
     const records = course.slice(firstIndex, lastIndex)
     const npage = Math.ceil(course.length / recordsPerPage)
     const nums = [...Array(npage + 1).keys()].slice(1)
+
+    let token = localStorage.getItem('token')
+      if (token === null) {
+    return alert('Login first to access this page ')
+      }
 
     let allCourses = () => {
         axios.get('http://localhost:5000/course/GetAllCourses')
@@ -79,20 +85,7 @@ const GetCourses = () => {
 
     return (
         <>
-            <Navbar bg="primary" data-bs-theme="dark">
-                <Container>
-                    {/* <Navbar.Brand href="#home">Admin Dashboard</Navbar.Brand> */}
-                    <Nav className="me-auto">
-                        <Nav.Link href="/getAllCategories">All Categories</Nav.Link>
-                        <Nav.Link href="/CreateCategory"> Create New Category</Nav.Link>
-                        <Nav.Link href="/AddTutor"> Create New Tutor</Nav.Link>
-                        <Nav.Link href="/getTutors">All Tutors</Nav.Link>
-                        <Nav.Link href="/GetCourses">All Courses</Nav.Link>
-                        <Nav.Link href="/AddCourse">Add Course</Nav.Link>
-                        <Nav.Link href="AllUsers">All Users</Nav.Link>
-                    </Nav>
-                </Container>
-            </Navbar>
+            <AdminNav/>
             <br />
 
             <div

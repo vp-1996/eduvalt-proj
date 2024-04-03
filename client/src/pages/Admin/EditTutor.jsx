@@ -14,6 +14,11 @@ const EditTutor = () => {
   const { name, profession, Image } = tutor
   let redirect = useNavigate()
 
+  let token = localStorage.getItem('token')
+      if (token === null) {
+    return alert('Login first to access this page ')
+      }
+
   let singleTutor = async () => {
     await axios.get('http://localhost:5000/tutor/getSingleTutor/' + id)
       .then((resp) => {

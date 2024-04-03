@@ -13,6 +13,7 @@ import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import AdminNav from '../../components/adminNav';
 
 const AddCourse = () => {
     const initialState = { Description: "", Lessons: "", Duration: "", Category: "" }
@@ -83,20 +84,7 @@ const AddCourse = () => {
 
     return (
         <>
-            <Navbar bg="primary" data-bs-theme="dark">
-                <Container>
-                    {/* <Navbar.Brand href="#home">Admin Dashboard</Navbar.Brand> */}
-                    <Nav className="me-auto">
-                        <Nav.Link href="/getAllCategories">All Categories</Nav.Link>
-                        <Nav.Link href="/CreateCategory"> Create New Category</Nav.Link>
-                        <Nav.Link href="/AddTutor"> Create New Tutor</Nav.Link>
-                        <Nav.Link href="/getTutors">All Tutors</Nav.Link>
-                        <Nav.Link href="/GetCourses">All Courses</Nav.Link>
-                        <Nav.Link href="/AddCourse">Add Course</Nav.Link>
-                        <Nav.Link href="AllUsers">All Users</Nav.Link>
-                    </Nav>
-                </Container>
-            </Navbar>
+            <AdminNav/>
             <br />
 
 

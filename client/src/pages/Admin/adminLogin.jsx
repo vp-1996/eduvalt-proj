@@ -8,6 +8,7 @@ const AdminLogin = () => {
     let [admin, setAdmin] = useState(initialState)
     let { email, password } = admin
     const redirect = useNavigate()
+    // console.log(redirect);
     const [lgShow, setLgShow] = useState(false);
 
     let handleChange = (e) => {
@@ -15,27 +16,13 @@ const AdminLogin = () => {
         setAdmin({ ...admin, [name]: value })
     }
 
-    //   let regUser = ()=>{
-
-    //     axios.post('http://localhost:5000/admin/adminLogin',admin)
-    //     .then((resp)=>{
-    //     console.log(resp.data);
-    //         alert("user registered successfully...Please Login")
-    //         redirect('/Login')
-    //   })
-    //    .catch((error) => {
-    //     alert(error.resp.data)
-    //     })   
-    //     }
-
-    // console.log();
 
     let Login = () => {
         axios.post('http://localhost:5000/admin/adminLogin', admin)
             .then((resp) => {
-                console.log(resp.data)
+                console.log(resp)
                 localStorage.setItem('token', resp.data.token)
-                localStorage.setItem('id', resp.data.user._id)
+                localStorage.setItem('id', resp.data.admin._id)
 
                 setAdmin({
                     email: "",
@@ -43,13 +30,13 @@ const AdminLogin = () => {
                 })
 
                 setTimeout(() => {
-                    redirect('/getAllCategories')
+                    redirect('/GetCourses')
                 }, 2300)
 
             })
 
             .catch((error) => {
-                alert(error.response)
+                console.log(error);
             })
     }
 
@@ -78,11 +65,11 @@ const AdminLogin = () => {
             <br />
             {/* <video height={'300px'} loop autoPlay src='/src/assets/b8bd4e4273cceae2889d9d259b04f732.mp4'></video> */}
 
-            <form className='loginForm' onSubmit={handleLogin}>
+            <form style={{ textAlign: "center" }} className='loginForm' onSubmit={handleLogin}>
 
                 <label>Email</label> <br />
                 <input
-                    style={{ background: "white", color: "brown", fontWeight: "500" }}
+                    style={{ background: "white", color: "brown", fontWeight: "500", border: "2px solid #DAE0E7" }}
                     name='email'
                     type='email'
                     onChange={handleChange}
@@ -91,14 +78,16 @@ const AdminLogin = () => {
 
                 <label>Password</label>  <br />
                 <input
-                    style={{ background: "white", color: "brown", fontWeight: "500" }}
+                    style={{ background: "white", color: "brown", fontWeight: "500", border: "2px solid #DAE0E7" }}
                     name='password'
                     type='password'
                     onChange={handleChange}
                     value={password}
                 /> <br /> <br />
 
-                <button>Sign In</button> <br /><br />
+                <button style={{ background: "#1363DF", color: "white", border: "none" }}>
+                    Sign In
+                </button> <br /><br />
 
                 {/* <a style={{marginLeft:"4%",textDecoration:"none",color:"#0D0C22"}} onClick={() => setLgShow(true)} href='#'>Dont Have an Account? Create Here</a> */}
 

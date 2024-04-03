@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { useNavigate } from 'react-router-dom';
+import AdminNav from '../../components/adminNav';
 
 
 const CreateCategory = () => {
@@ -11,6 +12,11 @@ const CreateCategory = () => {
     const [cat, addCat] = useState(initialState)
     const { name } = cat
     let navigate = useNavigate()
+
+    let token = localStorage.getItem('token')
+      if (token === null) {
+    return alert('Login first to access this page ')
+      }
 
     let addCategory = () => {
 
@@ -43,20 +49,7 @@ const CreateCategory = () => {
 
     return (
         <>
-            <Navbar bg="primary" data-bs-theme="dark">
-                <Container>
-                    {/* <Navbar.Brand href="#home">Admin Dashboard</Navbar.Brand> */}
-                    <Nav className="me-auto">
-                        <Nav.Link href="/getAllCategories">All Categories</Nav.Link>
-                        <Nav.Link href="/CreateCategory"> Create New Category</Nav.Link>
-                        <Nav.Link href="/AddTutor"> Create New Tutor</Nav.Link>
-                        <Nav.Link href="/getTutors">All Tutors</Nav.Link>
-                        <Nav.Link href="/GetCourses">All Courses</Nav.Link>
-                        <Nav.Link href="/AddCourse">Add Course</Nav.Link>
-                        <Nav.Link href="AllUsers">All Users</Nav.Link>
-                    </Nav>
-                </Container>
-            </Navbar>
+           <AdminNav/>
             <br />
 
             <div

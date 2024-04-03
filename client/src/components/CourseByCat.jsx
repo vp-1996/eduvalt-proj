@@ -37,22 +37,22 @@ const CourseByCat = () => {
             })
     }
 
-    const getCourseByCat = (id) => {
-        // console.log(id); 
+    // const getCourseByCat = (id) => {
+    //     // console.log(id); 
 
-        // axios.get('http://localhost:5000/course/getCourseByCategory/'+id )
-        //     .then((resp) => {
-        //         console.log(resp.data);
-        //         setCourse(resp.data.course)
-        //         // setCourse(resp.data.category)
-        //         setCat(resp.data.category)
-        //     })
+    //     // axios.get('http://localhost:5000/course/getCourseByCategory/'+id )
+    //     //     .then((resp) => {
+    //     //         console.log(resp.data);
+    //     //         setCourse(resp.data.course)
+    //     //         // setCourse(resp.data.category)
+    //     //         setCat(resp.data.category)
+    //     //     })
 
-        //     .catch((err) => {
-        //         console.log(err);
-        //     })
+    //     //     .catch((err) => {
+    //     //         console.log(err);
+    //     //     })
 
-    }
+    // }
 
     let handleAll = () => [
         // setCourse(resp.data.Data)
