@@ -1,7 +1,7 @@
 import adminModel from "../models/admin.model";
 import JWT from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
-
+import userModel from "../models/user.model";
 
 export const registerAdmin = async (req, res) => {
 
@@ -86,8 +86,26 @@ export const adminLogin = async (req, res) => {
             message: "Error in login",
         })
     }
-
 }
+
+export const GetAllUsers=async(req,res)=>{
+
+    try {
+         const userData = await userModel.find({}) 
+         res.status(200).json({
+          success:true,
+          message:"All users data",
+          userData
+         })
+        } 
+    
+    catch (error) {
+        res.status(500).send({
+            success: false,
+            message: "Error in fetching users",
+          })
+         }   
+         }
 
 
 

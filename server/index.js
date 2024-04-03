@@ -7,6 +7,7 @@ import CategoryRouter from './routes/category.route';
 import courseRouter from './routes/course.route'
 import tutorRouter from './routes/tutor.route';
 import adminRouter from './routes/admin.route';
+import userRouter from './routes/user.route';
 
 dotenv.config();
 let app = express()
@@ -42,3 +43,4 @@ app.use('/category', CategoryRouter)
 app.use('/course',courseRouter)
 app.use('/tutor',tutorRouter)
 app.use('/admin',adminRouter)
+app.use('/user',userRouter)
