@@ -22,6 +22,8 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 // import adminNav from './components/adminNav';
 import GetUsers from './pages/Admin/GetUsers';
+import SignUP from './pages/SignUP';
+import UserLogin from './pages/UserLogin';
 
 function App() {
 
@@ -50,6 +52,8 @@ function App() {
           <Route path='/AllCourses' element={<AllCourses />} />
           <Route path='/About' element={<About />} />
           <Route path='/Contact' element={<Contact />} />
+          <Route path='/SignUP' element={<SignUP />} />
+          <Route path='/UserLogin' element={<UserLogin />} />
 
           {/* <Route path='/adminNav' element={<adminNav/>} /> */}
 

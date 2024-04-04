@@ -184,6 +184,18 @@
   /* z-index: 2; */
 }
 
+.courseSearch {
+  margin-left: 70%;
+  border: 1px solid #CDCFD5;
+  height: 35px;
+  width: 250px;
+  outline: #1363DF;
+  border-radius: 5px;
+  color: #39557E;
+  font-family: Hind, sans-serif;
+  letter-spacing: 1px;
+}
+
 .overlay {
   position: relative;
 }

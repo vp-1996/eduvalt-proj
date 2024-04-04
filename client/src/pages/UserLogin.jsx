@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react'
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import BasicExample from '../components/NavBar';
 import { useNavigate } from 'react-router-dom';
 
-const SignUP = () => {
-    const initialState = { name: "", email: "", number: "", password: "" }
+const UserLogin = () => {
+
+    const initialState = { email: "", password: "" }
     const [user, setUser] = useState(initialState)
-    const { name, email, number, password } = user
+    const { email, password } = user
     const redirect = useNavigate()
 
     const handleChange = (e) => {
@@ -15,48 +17,42 @@ const SignUP = () => {
     }
 
 
-    const regUser = () => {
-        axios.post('http://localhost:5000/user/registerUser', user)
+    const Login = () => {
+        axios.post('http://localhost:5000/user/loginUser', user)
             .then((res) => {
-                // console.log(res);
-                alert('User Registered Successfully..Please Login')
-                redirect('/UserLogin')
+                console.log(res);
+                localStorage.setItem('token', res.data.token)
+                localStorage.setItem('id', res.data.user._id)
+                redirect('/')
             })
             .catch((err) => {
                 console.log(err);
             })
     }
 
-
     const handleSubmit = (e) => {
         e.preventDefault()
-        regUser()
+        Login()
     }
+
 
     return (
         <>
-            <BasicExample />
 
+            <BasicExample />
 
             <div className='overlay'>
                 <div className='bgBanner'></div>
                 <h3
                     style={{ fontSize: "50px", bottom: "100px", left: "100px", position: "absolute", color: "white", zIndex: "10", fontFamily: "Lexend Deca, sans-serif", fontWeight: "600" }}>
-                    Registration
+                    Login
                 </h3>
             </div>
             <br /><br />
 
-            <div style={{ borderStyle: "ridge", width: "40%", height: "670px", marginLeft: "30%", background: "#F6F7FA", border: "1px solid #DCDFE5" }}>
+            <div style={{ borderStyle: "ridge", width: "40%", height: "400px", marginLeft: "30%", background: "#F6F7FA", border: "1px solid #DCDFE5" }}>
 
                 <form onSubmit={handleSubmit}>
-
-                    <label style={{ marginLeft: "10%", marginTop: "10%" }}>Name</label> <br />
-                    <input
-                        name='name'
-                        value={name}
-                        onChange={handleChange}
-                        style={{ width: "400px", border: "1px solid #DCDFE5", height: "50px", marginLeft: "10%", borderRadius: "5px" }} type='text' placeholder='Enter Name' />
 
                     <label style={{ marginLeft: "10%", marginTop: "10%" }}>Email</label> <br />
                     <input
@@ -65,12 +61,7 @@ const SignUP = () => {
                         onChange={handleChange}
                         style={{ width: "400px", border: "1px solid #DCDFE5", height: "50px", marginLeft: "10%", borderRadius: "5px" }} type='email' placeholder='Email' />
 
-                    <label style={{ marginLeft: "10%", marginTop: "10%" }}>Number</label> <br />
-                    <input
-                        name='number'
-                        value={number}
-                        onChange={handleChange}
-                        style={{ width: "400px", border: "1px solid #DCDFE5", height: "50px", marginLeft: "10%", borderRadius: "5px" }} type='number' placeholder='Phone' />
+
 
                     <label style={{ marginLeft: "10%", marginTop: "10%" }}>
                         Password
@@ -82,7 +73,7 @@ const SignUP = () => {
                         style={{ width: "400px", border: "1px solid #DCDFE5", height: "50px", marginLeft: "10%", borderRadius: "5px" }} type='password' placeholder='Password' /> <br /><br />
 
                     <button style={{ color: "white", background: "#1363DF", width: "400px", marginLeft: "10%", height: "50px", border: "none", borderRadius: "8px" }}>
-                        Register
+                        Login
                     </button>
 
 
@@ -90,8 +81,10 @@ const SignUP = () => {
             </div>
             <br />
 
+
+
         </>
     )
 }
 
-export default SignUP
+export default UserLogin

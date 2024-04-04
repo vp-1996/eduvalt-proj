@@ -12,6 +12,7 @@ const AllCourses = () => {
     const [temp, setTemp] = useState([])
     let [loading, setLoading] = useState(false);
     // let [color, setColor] = useState("#1363DF");
+    const [search, setSearch] = useState('')
 
     let getAllCategories = () => {
 
@@ -24,7 +25,7 @@ const AllCourses = () => {
             })
     }
 
-    //  setTimeout(()=>{
+
     const getAllCourses = () => {
         axios.get('http://localhost:5000/course/GetAllCourses')
             .then((resp) => {
@@ -34,11 +35,15 @@ const AllCourses = () => {
                 setTemp(resp.data.Data)
             })
 
-
-
     }
-    //  },2300)
 
+    const searchedCourses = course.filter(
+        course => course.Description.toLowerCase().includes(search.toLowerCase())
+    )
+
+    const handleSearch = (e) => {
+        setSearch(e.target.value)
+    }
 
     // console.log(temp);
 
@@ -94,6 +99,15 @@ const AllCourses = () => {
             </div>
             <br /><br />
 
+            <input
+                onChange={handleSearch}
+                type='search'
+                placeholder='search'
+                className='courseSearch'
+                spellCheck={false}
+            />
+
+
             <div className='main d-flex'>
 
                 <div className='filterSection mt-5'>
@@ -114,41 +128,52 @@ const AllCourses = () => {
                     }
                 </div>
 
-                <div className='row ms-5'>
-                    {
-                        course.map((item, k) => (
-                            <>
-                                <Card style={{ width: '18rem', marginTop: "4%", marginLeft: "3%", height: "24rem" }}>
+                {
+                    searchedCourses.length == 0 ?
+                        <h3 style={{ marginLeft: "20%" }}>
+                            No results found!!!
+                        </h3>
+                        :
 
-                                    <Card.Img style={{ width: "245px", height: "181px", paddingLeft: "8%", borderRadius: "5px", marginTop: "2%" }} variant="top" src={'http://localhost:5000/uploads/Images/' + item.Image} />
-                                    <Card.Body>
+                        <div className='row ms-5'>
+                            {
+                                searchedCourses.map((item, k) => (
+                                    <>
+                                        <Card style={{ width: '18rem', marginTop: "4%", marginLeft: "3%", height: "24rem" }}>
 
-                                        <Card.Title
-                                            style={{ fontFamily: "Hind, sans-serif", fontWeight: "600", fontSize: "13px", lineHeight: "15px", borderRadius: "20px", border: "0.1px solid gray", width: "120px", height: "25px", background: "#F5F0FF", borderStyle: "none", color: "#7A0EF0", paddingTop: "2%", paddingLeft: "8%", marginLeft: "22%" }}
-                                        >
-                                            {item.Category.name}
-                                        </Card.Title>
+                                            <Card.Img style={{ width: "245px", height: "181px", paddingLeft: "8%", borderRadius: "5px", marginTop: "2%" }} variant="top" src={'http://localhost:5000/uploads/Images/' + item.Image} />
+                                            <Card.Body>
 
-                                        <Card.Text style={{ color: "#082A5E", fontWeight: "600", fontFamily: "Lexend Deca,sans-serif", fontStyle: "normal", fontStretch: "100%", textAlign: "center" }}>
-                                            {item.Description}
-                                        </Card.Text>
+                                                <Card.Title
+                                                    style={{ fontFamily: "Hind, sans-serif", fontWeight: "600", fontSize: "13px", lineHeight: "15px", borderRadius: "20px", border: "0.1px solid gray", width: "120px", height: "25px", background: "#F5F0FF", borderStyle: "none", color: "#7A0EF0", paddingTop: "2%", paddingLeft: "8%", marginLeft: "22%" }}
+                                                >
+                                                    {item.Category.name}
+                                                </Card.Title>
 
-                                        <Button variant='light' style={{ width: "200px" }}>
-                                            <img src='/src/assets/time.png' />
-                                            {item.Duration}
+                                                <Card.Text style={{ color: "#082A5E", fontWeight: "600", fontFamily: "Lexend Deca,sans-serif", fontStyle: "normal", fontStretch: "100%", textAlign: "center" }}>
+                                                    {item.Description}
+                                                </Card.Text>
 
-                                            <img style={{ paddingLeft: "08%" }} src='/src/assets/food.png' />
-                                            {item.Lessons}
-                                        </Button>
-                                    </Card.Body>
+                                                <Button variant='light' style={{ width: "200px" }}>
+                                                    <img src='/src/assets/time.png' />
+                                                    {item.Duration}
 
-                                    <img style={{ width: "200px", marginLeft: "15%" }} src='/src/assets/Screenshot 2024-03-30 205942.jpg' /> <br />
+                                                    <img style={{ paddingLeft: "08%" }} src='/src/assets/food.png' />
+                                                    {item.Lessons}
+                                                </Button>
+                                            </Card.Body>
 
-                                </Card>
-                            </>
-                        ))
-                    }
-                </div>
+                                            <img style={{ width: "200px", marginLeft: "15%" }} src='/src/assets/Screenshot 2024-03-30 205942.jpg' /> <br />
+
+                                        </Card>
+                                    </>
+                                ))
+                            }
+                        </div>
+                }
+
+
+
 
             </div>
 

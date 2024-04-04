@@ -8,6 +8,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import axios from 'axios';
 import Footer from '../components/Footer';
+import SimpleSlider from '../components/SimpleSlider';
 
 const Home = () => {
   const [tutor, setTutor] = useState([])
@@ -259,6 +260,12 @@ const Home = () => {
       <br /><br /><br />
       {/* ///////////////////////////////// */}
 
+      <div className='py-5' style={{ backgroundColor: "#072655", display: "flex", alignItems: "center" }}>
+        <div className='container'>
+          <SimpleSlider />
+        </div>
+      </div>
+
       {/* <ControlledCarousel/> */}<br />
       <hr></hr> <br />
       {/* ////////////////////////// */}
@@ -310,7 +317,7 @@ const Home = () => {
       <div className='row ms-5'>
         <Card style={{ width: '360px', border: "none" }}>
           <Card.Img style={{ height: "200px", width: "100%" }} variant="top" src="/src/assets/blog_standard01.jpg" />
-          <Card.Body style={{ border: "1px solid gray" }}>
+          <Card.Body style={{ border: "1px solid #DAE0E7" }}>
             <Card.Title>
               <a style={{ fontFamily: "Lexend Deca,sans-serif", fontSize: "24px", color: "#082A5E", fontWeight: "600" }}>when aeunkno printer<br /> took galley of scrambled</a>
             </Card.Title>
@@ -323,7 +330,7 @@ const Home = () => {
 
         <Card style={{ width: '360px', marginLeft: "5%", border: "none" }}>
           <Card.Img style={{ height: "200px" }} variant="top" src="/src/assets/blog_standard02.jpg" />
-          <Card.Body style={{ border: "1px solid gray" }}>
+          <Card.Body style={{ border: "1px solid #DAE0E7" }}>
             <Card.Title>
               <a style={{ fontFamily: "Lexend Deca,sans-serif", fontSize: "24px", color: "#082A5E", fontWeight: "600" }}>
                 Full Stack GraphQL With<br /> Next.js And Vercel
@@ -338,7 +345,7 @@ const Home = () => {
 
         <Card style={{ width: '360px', marginLeft: "5%", border: "none" }}>
           <Card.Img style={{ height: "200px" }} variant="top" src="/src/assets/blog_standard03.jpg" />
-          <Card.Body style={{ border: "0.1px solid gray" }}>
+          <Card.Body style={{ border: "1px solid #DAE0E7" }}>
             <Card.Title>
               <a style={{ fontFamily: "Lexend Deca,sans-serif", fontSize: "24px", color: "#082A5E", fontWeight: "600" }}>
                 What Leonardo Teach us<br /> About Web Design
@@ -353,7 +360,7 @@ const Home = () => {
 
       </div> <br /><br /><br /><br />
 
-      <Footer/>
+      <Footer />
 
     </>
   )
