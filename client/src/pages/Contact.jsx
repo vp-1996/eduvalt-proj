@@ -66,12 +66,12 @@ const Contact = () => {
                         </div>
 
                         <div className='ms-5 mt-4'>
-                            <input style={{ width: "250px", height: "40px", border: "1px solid #DAE0E7" }} type='number' placeholder='Phone' name='number' />
+                            <input style={{ width: "250px", height: "40px", border: "1px solid #DAE0E7" }} type='number' placeholder='Phone' name='phone' />
 
                             <input style={{ width: "250px", marginLeft: "4%", height: "40px", border: "1px solid #DAE0E7" }} type='text' placeholder='Subject' name='subject' />
                         </div>
 
-                        <textarea placeholder='Enter Message' style={{ width: "520px", marginLeft: "7%", marginTop: "5%", border: "1px solid #DAE0E7", height: "100px" }}></textarea>
+                        <textarea name='message' placeholder='Enter Message' style={{ width: "520px", marginLeft: "7%", marginTop: "5%", border: "1px solid #DAE0E7", height: "100px" }}></textarea>
                     </form>
                 </div>
             </div> <br /><br />

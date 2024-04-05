@@ -1,12 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { CartContext } from '../../context/CartContext';
+// import Badge from 'react-bootstrap/Badge';
+import Badge from '@mui/material/Badge';
+// import MailIcon from '@mui/icons-material/Mail';
 
 function BasicExample() {
-
+    let { state, dispatch } = useContext(CartContext)
     const [auth, setAuth] = useState(null)
     let redirect = useNavigate()
 
@@ -27,7 +31,7 @@ function BasicExample() {
                 !auth ?
                     (
                         <Navbar style={{ marginBottom: "125%", }} bg='dark' expand="lg" className="bg-body-tertiary">
-                            <Container style={{ background: "#F8F9FA", marginRight: "100px" }}>
+                            <Container style={{ background: "#F8F9FA", marginRight: "190px" }}>
                                 <Navbar.Brand href="/">
                                     <img style={{ width: "150px", marginLeft: "100px" }} src='src/assets/logo.png' />
                                 </Navbar.Brand>
@@ -73,6 +77,17 @@ function BasicExample() {
                                                 Logout
                                             </button>
                                         </Nav.Link>
+
+                                        <Link to={'/Cart'} id='NavLink' className='navs'>
+                                            {/* <img style={{ height: "35px", width: "35px" }} src='/src/assets/shopping-bag.png' /> */}
+                                            {/* <Badge bg="secondary">
+                                                {state.cart.length}
+                                            </Badge> */}
+
+                                            <Badge badgeContent={state.cart.length} color="primary">
+                                            <img style={{ height: "35px", width: "35px" }} src='/src/assets/shopping-bag.png' />
+                                            </Badge>
+                                        </Link>
                                     </Nav>
                                 </Navbar.Collapse>
                             </Container>

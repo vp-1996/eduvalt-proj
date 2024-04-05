@@ -24,6 +24,7 @@ import Contact from './pages/Contact';
 import GetUsers from './pages/Admin/GetUsers';
 import SignUP from './pages/SignUP';
 import UserLogin from './pages/UserLogin';
+import Cart from './pages/Cart';
 
 function App() {
 
@@ -54,6 +55,8 @@ function App() {
           <Route path='/Contact' element={<Contact />} />
           <Route path='/SignUP' element={<SignUP />} />
           <Route path='/UserLogin' element={<UserLogin />} />
+
+          <Route path='/Cart' element={<Cart />} />
 
           {/* <Route path='/adminNav' element={<adminNav/>} /> */}
 

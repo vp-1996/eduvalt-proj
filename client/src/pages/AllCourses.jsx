@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import BasicExample from '../components/NavBar'
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Footer from '../components/Footer';
+import { CartContext } from '../../context/CartContext';
 import ScaleLoader from "react-spinners/ScaleLoader";
 
 const AllCourses = () => {
@@ -13,6 +14,7 @@ const AllCourses = () => {
     let [loading, setLoading] = useState(false);
     // let [color, setColor] = useState("#1363DF");
     const [search, setSearch] = useState('')
+    const { state, dispatch } = useContext(CartContext)
 
     let getAllCategories = () => {
 
@@ -45,6 +47,15 @@ const AllCourses = () => {
         setSearch(e.target.value)
     }
 
+    let AddToCart = (item) => {
+        console.log(item);
+        //  localStorage.setItem('CartItems', item)  
+        dispatch({
+            type: 'ADDTOCART',
+            payload: item
+        })
+        //  console.log();
+    }
     // console.log(temp);
 
     const [arr, setArr] = useState([])
@@ -139,6 +150,7 @@ const AllCourses = () => {
                             {
                                 searchedCourses.map((item, k) => (
                                     <>
+
                                         <Card style={{ width: '18rem', marginTop: "4%", marginLeft: "3%", height: "24rem" }}>
 
                                             <Card.Img style={{ width: "245px", height: "181px", paddingLeft: "8%", borderRadius: "5px", marginTop: "2%" }} variant="top" src={'http://localhost:5000/uploads/Images/' + item.Image} />
@@ -163,9 +175,17 @@ const AllCourses = () => {
                                                 </Button>
                                             </Card.Body>
 
-                                            <img style={{ width: "200px", marginLeft: "15%" }} src='/src/assets/Screenshot 2024-03-30 205942.jpg' /> <br />
+                                            {/* <img style={{ width: "200px", marginLeft: "15%" }} src='/src/assets/Screenshot 2024-03-30 205942.jpg' /> <br /> */}
+
+                                            <button
+                                                className='AddToCartButton'
+                                                onClick={() => AddToCart(item)}
+                                            >
+                                                Add To Cart
+                                            </button>
 
                                         </Card>
+
                                     </>
                                 ))
                             }

@@ -15,7 +15,7 @@
   font-weight: 600;
   font-style: normal;
   text-align: left;
-  margin-left: 80px;
+  margin-left: 50px;
 }
 
 #NavLink:hover {
@@ -248,6 +248,22 @@
   color: #061E43;
 }
 
+.AddToCartButton {
+  background-color: #1363DF;
+  border: none;
+  margin-bottom: 20px;
+  color: white;
+  font-weight: 500;
+  height: 40px;
+  border-radius: 5px;
+}
+
+.AddToCartButton:hover {
+  background-color: #008BCF;
+  font-size: 15px;
+  transition: 300ms;
+  border-radius: 20px;
+}
 
 
 /* /////About Page/////// */
@@ -277,3 +293,38 @@
   /* Semi-transparent overlay color */
   z-index: 1;
 }
+
+/* //////////Cart Page */
+
+.couponInput {
+  width: 280px;
+  height: 50px;
+  background-color: #E7EFFC;
+  border: none;
+  margin-left: 10%;
+  border-radius: 5px;
+}
+
+.couponButton {
+  height: 50px;
+  width: 150px;
+  border: none;
+  background-color: #1363DF;
+  color: white;
+  font-weight: 500;
+  margin-left: 1%;
+  margin-top: 15%;
+}
+
+.checkoutButton {
+  border: none;
+  background-color: #1363DF;
+  color: white;
+  font-weight: 500;
+  height: 45px;
+  width: 400px;
+  margin-left: 10%;
+  font-size: 17px;
+}
+
+/* //////////////// */
