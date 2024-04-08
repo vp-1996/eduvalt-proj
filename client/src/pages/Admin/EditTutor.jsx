@@ -14,10 +14,10 @@ const EditTutor = () => {
   const { name, profession, Image } = tutor
   let redirect = useNavigate()
 
-  let token = localStorage.getItem('token')
-      if (token === null) {
+  let token = localStorage.getItem('AdminToken')
+  if (token === null) {
     return alert('Login first to access this page ')
-      }
+  }
 
   let singleTutor = async () => {
     await axios.get('http://localhost:5000/tutor/getSingleTutor/' + id)
@@ -89,7 +89,7 @@ const EditTutor = () => {
 
         <input maxsize={1000} ref={imgRef} type='file' name='Image' onChange={handleImg} />
 
-        <img src={"http://localhost:5000/uploads/Images/" + Image} alt='' style={{ borderStyle: '', height: '130px', width: '170px', position: "absolute", left: "610px", top: "320px" }}
+        <img src={"http://localhost:5000/uploads/Images/" + Image} alt='' style={{ borderStyle: '', height: '130px', width: '170px', position: "absolute", left: "20px", top: "200px" }}
           className={img ? 'none' : 'block'}
         /> <br />
 

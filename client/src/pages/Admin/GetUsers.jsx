@@ -12,9 +12,9 @@ import Paper from '@mui/material/Paper';
 import AdminNav from '../../components/adminNav';
 
 const GetUsers = () => {
-    let [users, setUsers] = useState([])
+    let [users, setUsers] = useState([]) 
 
-    let token = localStorage.getItem('token')
+    let token = localStorage.getItem('AdminToken')
       if (token === null) {
     return alert('Login first to access this page ')
       }

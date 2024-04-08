@@ -21,8 +21,8 @@ const AdminLogin = () => {
         axios.post('http://localhost:5000/admin/adminLogin', admin)
             .then((resp) => {
                 console.log(resp)
-                localStorage.setItem('token', resp.data.token)
-                localStorage.setItem('id', resp.data.admin._id)
+                localStorage.setItem('AdminToken', resp.data.token)
+                localStorage.setItem('admin_id', resp.data.admin._id)
 
                 setAdmin({
                     email: "",

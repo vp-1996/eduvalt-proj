@@ -1,8 +1,37 @@
-import React from 'react'
+import React, { useState } from 'react'
 import BasicExample from '../components/NavBar'
 import Footer from '../components/Footer'
+import axios from 'axios';
+import Toast from 'react-bootstrap/Toast';
 
 const Contact = () => {
+    const initialState = { name: "", email: "", phone: "", subject: "", message: "" }
+    const [msg, setMessage] = useState(initialState)
+    const { name, email, phone, subject, message } = msg
+    const [show, setShow] = useState(false)
+
+    const handleChange = (e) => {
+        const { name, value } = e.target
+        setMessage({ ...msg, [name]: value })
+    }
+
+    let submitMsg = () => {
+        axios.post('http://localhost:5000/contact/sendMessage', msg)
+            .then((res) => {
+                console.log(res);
+                setShow(true)
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        submitMsg()
+    }
+
     return (
         <>
             <BasicExample />
@@ -53,28 +82,85 @@ const Contact = () => {
 
                 <div style={{ marginLeft: "15%", border: "1px solid #DAE0E7", width: "700px", background: "#F6F7FA", height: "400px" }} className='innerDiv2'>
 
+
                     <h3 className='ms-5 mt-4'>
                         Get In Touch
                     </h3>
 
-                    <form>
+                    <form onSubmit={handleSubmit}>
 
                         <div className='ms-5 mt-4'>
-                            <input style={{ width: "250px", height: "40px", border: "1px solid #DAE0E7" }} type='text' placeholder='Name' name='name' />
+                            <input
+                                style={{ width: "250px", height: "40px", border: "1px solid #DAE0E7" }} type='text' placeholder='Name'
+                                name='name'
+                                value={name}
+                                onChange={handleChange}
+                            />
 
-                            <input style={{ width: "250px", marginLeft: "04%", height: "40px", border: "1px solid #DAE0E7" }} type='email' placeholder='Email' name='email' />
+                            <input
+                                style={{ width: "250px", marginLeft: "04%", height: "40px", border: "1px solid #DAE0E7" }}
+                                type='email'
+                                placeholder='Email'
+                                name='email'
+                                value={email}
+                                onChange={handleChange}
+                            />
                         </div>
 
                         <div className='ms-5 mt-4'>
-                            <input style={{ width: "250px", height: "40px", border: "1px solid #DAE0E7" }} type='number' placeholder='Phone' name='phone' />
+                            <input
+                                style={{ width: "250px", height: "40px", border: "1px solid #DAE0E7" }} type='number'
+                                placeholder='Phone'
+                                name='phone'
+                                value={phone}
+                                onChange={handleChange}
+                            />
 
-                            <input style={{ width: "250px", marginLeft: "4%", height: "40px", border: "1px solid #DAE0E7" }} type='text' placeholder='Subject' name='subject' />
+                            <input
+                                style={{ width: "250px", marginLeft: "4%", height: "40px", border: "1px solid #DAE0E7" }}
+                                type='text'
+                                placeholder='Subject'
+                                name='subject'
+                                value={subject}
+                                onChange={handleChange}
+                            />
                         </div>
 
-                        <textarea name='message' placeholder='Enter Message' style={{ width: "520px", marginLeft: "7%", marginTop: "5%", border: "1px solid #DAE0E7", height: "100px" }}></textarea>
+                        <textarea
+                            onChange={handleChange}
+                            value={message}
+                            name='message'
+                            placeholder='Enter Message' style={{ width: "520px", marginLeft: "7%", marginTop: "5%", border: "1px solid #DAE0E7", height: "100px" }}>
+                        </textarea> <br />
+
+                        <button style={{ background: "#008BCF", color: "white", border: "none", height: "40px", marginLeft: "7%", marginTop: "2%" }}>
+                            Send Message
+                        </button>
+
+                        <Toast
+                            onClose={() => setShow(false)} show={show} delay={3800} autohide
+                        >
+                            <Toast.Header>
+                                <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
+                                <strong className="me-auto">
+                                    Hey !!!
+                                </strong>
+                                {/* <small>11 mins ago</small> */}
+                            </Toast.Header>
+                            <Toast.Body>
+                                Message Sent Sucessfully
+                            </Toast.Body>
+                        </Toast>
+
                     </form>
+
                 </div>
-            </div> <br /><br />
+
+
+
+            </div> <br /><br /><br />
+
+
 
             {/* //////////////////////////////// */}
 

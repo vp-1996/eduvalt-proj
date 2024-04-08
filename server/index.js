@@ -8,6 +8,7 @@ import courseRouter from './routes/course.route'
 import tutorRouter from './routes/tutor.route';
 import adminRouter from './routes/admin.route';
 import userRouter from './routes/user.route';
+import contactRouter from './routes/contact.route';
 
 dotenv.config();
 let app = express()
@@ -17,7 +18,7 @@ app.use(express.static(__dirname))
 app.use(bodyParser.urlencoded({ extended: false }))
 
 // parse application/json
-app.use(bodyParser.json())
+app.use(bodyParser.json())   
 
 var corsOptions = {
     // origin: 'http://localhost:5000',---
@@ -44,3 +45,4 @@ app.use('/course',courseRouter)
 app.use('/tutor',tutorRouter)
 app.use('/admin',adminRouter)
 app.use('/user',userRouter)
+app.use ('/contact',contactRouter)

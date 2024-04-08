@@ -49,13 +49,16 @@ const AllCourses = () => {
 
     let AddToCart = (item) => {
         console.log(item);
-        //  localStorage.setItem('CartItems', item)  
+        const add =  localStorage.setItem('CartItems', item)
         dispatch({
+            add,
             type: 'ADDTOCART',
             payload: item
         })
         //  console.log();
     }
+
+    
     // console.log(temp);
 
     const [arr, setArr] = useState([])
@@ -80,7 +83,7 @@ const AllCourses = () => {
         if (arr.length === 0) {
             // If no categories selected, show all courses
 
-            // getAllCourses()
+            getAllCourses()
         }
         else {
             // Filter courses based on selected categories
@@ -110,90 +113,111 @@ const AllCourses = () => {
             </div>
             <br /><br />
 
-            <input
+            {/* <input
                 onChange={handleSearch}
                 type='search'
                 placeholder='search'
                 className='courseSearch'
                 spellCheck={false}
-            />
+            /> */}
 
 
-            <div className='main d-flex'>
+            <div className='container-fluid'>
 
-                <div className='filterSection mt-5'>
+                <div className='main row d-flex'>
 
-                    <p style={{ fontFamily: "Lexend Deca, sans-serif", fontWeight: "500", fontSize: "19px", color: "rgb(8, 42, 94", lineHeight: "23px", marginLeft: "16%" }}>
-                        Categories
-                    </p>
+                    <div className='col-md-2'>
+
+                        <div className='filterSection'>
+
+                            <p style={{ fontFamily: "Lexend Deca, sans-serif", fontWeight: "500", fontSize: "19px", color: "rgb(8, 42, 94", lineHeight: "23px", marginLeft: "16%" }}>
+                                Categories
+                            </p>
 
 
-                    {
-                        categories.map((i, k) => (
-                            <>
 
-                                <input checked={arr.includes(i.name)} onChange={handleChange} value={i.name} style={{ marginLeft: "17%", marginTop: "7%" }} type='checkbox' />
-                                <label style={{ fontFamily: "Hind, sans-serif", marginLeft: "2%" }}>{i.name}</label> <br />
-                            </>
-                        ))
-                    }
-                </div>
-
-                {
-                    searchedCourses.length == 0 ?
-                        <h3 style={{ marginLeft: "20%" }}>
-                            No results found!!!
-                        </h3>
-                        :
-
-                        <div className='row ms-5'>
                             {
-                                searchedCourses.map((item, k) => (
+
+                                categories.map((i, k) => (
                                     <>
 
-                                        <Card style={{ width: '18rem', marginTop: "4%", marginLeft: "3%", height: "24rem" }}>
-
-                                            <Card.Img style={{ width: "245px", height: "181px", paddingLeft: "8%", borderRadius: "5px", marginTop: "2%" }} variant="top" src={'http://localhost:5000/uploads/Images/' + item.Image} />
-                                            <Card.Body>
-
-                                                <Card.Title
-                                                    style={{ fontFamily: "Hind, sans-serif", fontWeight: "600", fontSize: "13px", lineHeight: "15px", borderRadius: "20px", border: "0.1px solid gray", width: "120px", height: "25px", background: "#F5F0FF", borderStyle: "none", color: "#7A0EF0", paddingTop: "2%", paddingLeft: "8%", marginLeft: "22%" }}
-                                                >
-                                                    {item.Category.name}
-                                                </Card.Title>
-
-                                                <Card.Text style={{ color: "#082A5E", fontWeight: "600", fontFamily: "Lexend Deca,sans-serif", fontStyle: "normal", fontStretch: "100%", textAlign: "center" }}>
-                                                    {item.Description}
-                                                </Card.Text>
-
-                                                <Button variant='light' style={{ width: "200px" }}>
-                                                    <img src='/src/assets/time.png' />
-                                                    {item.Duration}
-
-                                                    <img style={{ paddingLeft: "08%" }} src='/src/assets/food.png' />
-                                                    {item.Lessons}
-                                                </Button>
-                                            </Card.Body>
-
-                                            {/* <img style={{ width: "200px", marginLeft: "15%" }} src='/src/assets/Screenshot 2024-03-30 205942.jpg' /> <br /> */}
-
-                                            <button
-                                                className='AddToCartButton'
-                                                onClick={() => AddToCart(item)}
-                                            >
-                                                Add To Cart
-                                            </button>
-
-                                        </Card>
-
+                                        <input
+                                            checked={arr.includes(i.name)}
+                                            onChange={handleChange}
+                                            value={i.name
+                                            } style={{ marginLeft: "17%", marginTop: "7%" }} type='checkbox' />
+                                        <label style={{ fontFamily: "Hind, sans-serif", marginLeft: "2%" }}>
+                                            {i.name}
+                                        </label> <br />
                                     </>
                                 ))
                             }
                         </div>
-                }
+
+                    </div>
 
 
+                    <div className='col-md-10 '>
 
+                        <div className='row h-100 align-items-center ms-5'>
+                            {
+                                course.length === 0 ?
+
+                                    //  <h2 className='text-center'>No course to show in this category</h2>
+                                    <div className='text-center'>
+                                        <img style={{ width: "100px" }} src='/src/assets/not-found.png' />
+                                    </div>
+
+
+                                    :
+                                    course.map((item, k) => (
+                                        <>
+
+                                            <Card
+                                                className='mx-3 mb-4'
+                                                style={{ width: '18rem', height: "24rem" }}>
+
+                                                <Card.Img style={{ width: "245px", height: "181px", paddingLeft: "8%", borderRadius: "5px", marginTop: "2%" }} variant="top" src={'http://localhost:5000/uploads/Images/' + item.Image} />
+                                                <Card.Body>
+
+                                                    <Card.Title
+                                                        style={{ fontFamily: "Hind, sans-serif", fontWeight: "600", fontSize: "13px", lineHeight: "15px", borderRadius: "20px", border: "0.1px solid gray", width: "120px", height: "25px", background: "#F5F0FF", borderStyle: "none", color: "#7A0EF0", paddingTop: "2%", paddingLeft: "8%", marginLeft: "22%" }}
+                                                    >
+                                                        {item.Category.name}
+                                                    </Card.Title>
+
+                                                    <Card.Text style={{ color: "#082A5E", fontWeight: "600", fontFamily: "Lexend Deca,sans-serif", fontStyle: "normal", fontStretch: "100%", textAlign: "center" }}>
+                                                        {item.Description}
+                                                    </Card.Text>
+
+                                                    <Button variant='light' style={{ width: "200px" }}>
+                                                        <img src='/src/assets/time.png' />
+                                                        {item.Duration}
+
+                                                        <img style={{ paddingLeft: "08%" }} src='/src/assets/food.png' />
+                                                        {item.Lessons}
+                                                    </Button>
+                                                </Card.Body>
+
+                                                {/* <img style={{ width: "200px", marginLeft: "15%" }} src='/src/assets/Screenshot 2024-03-30 205942.jpg' /> <br /> */}
+
+                                                <button
+                                                    className='AddToCartButton'
+                                                    onClick={() => AddToCart(item)}
+                                                >
+                                                    Add To Cart
+                                                </button>
+
+                                            </Card>
+
+                                        </>
+                                    ))
+                            }
+                        </div>
+
+                    </div>
+
+                </div>
 
             </div>
 

@@ -3,6 +3,10 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import BasicExample from '../components/NavBar';
 import { useNavigate } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Toast from 'react-bootstrap/Toast';
 
 const UserLogin = () => {
 
@@ -10,6 +14,7 @@ const UserLogin = () => {
     const [user, setUser] = useState(initialState)
     const { email, password } = user
     const redirect = useNavigate()
+    const [show, setShow] = useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target
@@ -23,9 +28,14 @@ const UserLogin = () => {
                 console.log(res);
                 localStorage.setItem('token', res.data.token)
                 localStorage.setItem('id', res.data.user._id)
-                redirect('/')
+                setShow(true)
+                setTimeout(() => {
+                    redirect('/')
+                }, 3000)
+
             })
             .catch((err) => {
+                alert(err.response.data.message)
                 console.log(err);
             })
     }
@@ -41,6 +51,8 @@ const UserLogin = () => {
 
             <BasicExample />
 
+
+
             <div className='overlay'>
                 <div className='bgBanner'></div>
                 <h3
@@ -50,12 +62,36 @@ const UserLogin = () => {
             </div>
             <br /><br />
 
+            <Row>
+                <Col xs={4}>
+                    <Toast
+                        style={{ marginLeft: "120%" }}
+                        onClose={() => setShow(false)}
+                        show={show} delay={3000}
+                        autohide={false}>
+                        <Toast.Header
+
+                            style={{ background: "#198754", color: "#AEB6B8" }}
+                        >
+
+                            <strong className="me-auto">
+                                Hey ....
+                            </strong>
+                        </Toast.Header>
+                        <Toast.Body style={{ fontWeight: "500", background: "#198754", color: "white" }}>
+                            Logged in sucessfully ! !
+                        </Toast.Body>
+                    </Toast>
+                </Col>
+            </Row>
+
             <div style={{ borderStyle: "ridge", width: "40%", height: "400px", marginLeft: "30%", background: "#F6F7FA", border: "1px solid #DCDFE5" }}>
 
                 <form onSubmit={handleSubmit}>
 
                     <label style={{ marginLeft: "10%", marginTop: "10%" }}>Email</label> <br />
                     <input
+                        required
                         name='email'
                         value={email}
                         onChange={handleChange}
@@ -67,6 +103,7 @@ const UserLogin = () => {
                         Password
                     </label> <br />
                     <input
+                        required
                         name='password'
                         value={password}
                         onChange={handleChange}
@@ -75,7 +112,6 @@ const UserLogin = () => {
                     <button style={{ color: "white", background: "#1363DF", width: "400px", marginLeft: "10%", height: "50px", border: "none", borderRadius: "8px" }}>
                         Login
                     </button>
-
 
                 </form>
             </div>

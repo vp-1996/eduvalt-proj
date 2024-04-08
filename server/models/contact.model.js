@@ -1,9 +1,9 @@
 import mongoose from 'mongoose'
 
-const contact = new mongoose.Schema({
+const contact = new mongoose.Schema({ 
  
   name:{
-    type : String
+    type : String 
   },
   
   email:{
@@ -24,4 +24,4 @@ const contact = new mongoose.Schema({
 
 })
 
-export default mongoose.model('Message',contact)
+export default mongoose.model('contact',contact)

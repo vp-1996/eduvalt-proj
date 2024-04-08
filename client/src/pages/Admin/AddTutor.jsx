@@ -23,7 +23,7 @@ const AddTutor = () => {
     const { name, profession } = tutor
     let redirect = useNavigate();
 
-    let token = localStorage.getItem('token')
+    let token = localStorage.getItem('AdminToken')
     if (token === null) {
         return alert('Login first to access this page ')
     }

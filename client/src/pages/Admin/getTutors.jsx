@@ -24,10 +24,10 @@ const GetTutors = () => {
     const npage = Math.ceil(tutor.length / recordsPerPage)
     const nums = [...Array(npage + 1).keys()].slice(1)
 
-    let token = localStorage.getItem('token')
-      if (token === null) {
-      return alert('Login first to access this page ')
-      }
+    let token = localStorage.getItem('AdminToken')
+    if (token === null) {
+        return alert('Login first to access this page ')
+    }
 
     let allTutors = () => {
         axios.get('http://localhost:5000/tutor/getAllTutors')
@@ -85,7 +85,7 @@ const GetTutors = () => {
 
     return (
         <>
-            <AdminNav/>
+            <AdminNav />
             <br />
 
             <div
@@ -98,11 +98,11 @@ const GetTutors = () => {
 
             <br />
 
-            <Table style={{ width: "100%", marginLeft: "17%", height: "200px" }} bordered hover variant="">
+            <Table style={{ width: "100%", marginLeft: "35%", height: "200px" }} bordered hover variant="">
                 <thead>
                     {/* <tr> */}
                     <tbody>
-                        <th style={{ borderBottom: "1px solid black",width:"100px"}}>
+                        <th style={{ borderBottom: "1px solid black", width: "100px" }}>
                             Name
                         </th>
                         <th style={{ borderBottom: "1px solid black" }}>
@@ -185,7 +185,7 @@ const GetTutors = () => {
             <div>
                 {/* <Pagination.Ellipsis /> */}
                 <Pagination
-                    style={{ marginLeft: "40%" }}
+                    style={{ marginLeft: "50%" }}
                 >
                     <Pagination.Prev onClick={prevPage} />
                     {

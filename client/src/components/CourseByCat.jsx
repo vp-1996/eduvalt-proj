@@ -124,16 +124,16 @@ const CourseByCat = () => {
                                 <Card.Body>
 
                                     <Card.Title
-                                        style={{ fontFamily: "Hind, sans-serif", fontWeight: "600", fontSize: "13px", lineHeight: "15px", borderRadius: "20px", border: "0.1px solid gray", textAlign: "center", width: "120px", height: "25px", background: "#F5F0FF", borderStyle: "none", color: "#7A0EF0", paddingTop: "2%" }}
+                                        style={{ fontFamily: "Hind, sans-serif", fontWeight: "600", fontSize: "13px", lineHeight: "15px", borderRadius: "20px", border: "0.1px solid gray", textAlign: "center", width: "120px", height: "25px", background: "#F5F0FF", borderStyle: "none", color: "#7A0EF0", paddingTop: "2%", marginLeft: "20%" }}
                                     >
                                         {item.Category.name}
                                     </Card.Title>
 
-                                    <Card.Text style={{ color: "#082A5E", fontWeight: "600", fontFamily: "Lexend Deca,sans-serif", fontStyle: "normal", fontStretch: "100%" }}>
+                                    <Card.Text style={{ color: "#082A5E", fontWeight: "600", fontFamily: "Lexend Deca,sans-serif", fontStyle: "normal", fontStretch: "100%", textAlign: "center" }}>
                                         {item.Description}
                                     </Card.Text>
 
-                                    <Button variant='light' style={{ width: "200px" }}>
+                                    <Button variant='light' style={{ width: "200px", marginLeft: "13%" }}>
                                         <img src='/src/assets/time.png' />
                                         {item.Duration}
 

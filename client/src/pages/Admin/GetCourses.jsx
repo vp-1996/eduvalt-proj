@@ -24,7 +24,7 @@ const GetCourses = () => {
     const npage = Math.ceil(course.length / recordsPerPage)
     const nums = [...Array(npage + 1).keys()].slice(1)
 
-    let token = localStorage.getItem('token')
+    let token = localStorage.getItem('AdminToken')
       if (token === null) {
     return alert('Login first to access this page ')
       }
