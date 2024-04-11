@@ -6,17 +6,17 @@ const courseSchema = new mongoose.Schema({
     Category: {
         type: Schema.Types.ObjectId,
         ref: Category,
-       // require: true
+        // require: true
     },
 
     Description: {
         type: String,
-       // require: true
+        // require: true
     },
 
     Duration: {
         type: String,
-       // require: true
+        // require: true
     },
 
     Lessons: {
@@ -25,7 +25,18 @@ const courseSchema = new mongoose.Schema({
 
     Image: {
         type: String
+    },
+
+    Price: {
+        type: Number,
+        // enum:[]    
+       },
+
+    Free:{
+        type: Boolean
     }
+
+    
 })
 
 export default mongoose.model('Course', courseSchema)

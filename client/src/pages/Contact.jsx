@@ -9,6 +9,9 @@ const Contact = () => {
     const [msg, setMessage] = useState(initialState)
     const { name, email, phone, subject, message } = msg
     const [show, setShow] = useState(false)
+    const [err,setErr] = useState(false)
+
+    const variants = ['Danger']
 
     const handleChange = (e) => {
         const { name, value } = e.target
@@ -18,10 +21,12 @@ const Contact = () => {
     let submitMsg = () => {
         axios.post('http://localhost:5000/contact/sendMessage', msg)
             .then((res) => {
-                console.log(res);
                 setShow(true)
+                console.log(res);
+                
             })
             .catch((err) => {
+               // setShow(true) 
                 console.log(err);
             })
 
@@ -88,7 +93,6 @@ const Contact = () => {
                     </h3>
 
                     <form onSubmit={handleSubmit}>
-
                         <div className='ms-5 mt-4'>
                             <input
                                 style={{ width: "250px", height: "40px", border: "1px solid #DAE0E7" }} type='text' placeholder='Name'
@@ -98,6 +102,7 @@ const Contact = () => {
                             />
 
                             <input
+                                required
                                 style={{ width: "250px", marginLeft: "04%", height: "40px", border: "1px solid #DAE0E7" }}
                                 type='email'
                                 placeholder='Email'
@@ -135,10 +140,11 @@ const Contact = () => {
 
                         <button style={{ background: "#008BCF", color: "white", border: "none", height: "40px", marginLeft: "7%", marginTop: "2%" }}>
                             Send Message
-                        </button>
+                        </button> <br/>
 
+                        
                         <Toast
-                            onClose={() => setShow(false)} show={show} delay={3800} autohide
+                            onClose={() => setShow(false)} show={show} delay={3200} autohide
                         >
                             <Toast.Header>
                                 <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />

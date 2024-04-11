@@ -27,7 +27,7 @@ export const addCourse = (req, res) => {
             }
 
             else {
-                let { Category, Description, Lessons, Duration } = req.body;
+                let { Category, Description, Lessons, Duration,Price} = req.body;
                 //  console.log(req.file);
 
                 let image = ''
@@ -41,7 +41,8 @@ export const addCourse = (req, res) => {
                     Description: Description,
                     Lessons: Lessons,
                     Duration: Duration,
-                    Image: image
+                    Image: image,
+                    Price: Price
                 })
                 console.log(courseData);
 

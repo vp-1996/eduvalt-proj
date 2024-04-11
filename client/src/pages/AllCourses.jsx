@@ -113,16 +113,16 @@ const AllCourses = () => {
             </div>
             <br /><br />
 
-            {/* <input
+            <input
                 onChange={handleSearch}
                 type='search'
-                placeholder='search'
+                placeholder='search...'
                 className='courseSearch'
                 spellCheck={false}
-            /> */}
+            />
 
 
-            <div className='container-fluid'>
+            <div className='container-fluid mt-5'>
 
                 <div className='main row d-flex'>
 
@@ -133,8 +133,6 @@ const AllCourses = () => {
                             <p style={{ fontFamily: "Lexend Deca, sans-serif", fontWeight: "500", fontSize: "19px", color: "rgb(8, 42, 94", lineHeight: "23px", marginLeft: "16%" }}>
                                 Categories
                             </p>
-
-
 
                             {
 
@@ -161,7 +159,7 @@ const AllCourses = () => {
 
                         <div className='row h-100 align-items-center ms-5'>
                             {
-                                course.length === 0 ?
+                                searchedCourses.length === 0 ?
 
                                     //  <h2 className='text-center'>No course to show in this category</h2>
                                     <div className='text-center'>
@@ -170,10 +168,10 @@ const AllCourses = () => {
 
 
                                     :
-                                    course.map((item, k) => (
+                                    searchedCourses.map((item, k) => (
                                         <>
 
-                                            <Card
+                                               <Card
                                                 className='mx-3 mb-4'
                                                 style={{ width: '18rem', height: "24rem" }}>
 

@@ -38,7 +38,8 @@ function BasicExample() {
                                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                                 <Navbar.Collapse id="basic-navbar-nav">
                                     <Nav className="me-auto">
-                                        <Nav.Link to={'/'} id='NavLink' className='navs'>
+
+                                        <Nav.Link  href='/' id='NavLink' className='navs'>
                                             Home
                                         </Nav.Link>
                                         <Nav.Link id='NavLink' className='navs' href="/AllCourses">
@@ -76,10 +77,22 @@ function BasicExample() {
                                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                                 <Navbar.Collapse id="basic-navbar-nav">
                                     <Nav className="me-auto">
-                                        <Nav.Link id='NavLink' className='navs' href="/">Home</Nav.Link>
-                                        <Nav.Link id='NavLink' className='navs' href="/AllCourses">Courses</Nav.Link>
-                                        <Nav.Link id='NavLink' className='navs' href="/About">About Us</Nav.Link>
-                                        <Nav.Link id='NavLink' className='navs' href="/Contact">Contact</Nav.Link>
+                                        <Nav.Link id='NavLink' className='navs' href="/">
+                                            Home
+                                            </Nav.Link>
+
+                                        <Nav.Link id='NavLink' className='navs' href="/AllCourses"
+                                        >
+                                            Courses
+                                        </Nav.Link>
+
+                                        <Nav.Link id='NavLink' className='navs' href="/About">
+                                            About Us
+                                            </Nav.Link>
+
+                                        <Nav.Link id='NavLink' className='navs' href="/Contact">
+                                            Contact
+                                            </Nav.Link>
                                         <Nav.Link id='NavLink' className='navs'>
                                             <button onClick={handleLogout} style={{ borderRadius: "50px", border: "none", background: "#1363DF", color: "white" }}>
                                                 Logout
