@@ -27,14 +27,15 @@ const courseSchema = new mongoose.Schema({
         type: String
     },
 
-    Price: {
-        type: Number,
-        // enum:[]    
-       },
+   Price:{
+     type : Number,
+   },
 
-    Free:{
-        type: Boolean
-    }
+   CoursePriceType:{
+     type: String
+   }
+
+   
 
     
 })

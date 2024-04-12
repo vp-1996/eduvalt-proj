@@ -27,7 +27,7 @@ export const addCourse = (req, res) => {
             }
 
             else {
-                let { Category, Description, Lessons, Duration,Price} = req.body;
+                let { Category, Description, Lessons, Duration,Price,CoursePriceType} = req.body;
                 //  console.log(req.file);
 
                 let image = ''
@@ -42,7 +42,8 @@ export const addCourse = (req, res) => {
                     Lessons: Lessons,
                     Duration: Duration,
                     Image: image,
-                    Price: Price
+                    Price: Price,
+                    CoursePriceType:CoursePriceType
                 })
                 console.log(courseData);
 
@@ -120,7 +121,7 @@ export const editCourse = (req, res) => {
             // console.log("file",req.body.file);
 
             let courseID = req.params.course_id
-            let { Category, Description, Lessons, Duration } = req.body
+            let { Category, Description, Lessons, Duration,Price,CoursePriceType } = req.body
 
             let oldData = await courseSchema.findOne({ _id: courseID })
             let pic = oldData.Image
@@ -131,7 +132,7 @@ export const editCourse = (req, res) => {
                 }
             }
 
-            let updateCourse = await courseSchema.updateOne({ _id: courseID }, { $set: { Category: Category, Description: Description, Lessons: Lessons, Duration: Duration, Image: pic } })
+            let updateCourse = await courseSchema.updateOne({ _id: courseID }, { $set: { Category: Category, Description: Description, Lessons: Lessons, Duration: Duration, Image: pic,Price:Price,CoursePriceType:CoursePriceType } })
 
             if (updateCourse.acknowledged) {
                 res.status(200).json({

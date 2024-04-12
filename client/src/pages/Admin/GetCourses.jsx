@@ -98,43 +98,48 @@ const GetCourses = () => {
 
             <br />
 
-            <Table style={{ width: "100%", marginLeft: "5%", height: "200px" }} bordered hover variant="">
+            <Table style={{ width: "100%", marginLeft: "17%", height: "200px"}} bordered>
                 <thead>
                     {/* <tr> */}
                     <tbody>
-                        <th style={{ borderBottom: "1px solid black", width: "200px" }}>
+                        <th style={{ borderBottom: "1px solid black", width: "200px", textAlign: "center",background:"#D1BB9E",color:"white"}}>
                             Category
                         </th>
-                        <th style={{ borderBottom: "1px solid black" }}>
+                        <th style={{ borderBottom: "1px solid black",background:"#D1BB9E",color:"white" }}>
                             Description
                         </th>
-                        <th style={{ borderBottom: "1px solid black" }}>
+                        <th style={{ borderBottom: "1px solid black",background:"#D1BB9E",color:"white" }}>
                             Lessons
                         </th>
-                        <th style={{ borderBottom: "1px solid black" }}>
+                        <th style={{ borderBottom: "1px solid black",background:"#D1BB9E",color:"white" }}>
+                            Course Type
+                        </th>
+                        <th style={{ borderBottom: "1px solid black",background:"#D1BB9E",color:"white"}}>
                             Duration
                         </th>
-                        <th style={{ borderBottom: "1px solid black", width: "150px", textAlign: "center" }}>
+                        <th style={{ borderBottom: "1px solid black", width: "150px", textAlign: "center",background:"#D1BB9E",color:"white" }}>
                             Image
                         </th>
-                        <th style={{ borderBottom: "1px solid black", width: "150px", textAlign: "center" }}>
+                        <th style={{ borderBottom: "1px solid black", width: "150px", textAlign: "center",background:"#D1BB9E",color:"white" }}>
                             Delete
                         </th>
 
-                        <th style={{ width: "100px", textAlign: "center", borderBottom: "1px solid black" }}>
+                        <th style={{ width: "100px", textAlign: "center", borderBottom: "1px solid black",background:"#D1BB9E",color:"white" }}>
                             Edit
                         </th>
-                        {
 
+                        {
                             records.map((i, k) => (
                                 <>
 
-                                    <tr>
+                                    <tr
+                                     style={{background:"#F8F6E3",fontWeight:"600"}}>
                                         <td style={{
                                             height: "55px",
                                             borderBottom: "1px solid black",
                                             fontFamily: "'Tilt Neon', sans-serif",
-                                            fontSize: "12px"
+                                            fontSize: "13px",
+                                            textAlign:"center"
                                         }}
                                         >
                                             {i.Category?.name}
@@ -143,20 +148,34 @@ const GetCourses = () => {
                                             height: "55px",
                                             borderBottom: "1px solid black",
                                             fontFamily: "'Tilt Neon', sans-serif",
-                                            fontSize: "14px"
+                                            fontSize: "13px"
                                         }}
                                         >
                                             {i.Description}
                                         </td>
+
                                         <td style={{
                                             height: "55px",
                                             borderBottom: "1px solid black",
                                             fontFamily: "'Tilt Neon', sans-serif",
-                                            fontSize: "14px"
+                                            fontSize: "13px",
+                                            textAlign:"center"
                                         }}
                                         >
                                             {i.Lessons}
                                         </td>
+
+                                        <td style={{
+                                            height: "55px",
+                                            borderBottom: "1px solid black",
+                                            fontFamily: "'Tilt Neon', sans-serif",
+                                            fontSize: "14px",
+                                            textAlign:"center"
+                                        }}
+                                        >
+                                            {i.CoursePriceType}
+                                        </td>
+
                                         <td style={{
                                             height: "55px",
                                             borderBottom: "1px solid black",
@@ -166,6 +185,7 @@ const GetCourses = () => {
                                         >
                                             {i.Duration}
                                         </td>
+
                                         <td style={{
                                             height: "55px",
                                             borderBottom: "1px solid black",
@@ -210,7 +230,7 @@ const GetCourses = () => {
             <div>
                 {/* <Pagination.Ellipsis /> */}
                 <Pagination
-                    style={{ marginLeft: "40%" }}
+                    style={{ marginLeft: "49%" }}
                 >
                     <Pagination.Prev onClick={prevPage} />
                     {

@@ -17,7 +17,7 @@ const EditCourse = () => {
     } = course
     let redirect = useNavigate();
     const { id } = useParams()
-    console.log(id);
+   // console.log(id);
 
     let getCategories = () => {
 
@@ -52,6 +52,8 @@ const EditCourse = () => {
         formData.append('Duration', Duration)
         formData.append('Category', Category._id ? Category._id : course.Category)
         formData.append('Image', imgRef.current.files[0] ? imgRef.current.files[0] : course.Image)
+        formData.append('CoursePriceType',priceType)
+        formData.append('Price',Price)
 
         // Display the key/value pairs
         // for (var pair of formData.entries()) {
@@ -77,7 +79,7 @@ const EditCourse = () => {
         setCourse({ ...course, [name]: value })
         // Category._id = e.target.value
         // setCategory(e.target.value)
-    }
+        }
     console.log(course);
 
     // console.log(Category);
@@ -85,6 +87,30 @@ const EditCourse = () => {
     const handleImg = (m) => {
         setImg(m.target.files[0])
     }
+
+    const [Price,setPrice] = useState(0)
+    const [priceType,setPriceType] = useState('Free')
+
+    const enableInput=(e)=>{
+        let inputField = document.getElementById('myInput')
+        setPrice(0)
+        setPriceType(e.target.value)
+        inputField.disabled = false
+        
+    }
+
+    const disableInput = (e)=>{
+        let inputField = document.getElementById('myInput')
+        setPrice(0)
+        setPriceType(e.target.value)
+        inputField.disabled = true
+        
+     }
+
+
+     const handlePrice=(e)=>{
+         setPrice(e.target.value)
+     }
 
     //    console.log(handleChange());
 
@@ -101,10 +127,12 @@ const EditCourse = () => {
 
     return (
         <>
-            <Form encType='multipart/form-data' onSubmit={handleSubmit}>
+            <Form
+            style={{width:"50%",border:"ridge",marginLeft:"30%",borderRadius:"20px",background:"#F8F6E3",boxShadow:"1px 1px 12px 10px gray",height:"800px"}}
+             encType='multipart/form-data' onSubmit={handleSubmit}>
 
-                <select
-                    style={{ background: "#42A5F5", color: "white", border: "none", height: "40px", width: "260px", fontWeight: "500", marginLeft: "0%", borderRadius: "7px" }}
+                    <select             
+                    style={{ background: "#8B93FF", color: "white", border: "none", height: "40px", width: "260px", fontWeight: "500", borderRadius: "7px",marginLeft:"30%",marginTop:"5%"}}
                     // value={Category?.name}
                     // defaultValue={Category.name}
                     name='Category'
@@ -120,24 +148,73 @@ const EditCourse = () => {
                     }
                 </select>  <br /><br />
 
+                <div style={{marginLeft:"35%"}}> 
+
+                <p style={{fontWeight:"500"}}>Course Type:</p>
+
+                <input checked={priceType==='Free' ? true : false} value='Free' id='free' onClick={disableInput} name='CourseType' type='radio'/>
+                <label className='ms-1' htmlFor='free'>
+                    Free
+                    </label>  
+
+                <input checked={priceType==='Paid' ? true : false} value={priceType} id='paid' onClick={enableInput} name='CourseType' style={{marginLeft:"5%"}} type='radio'/>
+                    <label className='ms-1' htmlFor='paid'>
+                    Paid
+                    </label> <br/>
+
+                <input
+                onChange={handlePrice}
+                value={Price} id='myInput' placeholder='Enter Price' type='number'/>
+
+                  </div>
+
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Name</Form.Label>
-                    <Form.Control name='Description' onChange={handleChange} value={Description} type="text" />
+                    <Form.Label
+                    style={{marginLeft:"25%",fontWeight:"500",marginTop:"5%"}}
+                    >
+                        Name :
+                    </Form.Label>
+
+                    <Form.Control
+                     style={{marginLeft:"25%",background:"#F1EEDC",color:"#76453B"}}
+                     className='w-50' 
+                    name='Description'
+                     onChange={handleChange}
+                      value={Description} type="text" />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Lessons</Form.Label>
-                    <Form.Control name='Lessons' onChange={handleChange} value={Lessons} type="number" placeholder="Lessons" />
+                    <Form.Label
+                    style={{marginLeft:"25%",fontWeight:"500"}}
+                    >
+                        Lessons :
+                        </Form.Label>
+                    <Form.Control
+                     style={{marginLeft:"25%",background:"#F1EEDC",color:"#76453B"}}
+                     className='w-50'
+                      name='Lessons'
+                      onChange={handleChange} value={Lessons} type="number" placeholder="Lessons" />
                 </Form.Group>
 
                 <Form.Group className="mb-3">
-                    <Form.Label>Duration</Form.Label>
-                    <Form.Control name='Duration' onChange={handleChange} value={Duration} type="text" placeholder="Duration" />
+                     <Form.Label
+                     style={{marginLeft:"25%",fontWeight:"500"}}
+                     >
+                        Duration :
+                        </Form.Label>
+                    <Form.Control
+                     style={{marginLeft:"25%",background:"#F1EEDC",color:"#76453B"}}
+                     className='w-50'
+                     name='Duration'
+                      onChange={handleChange} value={Duration}
+                       type="text" placeholder="Duration" />
                 </Form.Group>
 
+                <div style={{marginLeft:"30%",marginTop:"5%"}}>
                 <input maxsize={1000} ref={imgRef} type='file' name='Image' onChange={handleImg} />
 
-                <img src={"http://localhost:5000/uploads/Images/" + Image} alt='' style={{ borderStyle: '', height: '130px', width: '170px', position: "absolute", left: "20px", top: "354px" }}
+                
+                <img src={"http://localhost:5000/uploads/Images/" + Image} alt='' style={{ borderStyle: '', height: '130px', width: '170px', position: "absolute", left: "630px", top: "534px" }}
                     className={img ? 'none' : 'block'}
                 />
                 <br />
@@ -145,9 +222,10 @@ const EditCourse = () => {
                 <img alt=''
                     src={img && window.URL.createObjectURL(img)}
                     style={{ height: '130px', width: '170px', marginLeft: "20px" }}
-                /> <br />
+                /> 
+                 </div>  <br />
 
-                <Button style={{ marginTop: "40px" }} variant="primary" type="submit">
+                 <Button style={{marginLeft:"35%",width:"150px"}} variant="primary" type="submit">
                     Submit
                 </Button>
             </Form>

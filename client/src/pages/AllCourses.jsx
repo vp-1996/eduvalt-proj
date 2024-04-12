@@ -6,6 +6,7 @@ import Card from 'react-bootstrap/Card';
 import Footer from '../components/Footer';
 import { CartContext } from '../../context/CartContext';
 import ScaleLoader from "react-spinners/ScaleLoader";
+import {useNavigate} from 'react-router-dom'
 
 const AllCourses = () => {
     const [categories, setCategories] = useState([])
@@ -15,6 +16,7 @@ const AllCourses = () => {
     // let [color, setColor] = useState("#1363DF");
     const [search, setSearch] = useState('')
     const { state, dispatch } = useContext(CartContext)
+    const redirect = useNavigate()
 
     let getAllCategories = () => {
 
@@ -58,7 +60,11 @@ const AllCourses = () => {
         //  console.log();
     }
 
-    
+     const viewCourse=(id)=>{
+         redirect('/ViewCourse/'+id)
+       // console.log(id);
+     }
+     
     // console.log(temp);
 
     const [arr, setArr] = useState([])
@@ -184,7 +190,9 @@ const AllCourses = () => {
                                                         {item.Category.name}
                                                     </Card.Title>
 
-                                                    <Card.Text style={{ color: "#082A5E", fontWeight: "600", fontFamily: "Lexend Deca,sans-serif", fontStyle: "normal", fontStretch: "100%", textAlign: "center" }}>
+                                                    <Card.Text
+                                                     onClick={()=>viewCourse(item._id)}
+                                                     style={{ color: "#082A5E", fontWeight: "600", fontFamily: "Lexend Deca,sans-serif", fontStyle: "normal", fontStretch: "100%", textAlign: "center" }}>
                                                         {item.Description}
                                                     </Card.Text>
 

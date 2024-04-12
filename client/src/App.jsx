@@ -25,6 +25,7 @@ import GetUsers from './pages/Admin/GetUsers';
 import SignUP from './pages/SignUP';
 import UserLogin from './pages/UserLogin';
 import Cart from './pages/Cart';
+import ViewCourse from './pages/ViewCourse';
 
 function App() {
 
@@ -55,6 +56,7 @@ function App() {
           <Route path='/Contact' element={<Contact />} />
           <Route path='/SignUP' element={<SignUP />} />
           <Route path='/UserLogin' element={<UserLogin />} />
+          <Route path='/ViewCourse/:id' element={<ViewCourse />} />
 
           <Route path='/Cart' element={<Cart />} />
 
