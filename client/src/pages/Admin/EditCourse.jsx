@@ -23,7 +23,7 @@ const EditCourse = () => {
 
         axios.get('http://localhost:5000/category/getAllCategories')
             .then((res) => {
-                console.log(res.data);
+                // console.log(res.data);
                 setCategories(res.data.data)
             })
 
@@ -35,7 +35,7 @@ const EditCourse = () => {
     const getSingleCourse = async () => {
         await axios.get('http://localhost:5000/course/getSingleCourse/' + id)
             .then((resp) => {
-                console.log(resp.data);
+                // console.log(resp.data);
                 setCourse(resp.data.data)
                 // setCategory(resp.data.Category)
             })
@@ -43,6 +43,8 @@ const EditCourse = () => {
                 console.log(err);
             })
     }
+
+   // console.log(course);
 
     let updateCourse = () => {
         let formData = new FormData()
@@ -63,7 +65,7 @@ const EditCourse = () => {
 
         axios.put('http://localhost:5000/course/updateCourse/' + id, formData)
             .then((res) => {
-                console.log(res.data.Data);
+                // console.log(res.data.Data);
                 redirect('/GetCourses')
                 alert('Updated Succesfullly')
             })
@@ -80,7 +82,7 @@ const EditCourse = () => {
         // Category._id = e.target.value
         // setCategory(e.target.value)
         }
-    console.log(course);
+   // console.log(course);
 
     // console.log(Category);
 
@@ -89,7 +91,14 @@ const EditCourse = () => {
     }
 
     const [Price,setPrice] = useState(0)
-    const [priceType,setPriceType] = useState('Free')
+    const [priceType,setPriceType] = useState(course?.CoursePriceType)
+
+      useEffect(()=>{
+        setPriceType(course?.CoursePriceType)
+        setPrice(course?.Price)
+      },[course?.CoursePriceType])
+
+    console.log(course?.CoursePriceType);
 
     const enableInput=(e)=>{
         let inputField = document.getElementById('myInput')
@@ -157,7 +166,7 @@ const EditCourse = () => {
                     Free
                     </label>  
 
-                <input checked={priceType==='Paid' ? true : false} value={priceType} id='paid' onClick={enableInput} name='CourseType' style={{marginLeft:"5%"}} type='radio'/>
+                <input checked={priceType==='Paid' ? true : false} value='Paid' id='paid' onClick={enableInput} name='CourseType' style={{marginLeft:"5%"}} type='radio'/>
                     <label className='ms-1' htmlFor='paid'>
                     Paid
                     </label> <br/>

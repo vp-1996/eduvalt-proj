@@ -49,7 +49,8 @@ const About = () => {
                     <img style={{ position: "absolute", left: "100px", top: "50px", borderRadius: "10px" }} src='/src/assets/about_img03.jpg' />
 
                 </div>
-            </div> <br /><br /><br /><br /><br /><br /><br /><br />
+            </div>
+             <br /><br /><br /><br /><br /><br /><br /><br />
 
             {/* //////////////////////////////////// */}
             <hr></hr><br />
@@ -91,18 +92,12 @@ const About = () => {
                     </Card.Body>
                 </Card>
 
-            </div> <br />
+            </div>
+             <br />
 
             {/* /////////////////////////////////// */}
 
-            {/* <div className='overlay'>
-                <div className='bgBanner'></div>
-                <h3
-                    style={{ fontSize: "50px", bottom: "100px", left: "100px", position: "absolute", color: "white", zIndex: "10", fontFamily: "Lexend Deca, sans-serif", fontWeight: "600" }}>
-                    About Us
-                </h3>
-            </div>
-            <br /><br />  <br /> */}
+            
 
             <div className='studentDivOverlay'>
                 <div className='studentDiv'></div>
