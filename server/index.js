@@ -9,6 +9,8 @@ import tutorRouter from './routes/tutor.route';
 import adminRouter from './routes/admin.route';
 import userRouter from './routes/user.route';
 import contactRouter from './routes/contact.route';
+import { addBlog } from './controller/blog.cont';
+import blogRouter from './routes/blog.route';
 
 dotenv.config();
 let app = express()
@@ -46,3 +48,4 @@ app.use('/tutor',tutorRouter)
 app.use('/admin',adminRouter)
 app.use('/user',userRouter)
 app.use ('/contact',contactRouter)
+app.use('/blog',blogRouter)

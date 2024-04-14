@@ -352,9 +352,32 @@
 
 .myDiv{
  border: ridge;
- height: 350px;
+ height: 390px;
  width: 100%;
  background-color: #041734; 
  margin-top: -1700px;
- 
+ position: relative;
+}
+
+.enrollButton{
+   margin-top: 5%;
+   margin-left: 29px;
+   width: 180px;  
+   height: 40px;
+   background-color: #1363DF;
+   color: white;
+   border: none;
+   border-radius: 5px;
+}
+
+.List{
+  list-style-type: none;
+}
+
+.List li{
+  margin-top: 8%;
+  font-weight: 400;
+  font-family: Hind,sans-serif;
+  color: #39557E;
+  size: 16px;
 }
