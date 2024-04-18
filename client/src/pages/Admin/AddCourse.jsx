@@ -2,12 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 // import productModel from '../../../server/model/product.model'
 import { useRef } from 'react'
-// import Button from '@mui/material/Button';
-// import Tooltip from '@mui/material/Tooltip';
 import { useLocation, useNavigate } from 'react-router-dom';
-// import BounceLoader from 'react-spinners/BounceLoader'
-// import BasicExample from '../Components/Navbar2';
-// import NavScrollExample from '../Components/NavBar';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
@@ -108,6 +103,8 @@ const AddCourse = () => {
     useEffect(() => {
         getCategories()
     }, [])
+
+    
 
     return (
         <div>

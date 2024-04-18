@@ -43,7 +43,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/eduvalt-db')
     })
 
 app.use('/category', CategoryRouter)
-app.use('/course',courseRouter)
+app.use('/course',courseRouter) 
 app.use('/tutor',tutorRouter)
 app.use('/admin',adminRouter)
 app.use('/user',userRouter)

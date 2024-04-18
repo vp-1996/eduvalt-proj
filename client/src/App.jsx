@@ -26,6 +26,10 @@ import SignUP from './pages/SignUP';
 import UserLogin from './pages/UserLogin';
 import Cart from './pages/Cart';
 import ViewCourse from './pages/ViewCourse';
+import CreateBlog from './pages/Admin/CreateBlog';
+import GetAllBlogs from './pages/Admin/GetAllBlogs';
+import EditBlog from './pages/Admin/EditBlog';
+import AllBlogs from './pages/AllBlogs';
 
 function App() {
 
@@ -37,6 +41,11 @@ function App() {
           <Route path='/RegisterAdmin' element={<RegisterAdmin />} />
           <Route path='/AdminLogin' element={<AdminLogin />} />
           <Route path='/GetUsers' element={<GetUsers />} />
+
+          <Route path='/CreateBlog' element={<CreateBlog />} />
+          <Route path='/GetAllBlogs' element={<GetAllBlogs/>} />
+          <Route path='/EditBlog/:id' element={<EditBlog/>} /> 
+          <Route path='/AllBlogs' element={<AllBlogs/>} />   
 
           <Route path='/getAllCategories' element={<GetAllCategories />} />
           <Route path='/CreateCategory' element={<CreateCategory />} />

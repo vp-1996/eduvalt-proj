@@ -1,125 +1,122 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
+import AdminNav from '../../components/adminNav'
 import axios from 'axios';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import ListGroup from 'react-bootstrap/ListGroup';
 import Table from 'react-bootstrap/Table';
 import { Link, useNavigate } from 'react-router-dom';
 import Pagination from 'react-bootstrap/Pagination';
-import AdminNav from '../../components/adminNav';
 
-const GetCourses = () => {
-    const [course, setCourse] = useState([])
-    const [search, setSearch] = useState('')
-    const [currentPage, setCurrentPage] = useState(1)
-    let [path, setPath] = useState('')
-    let navigate = useNavigate()
+const GetAllBlogs = () => {
 
-    // Pagination  
-    const recordsPerPage = 4
-    const lastIndex = currentPage * recordsPerPage
-    const firstIndex = lastIndex - recordsPerPage
-    const records = course.slice(firstIndex, lastIndex)
-    const npage = Math.ceil(course.length / recordsPerPage)
-    const nums = [...Array(npage + 1).keys()].slice(1)
+  const [blog, setBlog] = useState([])
+  const [search, setSearch] = useState('')
+  const [currentPage, setCurrentPage] = useState(1)
+  let [path, setPath] = useState('')
+  let navigate = useNavigate()
 
-    let token = localStorage.getItem('AdminToken')
-    if (token === null) {
-        return alert('Login first to access this page ')
+  // Pagination  
+  const recordsPerPage = 4
+  const lastIndex = currentPage * recordsPerPage
+  const firstIndex = lastIndex - recordsPerPage
+  const records = blog.slice(firstIndex, lastIndex)
+  const npage = Math.ceil(blog.length / recordsPerPage)
+  const nums = [...Array(npage + 1).keys()].slice(1)
+
+  let token = localStorage.getItem('AdminToken')
+  if (token === null) {
+    return alert('Login first to access this page ')
+  }
+
+  let allBlogs = () => {
+    axios.get('http://localhost:5000/blog/GetAllBlogs')
+      .then((resp) => {
+        setBlog(resp.data.Data)
+        setPath(resp.data.path)
+        console.log(resp.data);
+      })
+
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
+  const nextPage = () => {
+    if (currentPage !== npage) {
+      setCurrentPage(currentPage + 1)
     }
+  }
 
-    let allCourses = () => {
-        axios.get('http://localhost:5000/course/GetAllCourses')
-            .then((resp) => {
-                setCourse(resp.data.Data)
-                setPath(resp.data.path)
-                console.log(resp.data);
-            })
-
-            .catch((err) => {
-                console.log(err);
-            })
+  const prevPage = () => {
+    if (currentPage !== 1) {
+      setCurrentPage(currentPage - 1)
     }
+  }
 
-    const nextPage = () => {
-        if (currentPage !== npage) {
-            setCurrentPage(currentPage + npage)
-        }
+  const changeCurrPage = (id) => {
+    setCurrentPage(id)
+  }
+
+  let deleteBlog = (blogID) => {
+
+    if (window.confirm('Are You Sure You Want To Delete This ?')) {
+
+      axios.delete('http://localhost:5000/blog/DeleteBlog/' + blogID)
+        .then(() => {
+          console.log('Deleted Sucessfully');
+          allBlogs()
+        })
+
+        .catch((err) => {
+          console.log('Error while deleting');
+          console.log(err);
+        })
     }
+  }
 
-    const prevPage = () => {
-        if (currentPage !== 1) {
-            setCurrentPage(currentPage - 1)
-        }
-    }
+  let editButton = (id) => {
+    navigate('/EditBlog/' + id)
+   }
 
-    const changeCurrPage = (id) => {
-        setCurrentPage(id)
-    }
+  useEffect(() => {
+    allBlogs()
+  }, [])
 
-    let deleteCourse = (courseID) => {
+  return (
+    <>
+      <AdminNav />
 
-        if (window.confirm('Are You Sure You Want To Delete This ?')) {
+      <br />
 
-            axios.delete('http://localhost:5000/course/deleteCourse/' + courseID)
-                .then(() => {
-                    console.log('Deleted Sucessfully');
-                    allCourses()
-                })
+    <div
+    style={{ fontSize: "20px", width: "65%", height: "40px", textAlign: "center", marginLeft: "20%", backgroundColor: "#9AD0C2", color: "whitesmoke", fontWeight: "700",borderRadius:"10px",wordSpacing:"10px",letterSpacing:"5px"}} 
+>
+    <p>
+        ALL BLOGS
+    </p>
+   </div>
 
-                .catch((err) => {
-                    console.log('Error while deleting');
-                })
-        }
-    }
+   <br />
 
-    let editButton = (id) => {
-        navigate('/EditCourse/' + id)
-    }
-
-
-    useEffect(() => {
-        allCourses()
-    }, [])
-
-    return (
-        <>
-            <AdminNav />
-            <br />
-
-            <div
-                style={{ fontSize: "20px", width: "65%", height: "40px", textAlign: "center", marginLeft: "20%", backgroundColor: "#9AD0C2", color: "whitesmoke", fontWeight: "700", letterSpacing: "2px" }}
-            >
-                <p>
-                    ALL COURSES
-                </p>
-            </div>
-
-            <br />
-
-            <Table style={{ width: "100%", marginLeft: "17%", height: "200px" }} bordered>
+   <Table style={{ width: "100%", marginLeft: "23%", height: "200px" }} bordered>
                 <thead>
                     {/* <tr> */}
                     <tbody>
                         <th style={{ borderBottom: "1px solid black", width: "200px", textAlign: "center", background: "#D1BB9E", color: "white" }}>
                             Category
                         </th>
+
                         <th style={{ borderBottom: "1px solid black", background: "#D1BB9E", color: "white" }}>
-                            Description
+                            Title
                         </th>
+
                         <th style={{ borderBottom: "1px solid black", background: "#D1BB9E", color: "white" }}>
-                            Lessons
+                            Comments
                         </th>
-                        <th style={{ borderBottom: "1px solid black", background: "#D1BB9E", color: "white" }}>
-                            Course Type
-                        </th>
-                        <th style={{ borderBottom: "1px solid black", background: "#D1BB9E", color: "white" }}>
-                            Duration
-                        </th>
+                    
+                       
                         <th style={{ borderBottom: "1px solid black", width: "150px", textAlign: "center", background: "#D1BB9E", color: "white" }}>
                             Image
                         </th>
+
                         <th style={{ borderBottom: "1px solid black", width: "150px", textAlign: "center", background: "#D1BB9E", color: "white" }}>
                             Delete
                         </th>
@@ -127,6 +124,7 @@ const GetCourses = () => {
                         <th style={{ width: "100px", textAlign: "center", borderBottom: "1px solid black", background: "#D1BB9E", color: "white" }}>
                             Edit
                         </th>
+
 
                         {
                             records.map((i, k) => (
@@ -151,10 +149,11 @@ const GetCourses = () => {
                                             fontSize: "13px"
                                         }}
                                         >
-                                            {i.Description}
+                                            {i.Title}
                                         </td>
 
-                                        <td style={{
+                                        <td
+                                            style={{
                                             height: "55px",
                                             borderBottom: "1px solid black",
                                             fontFamily: "'Tilt Neon', sans-serif",
@@ -162,28 +161,7 @@ const GetCourses = () => {
                                             textAlign: "center"
                                         }}
                                         >
-                                            {i.Lessons}
-                                        </td>
-
-                                        <td style={{
-                                            height: "55px",
-                                            borderBottom: "1px solid black",
-                                            fontFamily: "'Tilt Neon', sans-serif",
-                                            fontSize: "14px",
-                                            textAlign: "center"
-                                        }}
-                                        >
-                                            {i.CoursePriceType}
-                                        </td>
-
-                                        <td style={{
-                                            height: "55px",
-                                            borderBottom: "1px solid black",
-                                            fontFamily: "'Tilt Neon', sans-serif",
-                                            fontSize: "14px"
-                                        }}
-                                        >
-                                            {i.Duration}
+                                            {i.Comments}
                                         </td>
 
                                         <td style={{
@@ -201,7 +179,7 @@ const GetCourses = () => {
                                             borderBottom: "1px solid black"
                                         }}>
                                             <button
-                                                onClick={() => deleteCourse(i._id)}
+                                                onClick={() => deleteBlog(i._id)}
                                                 style={{ border: "none", borderRadius: "15px", background: "white" }}
                                             >
                                                 <img
@@ -244,8 +222,9 @@ const GetCourses = () => {
                 </Pagination>
                 <br />
             </div>
-        </>
-    )
+
+    </>
+  )
 }
 
-export default GetCourses
+export default GetAllBlogs

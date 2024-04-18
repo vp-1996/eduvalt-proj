@@ -45,7 +45,7 @@ export const addBlog = (req, res) => {
                 })
                 console.log(blogData);
 
-                let saveCourse = blogData.save()
+                let saveBlog = blogData.save()
 
                 if (blogData) {
                     res.status(201).json({
@@ -92,4 +92,112 @@ export const getAllBlogs=async(req,res)=>{
  
   }
 
-  
+   /////////// Delete////////////////////
+
+   export const deleteBlog=async(req,res)=>{
+
+   try {
+
+    let blogId = req.params.blog_id
+
+     let blogData = await blogModel.findOne({_id:blogId})
+     let deleteBlog = await blogModel.deleteOne({_id:blogId})
+
+     if (deleteBlog.acknowledged) {
+        if (fs.existsSync('./uploads/Images/' + blogData.Image)) {
+            fs.unlinkSync('./uploads/Images/' + blogData.Image)
+        }
+
+        res.status(200).json({
+            message: "Blog Deleted Sucessfully"
+        })
+     }
+    
+   } catch (error) {
+    res.status(400).json({
+        message: error.message
+    })
+   }
+   }
+
+  //////////Get Single blog /////////////////
+
+  export const getSingleBlog = async(req,res)=>{
+
+    try {
+        let blogID = req.params.blog_id
+
+        let data = await blogModel.findOne({ _id:blogID }).populate('Category')
+
+        if (data) {
+            res.status(200).json({
+                success: true,
+                data: data,
+                message: "Single Blog Data",
+                path: 'http://localhost:5000/uploads/Images/'
+            })
+        }
+    } 
+ 
+ catch (error) {
+    res.status(400).json({
+        message: error.message
+    })
+ }
+
+}
+
+      //////////////Edit Blog/////////////
+
+
+    export const updateBlog = (req,res)=>{
+
+    try {
+        //  const {category, description, lessons, duration } = req.body
+
+        let imageStore = multer({ storage: storage }).single('Image')
+        imageStore(req, res, async (err) => {       
+            if (err) {
+                return res.status(400).json({
+                    message: err.message
+                })
+            }
+            // console.log("file",req.body.file);
+
+            let blogID = req.params.blog_id
+            let { Category, Title, Comments} = req.body
+
+            let oldData = await blogModel.findOne({ _id:blogID })
+            let pic = oldData.Image
+            if (req?.file?.filename) {
+                pic = req.file.filename
+                if (fs.existsSync('./uploads/Images/' + oldData.Image)) {
+                    fs.unlinkSync('./uploads/Images/' + oldData.Image)
+                }
+            }
+
+            let editBlog = await blogModel.updateOne({ _id: blogID }, { $set: { Category: Category, Title:Title, Comments: Comments, Image:pic} })
+
+            if (editBlog.acknowledged) {
+                res.status(200).json({
+                    message: 'Update Sucessfull',
+                    path: 'http://localhost:5000/uploads/Images/'
+                })
+            }
+
+            else {
+                res.status(400).json({
+                    message: 'Error in Updating'
+                })
+            }
+
+        })
+
+    }
+
+    catch(error){
+        res.status(400).json({
+            message: error.message
+        })
+    }
+    }

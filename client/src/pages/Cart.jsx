@@ -8,7 +8,7 @@ import Footer from '../components/Footer';
 const Cart = () => {
 
     let { state, dispatch } = useContext(CartContext)
-    console.log(state);
+   // console.log(state);
 
     localStorage.getItem('CartItems')
 
@@ -32,7 +32,7 @@ const Cart = () => {
                         <th >Image</th>
                         <th>Course Name</th>
                         <th>Lessons</th>
-                        <th>Duration</th>
+                        <th>Price</th>
                     </tr>
                 </thead>
                 <tbody >
@@ -55,7 +55,7 @@ const Cart = () => {
                                     </td>
 
                                     <td style={{ paddingTop: "3%" }}>
-                                        {x.Duration}
+                                        {'₹ '+x.Price}
                                     </td>
                                 </tr>
 

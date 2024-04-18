@@ -82,9 +82,7 @@ const EditCourse = () => {
         // Category._id = e.target.value
         // setCategory(e.target.value)
         }
-   // console.log(course);
 
-    // console.log(Category);
 
     const handleImg = (m) => {
         setImg(m.target.files[0])

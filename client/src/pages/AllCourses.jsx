@@ -7,6 +7,9 @@ import Footer from '../components/Footer';
 import { CartContext } from '../../context/CartContext';
 import ScaleLoader from "react-spinners/ScaleLoader";
 import {useNavigate} from 'react-router-dom'
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Toast from 'react-bootstrap/Toast';
 
 const AllCourses = () => {
     const [categories, setCategories] = useState([])
@@ -17,12 +20,12 @@ const AllCourses = () => {
     const [search, setSearch] = useState('')
     const { state, dispatch } = useContext(CartContext)
     const redirect = useNavigate()
+    const [show, setShow] = useState(true);
 
     let getAllCategories = () => {
 
         axios.get('http://localhost:5000/category/getAllCategories')
             .then((resp) => {
-
                 // console.log(resp.data);
                 setCategories(resp.data.data)
 
@@ -49,9 +52,20 @@ const AllCourses = () => {
         setSearch(e.target.value)
     }
 
+     let token = localStorage.getItem('token')
+    //   if (token === null) {
+    // return alert('Login first to access this page ')
+    //   }
+        
+
+
     let AddToCart = (item) => {
         console.log(item);
-        const add =  localStorage.setItem('CartItems', item)
+          if (token === null) {
+        return alert('Login To Proceed')
+          }
+
+        const add = localStorage.setItem('CartItems', item)
         dispatch({
             add,
             type: 'ADDTOCART',
@@ -59,6 +73,8 @@ const AllCourses = () => {
         })
         //  console.log();
     }
+
+    
 
      const viewCourse=(id)=>{
          redirect('/ViewCourse/'+id)
@@ -79,9 +95,7 @@ const AllCourses = () => {
         else {
             setArr(arr.filter(i => i !== value))
         }
-
-
-    }
+        }
     // console.log(course);
     // console.log(arr);
 
@@ -98,6 +112,10 @@ const AllCourses = () => {
             //  console.log(filteredCourses);
         }
     }, [arr]);
+
+    let enroll=()=>{
+        
+    }
 
 
     useEffect(() => {
@@ -127,8 +145,10 @@ const AllCourses = () => {
                 spellCheck={false}
             />
 
+                      
 
             <div className='container-fluid mt-5'>
+                
 
                 <div className='main row d-flex'>
 
@@ -181,7 +201,9 @@ const AllCourses = () => {
                             value='Free'
                             checked={arr.includes('Free')}
                             onChange={handleChange} type='checkbox'/>
-                         <label className='ms-1'>Free</label> 
+                           <label className='ms-1'>
+                            Free
+                            </label> 
                          </p>
 
                         </div>
@@ -204,17 +226,17 @@ const AllCourses = () => {
                                     :
                                     searchedCourses.map((item, k) => (
                                                <>
-
                                                <Card
                                                 className='mx-3 mb-4'
                                                 style={{ width: '18rem', height: "30rem" }}>
                                                     
                                                 <div className='position-relative imgDiv'>  
-                                                <Card.Img style={{ width: "240px", height: "181px", paddingLeft: "8%", borderRadius: "5px", marginTop: "2%" }} variant="top" src={'http://localhost:5000/uploads/Images/' + item.Image} />
+                                                <Card.Img style={{ width: "260px", height: "181px", paddingLeft: "8%", borderRadius: "5px", marginTop: "2%" }} variant="top" src={'http://localhost:5000/uploads/Images/' + item.Image} />
                                                 
                                                 <img
-                                                onClick={()=>viewCourse(item._id)}
-                                                 className='eyeButton'                       src='/src/assets/eye.png'/>
+                                                 onClick={()=>viewCourse(item._id)}
+                                                 className='eyeButton'                 src='/src/assets/eye.png'
+                                                 />
                                               
                                                 </div>
 
@@ -246,7 +268,9 @@ const AllCourses = () => {
                                                 <button
                                                  style={{border:"none",color:"#1679AB",fontSize:"18px",fontWeight:"600",fontFamily:"Lexend Deca,sans-serif",width:"100px",borderRadius:"100px",marginBottom:"30px",marginLeft:"70px"}}
                                                 >
-                                                {item.CoursePriceType==='Paid'?'₹'+ item.Price:'Free'}
+                                                {
+                                                item.CoursePriceType==='Paid'?'₹'+ item.Price:'Free'
+                                                }
                                                     
                                                 </button>
 
@@ -254,12 +278,25 @@ const AllCourses = () => {
                                                     {item.CoursePriceType==='Paid'?item.Price:''}
                                                 </p> */}
 
-                                                <button
+                                                 {
+                                                    item.CoursePriceType==='Paid'?
+                                                    <button
                                                     className='AddToCartButton'
                                                     onClick={() => AddToCart(item)}
                                                 >
                                                     Add To Cart
                                                 </button>
+                                                :
+                                                <button
+                                                 
+                                                className='AddToCartButton'
+                                                  >
+                                                Enroll For Free
+                                                 </button>
+                                                 
+                                                 }
+
+                                              
 
                                             </Card>
 

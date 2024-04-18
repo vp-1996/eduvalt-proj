@@ -30,7 +30,7 @@ function BasicExample() {
             {
                 !auth ?
                     (
-                        <Navbar style={{ marginBottom: "125%", }} bg='dark' expand="lg" className="bg-body-tertiary">
+                        <Navbar style={{ marginBottom: "05%", }} bg='dark' expand="lg" className="bg-body-tertiary">
                             <Container style={{ background: "#F8F9FA", marginRight: "190px" }}>
                                 <Navbar.Brand href="/">
                                     <img style={{ width: "150px", marginLeft: "100px" }}
@@ -49,9 +49,15 @@ function BasicExample() {
                                         <Nav.Link id='NavLink' className='navs' href="/About">
                                             About
                                         </Nav.Link>
+
                                         <Nav.Link id='NavLink' className='navs' href="/Contact">
                                             Contact
                                         </Nav.Link>
+
+                                        <Nav.Link id='NavLink' className='navs' href="/AllBlogs">
+                                        Blogs
+                                        </Nav.Link>
+
                                         <Nav.Link id='NavLink' className='navs' href='/UserLogin'>
                                             <button style={{ borderRadius: "50px", border: "none", background: "#1363DF", color: "white", width: "70px", fontWeight: "600" }}>
                                                 Login
@@ -70,7 +76,7 @@ function BasicExample() {
                     )
                     :
                     (
-                        <Navbar style={{ marginBottom: "125%", }} bg='dark' expand="lg" className="bg-body-tertiary">
+                        <Navbar style={{ marginBottom: "5%", }} bg='dark' expand="lg" className="bg-body-tertiary">
                             <Container style={{ background: "#F8F9FA", marginRight: "100px" }}>
                                 <Navbar.Brand href="/">
                                     <img style={{ width: "150px", marginLeft: "100px" }}
@@ -95,6 +101,11 @@ function BasicExample() {
                                         <Nav.Link id='NavLink' className='navs' href="/Contact">
                                             Contact
                                             </Nav.Link>
+                                            
+                                        <Nav.Link id='NavLink' className='navs' href="/AllBlogs">
+                                            Blogs
+                                        </Nav.Link>
+
                                         <Nav.Link id='NavLink' className='navs'>
                                             <button onClick={handleLogout} style={{ borderRadius: "50px", border: "none", background: "#1363DF", color: "white" }}>
                                                 Logout

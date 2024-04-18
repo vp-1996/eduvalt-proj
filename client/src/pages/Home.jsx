@@ -12,11 +12,14 @@ import SimpleSlider from '../components/SimpleSlider';
 
 const Home = () => {
   const [tutor, setTutor] = useState([])
+  const [blog,setBlog] = useState([])
+
+  let slicedBlogs = blog.slice(0,3)
 
   const getAllTutors = () => {
     axios.get('http://localhost:5000/tutor/getAllTutors')
       .then((res) => {
-        console.log(res.data);
+      //    console.log(res.data);
         setTutor(res.data.data)
       })
       .catch((err) => {
@@ -24,9 +27,24 @@ const Home = () => {
       })
   }
 
+  let getAllBlogs = () =>{
+
+     axios.get('http://localhost:5000/blog/GetAllBlogs')
+     .then((res)=>{
+      console.log(res.data);
+      setBlog(res.data.Data)
+     })
+
+     .catch((err)=>{
+           console.log(err);
+     })
+
+  }
+
 
   useEffect(() => {
     getAllTutors()
+    getAllBlogs()
   }, [])
 
   return (
@@ -266,7 +284,7 @@ const Home = () => {
         </div>
       </div>
 
-      {/* <ControlledCarousel/> */}<br />
+         <br />
       <hr></hr> <br />
       {/* ////////////////////////// */}
 
@@ -306,7 +324,9 @@ const Home = () => {
       </div > <br />
       <hr></hr><br />
 
+
       {/* /////////////////////////////// */}
+
 
       <h2
         style={{ color: "#082A5E", fontFamily: "Lexend Deca,sans-serif", fontSize: "36px", fontWeight: "600", textAlign: "center" }}
@@ -315,48 +335,38 @@ const Home = () => {
       </h2> <br />
 
       <div className='row ms-5'>
-        <Card style={{ width: '360px', border: "none" }}>
-          <Card.Img style={{ height: "200px", width: "100%" }} variant="top" src="/src/assets/blog_standard01.jpg" />
-          <Card.Body style={{ border: "1px solid #DAE0E7" }}>
-            <Card.Title>
-              <a style={{ fontFamily: "Lexend Deca,sans-serif", fontSize: "24px", color: "#082A5E", fontWeight: "600" }}>when aeunkno printer<br /> took galley of scrambled</a>
-            </Card.Title>
 
-            <Button style={{ background: "white", border: "none", color: "black" }}>
-              By Eduvalt | June 22, 2023
-            </Button>
-          </Card.Body>
-        </Card>
+               {
+                slicedBlogs.map((i,k)=>(
+                  
+                  <Card style={{ width: '360px',marginLeft:"40px" }}>
+                  <Card.Img style={{ height: "200px", width: "100%" }} variant="top" src={"http://localhost:5000/uploads/Images/"+i.Image} />
+                  <Card.Body style={{}}>
 
-        <Card style={{ width: '360px', marginLeft: "5%", border: "none" }}>
-          <Card.Img style={{ height: "200px" }} variant="top" src="/src/assets/blog_standard02.jpg" />
-          <Card.Body style={{ border: "1px solid #DAE0E7" }}>
-            <Card.Title>
-              <a style={{ fontFamily: "Lexend Deca,sans-serif", fontSize: "24px", color: "#082A5E", fontWeight: "600" }}>
-                Full Stack GraphQL With<br /> Next.js And Vercel
-              </a>
-            </Card.Title>
+                    <hr></hr>
 
-            <Button style={{ background: "white", border: "none", color: "black" }}>
-              By Eduvalt | August 15, 2021
-            </Button>
-          </Card.Body>
-        </Card>
+                      <button
+                      style={{border:"none",background:"#E7EFFC",color:"#1379E7",borderRadius:"20px",fontSize:"13px",height:"30px",width:"100px",fontWeight:"500", marginLeft:"35%" }}
+                      >
+                        {i.Category.name}
+                      </button>
 
-        <Card style={{ width: '360px', marginLeft: "5%", border: "none" }}>
-          <Card.Img style={{ height: "200px" }} variant="top" src="/src/assets/blog_standard03.jpg" />
-          <Card.Body style={{ border: "1px solid #DAE0E7" }}>
-            <Card.Title>
-              <a style={{ fontFamily: "Lexend Deca,sans-serif", fontSize: "24px", color: "#082A5E", fontWeight: "600" }}>
-                What Leonardo Teach us<br /> About Web Design
-              </a>
-            </Card.Title>
+                    <Card.Title className='mt-3' style={{textAlign:"center"}}>
+                      <a style={{ fontFamily: "Lexend Deca,sans-serif", fontSize: "24px", color: "#082A5E", fontWeight: "600",marginLeft:"20px"}}>
+                        {i.Title}
+                        </a>
+                    </Card.Title>
+        
+                    <Button style={{ background: "white", border: "none", color: "black",marginLeft:"17%",textAlign:"center"}}>
+                      By Eduvalt | June 22, 2023
+                    </Button>
+                  </Card.Body>
+                </Card>
 
-            <Button style={{ background: "white", border: "none", color: "black" }}>
-              By Eduvalt | August 15, 2021
-            </Button>
-          </Card.Body>
-        </Card>
+                ))
+               }
+
+       
 
       </div> <br /><br /><br /><br />
 
