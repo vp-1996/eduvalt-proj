@@ -70,14 +70,20 @@ const AddTutor = () => {
             <br />
 
 
-            <Form encType='multipart/form-data' onSubmit={handleSubmit}>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Control
-                        name='name'
-                        value={name}
-                        onChange={handleChange}
-                        type="text"
-                        placeholder="Enter Tutor Name"
+            <Form
+              style={{width:"50%",border:"ridge",marginLeft:"30%",borderRadius:"20px",background:"#F8F6E3",boxShadow:"1px 1px 12px 10px gray",height:"700px",marginTop:"5%"}}
+             encType='multipart/form-data' 
+             onSubmit={handleSubmit}
+             >
+                <Form.Group className="mb-3 mt-5" controlId="formBasicEmail">
+                         <Form.Control
+                         style={{marginLeft:"25%",background:"#F1EEDC",color:"#76453B"}}
+                         className='w-50' 
+                         name='name'
+                         value={name}
+                         onChange={handleChange}
+                         type="text"
+                         placeholder="Enter Tutor Name"
                     />
 
                 </Form.Group>
@@ -85,6 +91,8 @@ const AddTutor = () => {
                 <Form.Group className="mb-3" controlId="formBasicPassword">
 
                     <Form.Control
+                        style={{marginLeft:"25%",background:"#F1EEDC",color:"#76453B"}}
+                        className='w-50'   
                         name='profession'
                         value={profession}
                         onChange={handleChange}
@@ -93,15 +101,18 @@ const AddTutor = () => {
                     />
                 </Form.Group>
 
-                <input maxsize={1000} ref={imgRef} type='file' name='Image' onChange={handleImg} />
+                <div style={{marginLeft:"30%",marginTop:"5%"}}>
+                <input maxsize={1000} ref={imgRef} type='file' name='Image' onChange={handleImg} /> <br/> <br/>
 
                 <img alt=''
                     src={img && window.URL.createObjectURL(img)}
                     style={{ height: '130px', width: '170px', marginLeft: "20px" }}
                 /> <br />
+                        </div>
+                 <br />
 
 
-                <Button variant="primary" type="submit">
+                 <Button style={{marginLeft:"35%",width:"150px"}} variant="primary" type="submit">
                     Submit
                 </Button>
             </Form>

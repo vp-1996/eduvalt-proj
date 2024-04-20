@@ -87,7 +87,7 @@ const GetAllBlogs = () => {
       <br />
 
     <div
-    style={{ fontSize: "20px", width: "65%", height: "40px", textAlign: "center", marginLeft: "20%", backgroundColor: "#9AD0C2", color: "whitesmoke", fontWeight: "700",borderRadius:"10px",wordSpacing:"10px",letterSpacing:"5px"}} 
+    style={{ fontSize: "20px", width: "65%", height: "40px", textAlign: "center", marginLeft: "24%", backgroundColor: "#9AD0C2", color: "whitesmoke", fontWeight: "700",borderRadius:"10px",wordSpacing:"10px",letterSpacing:"5px"}} 
 >
     <p>
         ALL BLOGS
@@ -104,7 +104,7 @@ const GetAllBlogs = () => {
                             Category
                         </th>
 
-                        <th style={{ borderBottom: "1px solid black", background: "#D1BB9E", color: "white" }}>
+                        <th style={{ borderBottom: "1px solid black", background: "#D1BB9E", color: "white",textAlign:"center"}}>
                             Title
                         </th>
 

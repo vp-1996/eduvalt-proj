@@ -42,7 +42,7 @@ const GetAllCategories = () => {
 
     const nextPage = () => {
         if (currentPage !== npage) {
-            setCurrentPage(currentPage + npage)
+            setCurrentPage(currentPage + 1)
         }
     }
 
@@ -98,7 +98,7 @@ const GetAllCategories = () => {
 
             <br />
 
-            <Table style={{ width: "100%", marginLeft: "25%", height: "200px" }} bordered hover variant="">
+            <Table style={{ width: "100%", marginLeft: "39%", height: "200px" }} bordered hover variant="">
                 <thead>
                     {/* <tr> */}
                     <tbody>
@@ -162,7 +162,7 @@ const GetAllCategories = () => {
             <div>
                 {/* <Pagination.Ellipsis /> */}
                 <Pagination
-                    style={{ marginLeft: "40%" }}
+                    style={{ marginLeft: "48%" }}
                 >
                     <Pagination.Prev onClick={prevPage} />
                     {

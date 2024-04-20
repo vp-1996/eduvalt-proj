@@ -37,22 +37,6 @@ const CourseByCat = () => {
             })
     }
 
-    // const getCourseByCat = (id) => {
-    //     // console.log(id); 
-
-    //     // axios.get('http://localhost:5000/course/getCourseByCategory/'+id )
-    //     //     .then((resp) => {
-    //     //         console.log(resp.data);
-    //     //         setCourse(resp.data.course)
-    //     //         // setCourse(resp.data.category)
-    //     //         setCat(resp.data.category)
-    //     //     })
-
-    //     //     .catch((err) => {
-    //     //         console.log(err);
-    //     //     })
-
-    // }
 
     let handleAll = () => [
         // setCourse(resp.data.Data)
@@ -120,7 +104,7 @@ const CourseByCat = () => {
                         <>
                             <Card style={{ width: '19rem', marginTop: "1%", marginLeft: "3%", height: "24rem" }}>
 
-                                <Card.Img style={{ width: "245px", height: "181px", paddingLeft: "8%", borderRadius: "5px", marginTop: "2%" }} variant="top" src={'http://localhost:5000/uploads/Images/' + item.Image} />
+                                <Card.Img style={{ width: "295px", height: "181px", paddingRight: "5.2%", borderRadius: "5px", marginTop: "2%" }} variant="top" src={'http://localhost:5000/uploads/Images/' + item.Image} />
                                 <Card.Body>
 
                                     <Card.Title

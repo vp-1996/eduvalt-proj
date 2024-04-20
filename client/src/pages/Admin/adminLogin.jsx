@@ -51,7 +51,7 @@ const AdminLogin = () => {
     }
 
     return (
-        <div>
+        <div style={{width:"100%",height:"100%",background:"#F3F4F7"}}>
 
             {/* <video height={'350px'} width={'270px'} muted loop autoPlay src='/src/assets/b8bd4e4273cceae2889d9d259b04f732.mp4'></video> */}
 
@@ -61,7 +61,9 @@ const AdminLogin = () => {
             {/* //////////////////////////////////// */}
 
 
-            <h3 style={{ fontFamily: '"Mona Sans", "Helvetica Neue", Helvetica, Arial, sans-serif', fontSize: "24px", fontWeight: "700", textAlign: "center", marginTop: "5%" }}>Admin Login</h3>
+            <h3 style={{ fontFamily: '"Mona Sans", "Helvetica Neue", Helvetica, Arial, sans-serif', fontSize: "24px", fontWeight: "700", textAlign: "center", marginTop: "7%",paddingTop:"3%"}}>
+                Enter Admin Credentials
+                </h3>
             <br />
             {/* <video height={'300px'} loop autoPlay src='/src/assets/b8bd4e4273cceae2889d9d259b04f732.mp4'></video> */}
 

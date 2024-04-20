@@ -37,10 +37,12 @@ const ViewCourse = () => {
                {course.Category?.name}
             </button>
 
-            <h3 
+            <h3   
             style={{color:"white",fontFamily:"Lexend Deca,sans-serif",fontSize:"36px",fontWeight:"600",fontStretch:"100%",marginLeft:"100px",marginTop:"30px"}}
             >
-            {course.Description+' Illustrator for Graphic Design'}
+            {
+            course.Description +' Illustrator for Graphic Design'
+            }
            </h3>
 
            <p style={{color:"#B2BDCD",marginLeft:"07.5%"}}>
@@ -48,21 +50,20 @@ const ViewCourse = () => {
            </p>
 
            <div>
-
            <img
             style={{height:"41px",width:"41px",borderRadius:"100%",marginLeft:"7%"}}
             src='/src/assets/author_img-150x150.png'
             />
 
-            <span>
+            <span style={{paddingRight:"6%"}}>
 
-            <img style={{marginLeft:"5%"}} src='/src/assets/document.png'/>
+             <img style={{marginLeft:"5%"}} src='/src/assets/document.png'/>
              <span style={{color:"white",opacity:"55%"}} className='ms-1'>
              {course.Lessons}
              </span>
 
              <img className='ms-4' src='/src/assets/clock.png'/>
-             <span style={{color:"white",marginLeft:"0.4%",opacity:"55%"}}>
+             <span style={{color:"white",marginLeft:"0.6",opacity:"55%"}}>
              {course.Duration}
              </span>
                

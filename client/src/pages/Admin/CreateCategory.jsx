@@ -53,7 +53,7 @@ const CreateCategory = () => {
             <br />
 
             <div
-                style={{ fontSize: "20px", width: "50%", height: "40px", textAlign: "center", marginLeft: "30%", backgroundColor: "#9AD0C2", color: "whitesmoke", fontWeight: "700", letterSpacing: "2px" }}
+                style={{ fontSize: "20px", width: "50%", height: "40px", textAlign: "center", marginLeft: "30%", backgroundColor: "#9AD0C2", color: "whitesmoke", fontWeight: "700", letterSpacing: "2px",marginTop:"2%"}}
             >
                 <p>
                     ADD CATEGORY
@@ -63,7 +63,7 @@ const CreateCategory = () => {
             <form
                 encType="multipart/form-data"
                 onSubmit={handleSubmit}
-                style={{ marginLeft: "21%", marginTop: "5%" }}>
+                style={{ marginLeft: "45%", marginTop: "5%" }}>
 
                 <input
                     value={name}
@@ -71,11 +71,11 @@ const CreateCategory = () => {
                     onChange={handleChange}
                     name='name'
                     placeholder='Enter New Category... '
-                    style={{ width: "300px", height: "40px", background: "white", color: "black" }}
+                    style={{ width: "300px", height: "40px", background: "white", color: "black",borderRadius:"8px" }}
                 />
                 <br />
                 <button type='submit'
-                    style={{ marginTop: "2%", marginLeft: "0%", background: "#1976D2", width: "100px", height: "35px", color: "white", border: "none", borderRadius: "5px" }}
+                    style={{ marginTop: "2%", marginLeft: "12%", background: "#1976D2", width: "100px", height: "35px", color: "white", border: "none", borderRadius: "5px" }}
                 >
                     Submit
                 </button>

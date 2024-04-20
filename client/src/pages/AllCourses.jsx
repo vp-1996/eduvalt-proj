@@ -20,7 +20,7 @@ const AllCourses = () => {
     const [search, setSearch] = useState('')
     const { state, dispatch } = useContext(CartContext)
     const redirect = useNavigate()
-    const [show, setShow] = useState(true);
+    const [show, setShow] = useState(false);
 
     let getAllCategories = () => {
 
@@ -60,12 +60,13 @@ const AllCourses = () => {
 
 
     let AddToCart = (item) => {
-        console.log(item);
+      //  console.log(item);
           if (token === null) {
         return alert('Login To Proceed')
           }
 
-        const add = localStorage.setItem('CartItems', item)
+        setShow(true)
+        const add = localStorage.setItem('CartItems', item)       
         dispatch({
             add,
             type: 'ADDTOCART',
@@ -114,6 +115,8 @@ const AllCourses = () => {
     }, [arr]);
 
     let enroll=()=>{
+
+
         
     }
 
@@ -126,7 +129,32 @@ const AllCourses = () => {
 
     return (
         <>
-            <BasicExample />
+                                                       <BasicExample />
+
+                                                          <Row>
+                                                           <Col xs={4}>
+                                                           <Toast
+                                                            style={{ position:"fixed",top:"0",zIndex:"1000",right:"370px"}}
+                                                            onClose={() => setShow(false)}
+                                                            show={show} delay={2500}
+                                                            autohide={true}>
+                                                             <Toast.Header
+                                                                style={{ background: "#198754", color: "#AEB6B8" }}
+                                                              >
+
+                                                                <strong className="me-auto">
+                                                                    Hey ....
+                                                                </strong>
+                                                            </Toast.Header>
+                                                            <Toast.Body style={{ fontWeight: "500", background: "#198754", color: "white" }}>
+                                                                Added To Cart Sucessfully ! !
+                                                            </Toast.Body>
+                                                        </Toast>
+                                                    </Col>
+                                                </Row>
+                                        
+                                           
+
 
             <div className='overlay'>
                 <div className='bgBanner'></div>
@@ -228,10 +256,11 @@ const AllCourses = () => {
                                                <>
                                                <Card
                                                 className='mx-3 mb-4'
-                                                style={{ width: '18rem', height: "30rem" }}>
+                                                style={{ width: '18rem', height: "31rem" }}
+                                                >
                                                     
                                                 <div className='position-relative imgDiv'>  
-                                                <Card.Img style={{ width: "260px", height: "181px", paddingLeft: "8%", borderRadius: "5px", marginTop: "2%" }} variant="top" src={'http://localhost:5000/uploads/Images/' + item.Image} />
+                                                <Card.Img style={{ width: "260px", height: "181px", paddingLeft: "1%", borderRadius: "5px", marginTop: "2%" }} variant="top" src={'http://localhost:5000/uploads/Images/' + item.Image} />
                                                 
                                                 <img
                                                  onClick={()=>viewCourse(item._id)}
@@ -262,11 +291,11 @@ const AllCourses = () => {
                                                         {item.Lessons}
                                                     </Button>
                                                 </Card.Body>
-
-                                                {/* <img style={{width:"45px"}} src='/src/assets/stars.png'/> */}
-
+                                            
+                                               
+                                               
                                                 <button
-                                                 style={{border:"none",color:"#1679AB",fontSize:"18px",fontWeight:"600",fontFamily:"Lexend Deca,sans-serif",width:"100px",borderRadius:"100px",marginBottom:"30px",marginLeft:"70px"}}
+                                                 style={{border:"none",color:"#1679AB",fontSize:"18px",fontWeight:"600",fontFamily:"Lexend Deca,sans-serif",width:"100px",borderRadius:"100px",marginBottom:"30px", marginLeft:"70px"}}
                                                 >
                                                 {
                                                 item.CoursePriceType==='Paid'?'₹'+ item.Price:'Free'
@@ -274,30 +303,24 @@ const AllCourses = () => {
                                                     
                                                 </button>
 
-                                                {/* <p>
-                                                    {item.CoursePriceType==='Paid'?item.Price:''}
-                                                </p> */}
-
                                                  {
                                                     item.CoursePriceType==='Paid'?
                                                     <button
+                                                     style={{boxShadow:"1px 1px 2px 3px blue"}}
                                                     className='AddToCartButton'
                                                     onClick={() => AddToCart(item)}
                                                 >
                                                     Add To Cart
                                                 </button>
                                                 :
-                                                <button
-                                                 
+                                                <button     
+                                                style={{boxShadow:"1px 1px 2px 3px blue"}}                                        
                                                 className='AddToCartButton'
                                                   >
                                                 Enroll For Free
                                                  </button>
                                                  
-                                                 }
-
-                                              
-
+                                                 }                                 
                                             </Card>
 
                                         </>
