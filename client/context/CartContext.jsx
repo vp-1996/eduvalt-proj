@@ -20,7 +20,7 @@ const Context = ({ children }) => {
     cart: []
   }
 
-  let [state, dispatch] = useReducer(reducer, initialState)
+  let [state, dispatch] = useReducer(reducer , initialState)
 
   // useEffect(() => {
   //   localStorage.setItem('cartItems', JSON.stringify(state.cart))

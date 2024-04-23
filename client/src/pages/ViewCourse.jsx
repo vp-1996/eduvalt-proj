@@ -38,12 +38,11 @@ const ViewCourse = () => {
             </button>
 
             <h3   
-            style={{color:"white",fontFamily:"Lexend Deca,sans-serif",fontSize:"36px",fontWeight:"600",fontStretch:"100%",marginLeft:"100px",marginTop:"30px"}}
+            style={{color:"white",fontFamily:"Lexend Deca,sans-serif",fontSize:"36px",fontWeight:"600",fontStretch:"100%",marginLeft:"100px",marginTop:"30px",}}
             >
-            {
-            course.Description +' Illustrator for Graphic Design'
-            }
-           </h3>
+            <span style={{textDecoration:"underline"}} >{course.Description}</span>
+             ' Illustrator for Graphic Design'
+            </h3>
 
            <p style={{color:"#B2BDCD",marginLeft:"07.5%"}}>
             Learn How To Build The Perfect Diet & Meal Plan For Improved Health, Better Weight Loss And…

@@ -9,6 +9,7 @@ const AllBlogs = () => {
     const [categories, setCategories] = useState([])
     const [blog, setBlog] = useState([])
     const [temp, setTemp] = useState([])
+    const [sortBy, setSortBy] = useState('');
 
     let getAllCategories = () => {
 
@@ -21,7 +22,7 @@ const AllBlogs = () => {
             })
     }
 
-    const getAllBlogs = () => {
+       const getAllBlogs = () => {
         axios.get('http://localhost:5000/blog/GetAllBlogs')
             .then((resp) => {
                 // setLoading(true)
@@ -32,14 +33,34 @@ const AllBlogs = () => {
             })
           }
 
+        //   const sortedData = [...blog].sort((a,b)=>{
+        //     return sort === 'ATZ' ? a.Title-b.Title : b.Title-a.Title 
+        //   })
+
+
+          const handleSort=(e)=>{
+            setSortBy(e.target.value);
+            sortBlogs(e.target.value);
+              }
+
+              const sortBlogs = (sortBy) => {
+                let sortedBlogs = [...blog];
+                if (sortBy === 'AToZ') {
+                    sortedBlogs.sort((a, b) => a.Title.localeCompare(b.Title));
+                } else if (sortBy === 'ZToA') {
+                    sortedBlogs.sort((a, b) => b.Title.localeCompare(a.Title));
+                }
+                setBlog(sortedBlogs);
+                  };
+
           let handleClick = (catID) => {
             // getCourseByCat(catID)
             setBlog(temp.filter(item => item.Category.name === catID))
         }
 
-        useEffect(() => {
-            setBlog(temp.filter(item => item.Category.name === 'Marketing'))
-        }, [])
+        // useEffect(() => {
+        //     setBlog(temp.filter(item => item.Category.name === 'Marketing'))
+        // }, [])
     
 
 
@@ -53,7 +74,7 @@ const AllBlogs = () => {
 
             <BasicExample />
 
-
+            
             <div className='overlay'>
                 <div className='bgBanner'></div>
                 <h3
@@ -62,6 +83,14 @@ const AllBlogs = () => {
                 </h3>
             </div>
             <br /><br />
+
+            <select style={{width:"150px",height:"40px",background:"#E7EFFC",color:"#39557E",border:"0.5px solid #CDCFD5",fontFamily:"Hind,sans-serif",fontWeight:"400",fontSize:"14px",letterSpacing:"2px"}}
+             onChange={handleSort}
+              className='ms-5'>
+                <option>Sort</option>
+                <option value='AToZ'>Title (A - Z)</option>
+                <option value='ZToA'>Title (Z - A)</option>
+            </select>
 
             <div className='container-fluid mt-5'>
 
@@ -136,8 +165,13 @@ const AllBlogs = () => {
 
                         <div className='row h-100 align-items-center ms-5'>
                             {
+                              blog.length===0?
+                              <div style={{marginLeft:"55%"}}>
+                              <img style={{ width: "100px" }} src='/src/assets/not-found.png' />
+                               </div>
+                                   :
                                 
-                                    blog.map((item, k) => (
+                                         blog.map((item, k) => (
                                         <>
 
                                             <Card

@@ -76,12 +76,12 @@ const CourseByCat = () => {
                     <Navbar.Collapse style={{ marginLeft: "15%" }} id="basic-navbar-nav">
                         <Nav className="me-auto">
 
-                            <Nav.Link style={{ color: "#1363DF", fontFamily: "Hind,sans-serif", fontSize: "17px", fontWeight: "500", marginLeft: "0%", textDecoration: "none solid rgb(57, 85, 126)" }}
+                            <Nav.Link style={{ color: "black", fontFamily: "Hind,sans-serif", fontSize: "17px", fontWeight: "500", marginLeft: "0%", textDecoration: "none solid rgb(57, 85, 126)" }}
                                 onClick={handleAll}
                             >
                                 All Courses
                             </Nav.Link>
-                            {
+                               {
                                 cat.map((i) => (
                                     <>
                                         <Nav.Link

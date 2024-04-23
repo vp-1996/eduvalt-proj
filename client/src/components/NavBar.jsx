@@ -20,10 +20,13 @@ function BasicExample() {
     })
 
     const handleLogout = () => {
-        localStorage.removeItem('token')
-        localStorage.removeItem('id')
-        location.reload()
-    }
+        if (window.confirm('Are You Sure You Want To LogOut ?'))
+        {
+            localStorage.removeItem('token')
+            localStorage.removeItem('id')
+            location.reload()
+        }    
+        }
 
     return (
         <>
