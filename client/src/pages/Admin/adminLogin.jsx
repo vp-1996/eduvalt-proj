@@ -61,9 +61,13 @@ const AdminLogin = () => {
             {/* //////////////////////////////////// */}
 
 
-            <h3 style={{ fontFamily: '"Mona Sans", "Helvetica Neue", Helvetica, Arial, sans-serif', fontSize: "24px", fontWeight: "700", textAlign: "center", marginTop: "7%",paddingTop:"3%"}}>
+             <h3 style={{ fontFamily: '"Mona Sans", "Helvetica Neue", Helvetica, Arial, sans-serif', fontSize: "24px", fontWeight: "700", textAlign: "center", marginTop: "7%",paddingTop:"3%"}}>
                 Enter Admin Credentials
                 </h3>
+
+                <img style={{width:"60px",height:"60px",marginLeft:"47.9%"}} src='/src/assets/user.png'/>
+              <img />
+
             <br />
             {/* <video height={'300px'} loop autoPlay src='/src/assets/b8bd4e4273cceae2889d9d259b04f732.mp4'></video> */}
 
@@ -71,7 +75,7 @@ const AdminLogin = () => {
 
                 <label>Email</label> <br />
                 <input
-                    style={{ background: "white", color: "brown", fontWeight: "500", border: "2px solid #DAE0E7" }}
+                    style={{ background: "white", color: "brown", fontWeight: "500", border: "2px solid #DAE0E7",borderRadius:"100px",height:"40px",width:"300px" }}
                     name='email'
                     type='email'
                     onChange={handleChange}
@@ -80,18 +84,18 @@ const AdminLogin = () => {
 
                 <label>Password</label>  <br />
                 <input
-                    style={{ background: "white", color: "brown", fontWeight: "500", border: "2px solid #DAE0E7" }}
+                    style={{ background: "white", color: "brown", fontWeight: "500", border: "2px solid #DAE0E7",borderRadius:"100px",height:"40px",width:"300px"}}
                     name='password'
                     type='password'
                     onChange={handleChange}
                     value={password}
                 /> <br /> <br />
 
-                <button style={{ background: "#1363DF", color: "white", border: "none" }}>
+                <button
+                 style={{ background: "#57B847", color: "white", border: "none",width:"300px",borderRadius:"100px",height:"35px",marginTop:"40px"}}>
                     Sign In
                 </button> <br /><br />
 
-                {/* <a style={{marginLeft:"4%",textDecoration:"none",color:"#0D0C22"}} onClick={() => setLgShow(true)} href='#'>Dont Have an Account? Create Here</a> */}
 
             </form>   <br />
 

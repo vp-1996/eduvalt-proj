@@ -167,7 +167,8 @@ const AllBlogs = () => {
                             {
                               blog.length===0?
                               <div style={{marginLeft:"55%"}}>
-                              <img style={{ width: "100px" }} src='/src/assets/not-found.png' />
+                              <img style={{ width: "300px",height:"100px" }} src='/src/assets/emptystate.svg' />
+                              <p style={{fontSize:"20px"}}>Nothing To Show In This Category !!!</p>
                                </div>
                                    :
                                 
@@ -182,10 +183,6 @@ const AllBlogs = () => {
                                                     <Card.Img style={{ width: "100%", height: "380px", paddingLeft: "0%", borderRadius: "5px", marginTop: "2%" }}
                                                       src={'http://localhost:5000/uploads/Images/' + item.Image} />
 
-                                                        {/* <img
-                                                        onClick={() => viewCourse(item._id)}
-                                                        className='eyeButton' src='/src/assets/eye.png'
-                                                         /> */}
 
                                                 </div>
 
@@ -195,6 +192,7 @@ const AllBlogs = () => {
                                                         style={{ fontFamily: "Hind, sans-serif", fontWeight: "600", fontSize: "13px", lineHeight: "15px", borderRadius: "20px", border: "0.1px solid gray", width: "140px", height: "25px", background: "#F5F0FF", borderStyle: "none", color: "#7A0EF0", paddingTop: "1%", paddingLeft: "2%", marginLeft: "35%",textAlign:"center" }}
                                                     >
                                                         {item.Category.name}
+                                                        
                                                     </Card.Title>
 
                                                     <Card.Text

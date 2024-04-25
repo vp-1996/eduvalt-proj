@@ -1,12 +1,28 @@
 import React, { useEffect, useState } from 'react'
 import {useParams} from 'react-router-dom'
 import axios from 'axios'
-import BasicExample from '../components/NavBar'
+import BasicExample from '../components/NavBar'    
 import Footer from '../components/Footer'
+import Box from '@mui/material/Box';
+import Tab from '@mui/material/Tab';
+import TabContext from '@mui/lab/TabContext'; 
+import TabList from '@mui/lab/TabList';
+import TabPanel from '@mui/lab/TabPanel'; 
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ListGroup from 'react-bootstrap/ListGroup';
 
 const ViewCourse = () => {
        const [course,setCourse] = useState([])
        const {id} = useParams()
+       const [value, setValue] = React.useState('1');
+
+       const handleChange = (event, newValue) => {
+         setValue(newValue);
+         };
 
        const getCourse=()=>{
         axios.get('http://localhost:5000/course/getSingleCourse/'+id)
@@ -92,18 +108,80 @@ const ViewCourse = () => {
                  <li>101 Total Enrolled</li>
                  <li>English</li>
                </ul>
-
-
            </div>
-  
-         
         </div> 
 
-         {/* <div style={{marginTop:"200px"}}>
-       <Footer/>
-       </div> */}
-        
+               {/*////////////////// Accordion Section////////////// */}
+            <Box style={{marginTop:"16%",marginLeft:"4%"}} sx={{ width: '85%', typography: 'body1' }}>
+            <TabContext value={value}>
+            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+            <TabList onChange={handleChange} aria-label="lab API tabs example">
+            <Tab label="Course Info" value="1" />
+            <Tab label="Curriculam" value="2" />
+            <Tab label="Announcements" value="3" />
+            </TabList>
+            </Box>
+            <TabPanel value="1">
+               <p style={{color:"#39557E",fontFamily:"Hind,sans-serif",fontWeight:"400",fontSize:"16px",textDecoration:"none solid rgb(57, 85, 126)"}}>
+               <span style={{fontWeight:"700",color:"#39557E"}}> Are you new to PHP or need a refresher ? </span>
+             Then this course will help you get all the fundamentals of Procedural PHP, Object Oriented PHP, MYSQLi and ending the course by building a CMS system similar to WordPress, Joomla or Drupal. <br/>
+             <span style={{fontWeight:"700",color:"#39557E",lineHeight:"35px"}}>
+             Knowing PHP has allowed me to make enough money to stay home and make courses like this one for students all over the world.
+             </span>
+              Being a PHP developer can allow anyone to make really good money online and offline, developing dynamic applications.
+               </p>              
+               </TabPanel>
 
+              <TabPanel value="2">
+              <Accordion defaultExpanded>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1-content"
+          id="panel1-header"
+        >
+          <Typography style={{color:"#1363df",fontWeight:"600",fontSize:"25px"}}>
+            Advance Concepts
+            </Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+          <ListGroup >
+      <ListGroup.Item >
+         <h5 className='ListGrup' >
+         Meal Planning Explained
+         </h5>
+         
+         </ListGroup.Item>
+         <ListGroup.Item >
+         <h5 className='ListGrup' >
+         Macronutrients Explained
+         </h5>
+         </ListGroup.Item>
+      <ListGroup.Item>
+          <h5 className='ListGrup'>
+          Adjusting Your Diet To Build Muscle
+          </h5>
+         </ListGroup.Item>
+
+      </ListGroup>
+          </Typography> 
+        </AccordionDetails>
+      </Accordion>
+      </TabPanel>
+
+            <TabPanel value="3">
+              <img src='/src/assets/emptystate.svg'/>
+              <p style={{marginLeft:"25%",fontSize:"22px"}}>
+               No New Announcements !!!
+               </p>
+               </TabPanel>
+            </TabContext>
+            </Box>
+        
+         <div style={{marginTop:"15%"}}>
+        <Footer/>
+        </div>
+    
     </>
   )
 }
