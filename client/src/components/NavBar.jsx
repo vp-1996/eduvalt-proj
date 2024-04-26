@@ -37,7 +37,7 @@ function BasicExample() {
                             <Container style={{ background: "#F8F9FA", marginRight: "190px" }}>
                                 <Navbar.Brand href="/">
                                     <img style={{ width: "150px", marginLeft: "100px" }}
-                                     src='src/assets/logo.png' />
+                                     src='/src/assets/logo.png' />
                                 </Navbar.Brand>
                                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                                 <Navbar.Collapse id="basic-navbar-nav">
@@ -83,7 +83,7 @@ function BasicExample() {
                             <Container style={{ background: "#F8F9FA", marginRight: "100px" }}>
                                 <Navbar.Brand href="/">
                                     <img style={{ width: "150px", marginLeft: "100px" }}
-                                     src='src/assets/logo.png' />
+                                     src='/src/assets/logo.png' />
                                 </Navbar.Brand>
                                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                                 <Navbar.Collapse id="basic-navbar-nav">

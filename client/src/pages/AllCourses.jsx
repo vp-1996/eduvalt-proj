@@ -14,7 +14,13 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 // import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
-
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
+import Stack from '@mui/material/Stack';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
+import Collapse from '@mui/material/Collapse';
+import zIndex from '@mui/material/styles/zIndex';
 
 const AllCourses = () => {
     const [categories, setCategories] = useState([])
@@ -26,6 +32,7 @@ const AllCourses = () => {
     const { state, dispatch } = useContext(CartContext)
     const redirect = useNavigate()
     const [show, setShow] = useState(false);
+    const [open, setOpen] = React.useState(false);
 
     let getAllCategories = () => {
 
@@ -67,7 +74,12 @@ const AllCourses = () => {
     let AddToCart = (item) => {
         //  console.log(item);
         if (token === null) {
-            return alert('Login To Proceed')
+             setOpen(true) 
+              setTimeout(()=>{
+                setOpen(false)
+               },2500)
+               return
+            
         }
 
         setShow(true)
@@ -117,11 +129,7 @@ const AllCourses = () => {
             setCourse(filteredCourses);
             //  console.log(filteredCourses);
         }
-    }, [arr]);
-
-
-    let enroll = () => {
-    }
+         }, [arr]);
 
 
     useEffect(() => {
@@ -133,6 +141,29 @@ const AllCourses = () => {
     return (
         <>
             <BasicExample />
+
+            <Box style={{position:"fixed",zIndex:"100",opacity:"89%",top:'0'}} sx={{ width: '100%' }}>
+                <Collapse in={open}>
+                    <Alert 
+                      variant="filled" severity="warning"
+                        action={
+                            <IconButton
+                                aria-label="close"
+                                color="inherit"
+                                size="small"
+                                onClick={() => {
+                                    setOpen(false);
+                                }}
+                            >
+                                <CloseIcon fontSize="inherit" />
+                            </IconButton>
+                        }
+                        sx={{ mb: 2 }}
+                    >
+                       Please Login To Proceed
+                    </Alert>
+                </Collapse>
+            </Box>
 
             <Row>
                 <Col xs={4}>

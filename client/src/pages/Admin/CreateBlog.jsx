@@ -4,6 +4,8 @@ import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import AdminNav from '../../components/adminNav';
+import { useNavigate } from 'react-router-dom';
+useNavigate
 
 const CreateBlog = () => {
 
@@ -13,6 +15,7 @@ const CreateBlog = () => {
   let [cat, setCategory] = useState([])
   const imgRef = useRef();
   const {Title,Comments,Category} = blog
+  const redirect = useNavigate()
   
   // console.log(cat);
   let getCategories = async () => {
@@ -40,6 +43,7 @@ let addBlog = ()=>{
    axios.post('http://localhost:5000/blog/createBlog',formData)
       .then((res)=>{
         alert('Added Sucessfully')
+        redirect('/GetAllBlogs')
       })
       .catch((err)=>{
           console.log(err);
