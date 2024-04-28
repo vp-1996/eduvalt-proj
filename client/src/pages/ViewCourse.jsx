@@ -111,8 +111,12 @@ const ViewCourse = () => {
            </div>
         </div> 
 
+         
+        <iframe style={{marginTop:"120px",marginLeft:"100px"}} width="800" height="450" src="https://www.youtube.com/embed/yGDwk4z9EEg?si=ir16fb_TyyRGCJhA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+            </iframe>
+
                {/*////////////////// Accordion Section////////////// */}
-            <Box style={{marginTop:"16%",marginLeft:"4%"}} sx={{ width: '85%', typography: 'body1' }}>
+            <Box style={{marginTop:"10%",marginLeft:"4%"}} sx={{ width: '85%', typography: 'body1' }}>
             <TabContext value={value}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
             <TabList onChange={handleChange} aria-label="lab API tabs example">
@@ -177,6 +181,8 @@ const ViewCourse = () => {
                </TabPanel>
             </TabContext>
             </Box>
+
+            
         
          <div style={{marginTop:"15%"}}>
         <Footer/>

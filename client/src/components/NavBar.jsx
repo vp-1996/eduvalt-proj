@@ -33,7 +33,7 @@ function BasicExample() {
             {
                 !auth ?
                     (
-                        <Navbar style={{ marginBottom: "05%", }} bg='dark' expand="lg" className="bg-body-tertiary">
+                        <Navbar sticky="top" style={{ marginBottom: "05%", }} bg='dark' expand="lg" className="bg-body-tertiary">
                             <Container style={{ background: "#F8F9FA", marginRight: "190px" }}>
                                 <Navbar.Brand href="/">
                                     <img style={{ width: "150px", marginLeft: "100px" }}

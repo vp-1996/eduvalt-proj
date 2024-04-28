@@ -75,13 +75,6 @@ const EditCategory = () => {
                 </Container>
             </Navbar>
             <br />
-            {/* <div
-                style={{ fontSize: "20px", width: "80%", height: "50px", textAlign: "center", marginLeft: "40%", backgroundColor: "#9AD0C2", color: "whitesmoke", fontWeight: "700", letterSpacing: "2px", marginTop: "4%" }}
-            >
-                <p>
-                    UPDATE CATEGORY
-                </p>
-            </div> */}
 
 
             <form
@@ -93,14 +86,14 @@ const EditCategory = () => {
                     value={name}
                     type='text'
                     onChange={handleChange}
-                    style={{ width: "297px", height: "40px", background: "white", color: "black" }}
+                    style={{ width: "297px", height: "40px", background: "white", color: "black",marginLeft:"30%"}}
                     name='name'
                 />
 
                 <br />
                 <button
                     type='submit'
-                    style={{ marginTop: "2%", marginLeft: "5%", background: "#1976D2", width: "100px", height: "39px", color: "white", border: "none", borderRadius: "5px" }}
+                    style={{ marginTop: "2%", marginLeft: "39%", background: "#1976D2", width: "100px", height: "39px", color: "white", border: "none", borderRadius: "5px" }}
                 >
                     Submit
                 </button>
