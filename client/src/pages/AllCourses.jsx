@@ -142,8 +142,8 @@ const AllCourses = () => {
         <>
             <BasicExample />
 
-            <Box style={{position:"fixed",zIndex:"100",opacity:"89%",top:'0'}} sx={{ width: '100%' }}>
-                <Collapse in={open}>
+            <Box style={{position:"fixed",zIndex:"100",opacity:"89%",top:"80px"}} sx={{ width: '100%' }}>
+                <Collapse in={open}> 
                     <Alert 
                       variant="filled" severity="warning"
                         action={
@@ -152,10 +152,10 @@ const AllCourses = () => {
                                 color="inherit"
                                 size="small"
                                 onClick={() => {
-                                    setOpen(false);
+                                setOpen(false);
                                 }}
                             >
-                                <CloseIcon fontSize="inherit" />
+                            <CloseIcon fontSize="inherit" />
                             </IconButton>
                         }
                         sx={{ mb: 2 }}
@@ -168,7 +168,7 @@ const AllCourses = () => {
             <Row>
                 <Col xs={4}>
                     <Toast
-                        style={{ position: "fixed", top: "0", zIndex: "1000", right: "370px" }}
+                        style={{ position: "fixed", top: "30px", zIndex: "1000", right: "420px" }}
                         onClose={() => setShow(false)}
                         show={show} delay={2500}
                         autohide={true}>
