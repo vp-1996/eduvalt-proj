@@ -142,25 +142,28 @@ const AllCourses = () => {
         <>
             <BasicExample />
 
-            <Box style={{position:"fixed",zIndex:"100",opacity:"89%",top:"80px"}} sx={{ width: '100%' }}>
+            <Box style={{position:"fixed",zIndex:"100",opacity:"89%",top:"80px",left:"500px"}} sx={{ width: '40%' }}>
                 <Collapse in={open}> 
-                    <Alert 
-                      variant="filled" severity="warning"
-                        action={
-                            <IconButton
-                                aria-label="close"
-                                color="inherit"
-                                size="small"
-                                onClick={() => {
-                                setOpen(false);
-                                }}
-                            >
-                            <CloseIcon fontSize="inherit" />
-                            </IconButton>
-                        }
-                        sx={{ mb: 2 }}
+                    <Alert style={{background:"#1363DF"}} 
+                      variant="filled"
+                        // action={
+                        //     <IconButton
+                        //         aria-label="close"
+                        //         color="inherit"
+                        //         size="small"
+                        //         onClick={() => {
+                        //         setOpen(false);
+                        //         }}
+                        //     >
+                        //     <CloseIcon fontSize="inherit" />
+                        //     </IconButton>
+                        // }
+                        sx={{ mb: 4 }}
                     >
-                       Please Login To Proceed
+                        <p style={{fontSize:"19px",marginLeft:"0%"}}>
+                            Please Login To Proceed
+                            </p>
+                      
                     </Alert>
                 </Collapse>
             </Box>
@@ -168,7 +171,7 @@ const AllCourses = () => {
             <Row>
                 <Col xs={4}>
                     <Toast
-                        style={{ position: "fixed", top: "30px", zIndex: "1000", right: "420px" }}
+                        style={{ position: "fixed", top: "30px", zIndex: "1000", right: "420px"}}
                         onClose={() => setShow(false)}
                         show={show} delay={2500}
                         autohide={true}>
